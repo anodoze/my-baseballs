@@ -1,6 +1,5 @@
 import Markdown from 'react-markdown'
 import frog2frog from './assets/Communication-between-two-frogs.png'
-import season4 from './posts/season4.md?raw'
 import s05_Intro from './posts/s05_Intro.md?raw'
 import s05_GL from './posts/s05_GL.md?raw'
 import s05_Top3 from './posts/s05_Top3.md?raw'

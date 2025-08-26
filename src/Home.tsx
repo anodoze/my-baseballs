@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import notbehere from './assets/notbehere.jpg'
 
 function App() {
