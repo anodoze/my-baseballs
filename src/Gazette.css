@@ -23,8 +23,6 @@ img {
   max-width: 1024px;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
   mask-image: 
     linear-gradient(
       to bottom left,

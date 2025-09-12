@@ -5,7 +5,7 @@ import './Gazette.css'
 function Beginner() {
   return(
     <div className='shadow-container'>
-    <div className='paper'>
+    <div className='paper' style={{maxWidth: "500px"}}>
     <div className='feature'>
     <div className='article' id='one-col'>
       <Markdown>{beginnersguide}</Markdown>
