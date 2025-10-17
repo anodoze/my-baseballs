@@ -1,0 +1,3 @@
+A terrible plague from beyond the stars has begun to spread throughout the MMOLB. We are still assessing its effects as we try to contain its spread. Team owners are advised to stay in contact with the Clean Corruption Control Coalition, which has successfully contained the Corruption within Clean League and maintains best-practices for preventing its spread, continuously updated with new research. Should a player become Corrupted, follow Commissioner Urrlok's Purification protocol to expunge it, save your player, and prevent further spread.
+
+Amphibians exist in a delicate (and dangerous) ecosystem which must not be disturbed. Do your part to keep the corruption contained.

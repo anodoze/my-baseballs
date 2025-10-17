@@ -1,0 +1,3 @@
+What a fantastic start to the season, leading the Clover Division! Our star bats are up to their usual slugging, and with some actual run suppression coming from a surpise performace by long-time Tree Frog Avery Gunn and a less-surprising but nontheless impressive run by rookie Cobalt Stojanovska, we've built ourselves a fairly weighty run differential just for the heck of it. 
+
+**Beware the Deep** - The Merfolk seem to have our --and particularly Cobalt's-- number, delivering us a catastrophic 21-1 defeat on day 77. They're down the middle of the Clover rankings right now but only by a handful of wins. It's anyone's game in Clover, but the Merfolk are especially the ones for us to watch out for this season.
