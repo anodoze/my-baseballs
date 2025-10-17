@@ -34,7 +34,7 @@ function S06Paper(){
             </div>
           </div>
             <h1>Corruption Report</h1>
-            <h4>Spacey, Manager of Carefree Silly Little Ducks and Proud Parent to Tree Frog Theresa Ryan</h4>
+            <h4>Spacey - Manager of Carefree Silly Little Ducks and Proud Parent to Tree Frog Theresa Ryan</h4>
             <p>
               This is Corruption Reporter Spacey coming to you live with an update from Commissioner Urrlok. Corrupted players in the Amphibian League have begun spreading Corruption to their fellow players, with the worst offenders pictured in the latest Urrlok’s Most Wanted report. 
               <br/><br/>

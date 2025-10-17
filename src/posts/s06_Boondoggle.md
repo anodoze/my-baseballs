@@ -1,4 +1,4 @@
-**Schazer, Zealandia Avian Archivist**
+**Schazer - Zealandia Avian Archivist**
 
 Greetings! In this column, I'll be offering insights on which Boons to goon over and which, in short, spell doom. 
 
