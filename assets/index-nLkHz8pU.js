@@ -270,7 +270,7 @@ Ah. **30-30.** That's certainly a record of some sort.
 
 The bats have been sleepy this season, especially perpetual lead shoe **Dick Cline**, who is continuing to struggle to keep his OPS+ over 60. And the weak spots in our rotation are suffering more than ever as other teams around the league are investing in offense. **Juliana Charleston** is working hard to get her ERA up over 7 this season.
 
-However! it is not a season without highlights - such as the 9th-inning *back-to-back grand slams* vs the Angles on day 1065`,Kw=`Looking forward, let's take a peek down into who's-who of the Amphibian League. Who might be the next Tree Frog?
+However! it is not a season without highlights - such as the 9th-inning *back-to-back grand slams* vs the Angles on day 105`,Kw=`Looking forward, let's take a peek down into who's-who of the Amphibian League. Who might be the next Tree Frog?
 
 ### Freeze Criminal Person
 
