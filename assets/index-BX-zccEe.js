@@ -276,7 +276,7 @@ However! it is not a season without highlights - such as the 9th-inning *back-to
 
 Freeze has seen the top 3 before, but this time they've taken a commanding lead by the power of a lineup that is brutal from toe to tip. (and their pitchers aren't slouching either!).
 
-**2B Gadget Somersbyshire** has been with Freeze since Season 1 and has been one of their heavist hitters for that entire stretch. Send him up to get him out of our hair.
+**2B Gadget Somersbyshire** has been with Freeze since Season 1 and has been one of their heaviest hitters for that entire stretch. Send him up to get him out of our hair.
 
 **SS Melanie Salah** is one of the league's hardest partiers. this absolute brick is having a banner season, with a .967 OPS bouyed by a .420 OBP. That last weed batter we called up was **Claude Ai**, should we do it again?
 
@@ -284,7 +284,7 @@ Freeze has seen the top 3 before, but this time they've taken a commanding lead 
 
 ### Vienna Red Housing Architects
 
-The Archs present a challenge for Greater League recruitment - a balanced team with no standout aces. Players that looks strong on paper are flagging this season for one reason or another. We always reserve judgement for the end of the season but for the Archs more than most. When looking at teams like this, I'm inevitably thinking about which players we most want to *drop* from the Frogs.
+The Archs present a challenge for Greater League recruitment - a balanced team with no standout aces. Players that look strong on paper are flagging this season for one reason or another. We always reserve judgement for the end of the season but for the Archs more than most. When looking at teams like this, I'm inevitably thinking about which players we most want to *drop* from the Frogs.
 
 **LF Jago Guzman** is typically a power hitter, if he recovers from this midseason slump he might slip into the DH spot so we can finally dump Matteo Che.
 
