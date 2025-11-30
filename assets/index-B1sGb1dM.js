@@ -294,7 +294,7 @@ The Archs present a challenge for Greater League recruitment - a balanced team w
 
 They have a Bee League belt, but can they climb to the top of Amphibian? 
 
-**C July Duran** is not a power hitter, but they have a respectable OBP and an eye-watering RCS% of 38. Cline could come to his end.
+**C July Duran** is not a heavy hitter, but they have a respectable OBP and an eye-watering RCS% of 38. Cline could come to his end.
 
 **CF Riley Gashi** is leading the Bumblebees in hitting to the tune of 163 OPS+ and could easily fit in the Frog's DH spot
 
