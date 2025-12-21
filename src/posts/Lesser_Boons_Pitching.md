@@ -1,0 +1,56 @@
+Pitching Lesser Boons
+
+S
+
+😈 Demonic          +50% Velocity/Reaction  -50% Control/Composure
+🔥 Fire Elemental   +50% Velocity           -50% Control/Composure
+⚾ One With All     +30% Control/Velocity   -30% Persuasion/Presence
+
+A
+
+🧜 Mer              +30% Control/Stuff      -30% Rotation/Guts
+🦡 Tenacious Badger +30% Stamina/Guts       -30% Persuasion/Defiance
+
+B
+
+🐸 Amphibian        +30% Velocity/Persuasion -30% Presence/Defiance
+🐲 Draconic         +50% Presence/Arm        -50% Control/Agility
+📐 Geometry Expert  +30% Control/Rotation    -30% Velocity/Defiance
+👻 Spectral         +30% Presence/Rotation   -30% Stuff/Guts
+⛈️ Stormrider       +30% Velocity/Stuff      -30% Control/Rotation
+🛸 UFO              +30% Rotation/Stuff      -30% Control/Stamina
+
+C Tier
+
+👼 Angelic          +50% Control/Awareness   -50% Velocity/Reaction
+🏹 Archer's Mark    +30% Velocity/Accuracy   -30% Stuff/Presence
+🌟 Shiny            +30% Presence/Accuracy   -30% Stuff/Guts
+🛴 Scooter          +30% Velocity/Defiance   -30% Control/Stamina
+🚦 The Light        +30% Control/Presence    -30% Velocity/Stuff
+💧 Water Elemental  +50% Control/Dexterity   -50% Velocity/Reaction
+🧹 Clean            +30% Persuasion/Presence -30% Velocity/Defiance
+
+D Tier
+
+💨 Air Elemental    +50% Accuracy/Agility    -50% Velocity/Arm
+🧮 Calculated       +30% Control/Accuracy    -30% Guts/Stamina
+⛰️ Earth Elemental  +50% Stamina/Patience    -50% Control/Speed
+🧚 Fae              +50% Persuasion/Dexterity -50% Velocity/Arm
+🗿 Giant            +50% Stamina/Arm         -50% Control/Agility
+🐞 Insectoid        +30% Accuracy/Persuasion -30% Defiance/Presence
+👁️ Psychic          +30% Accuracy/Persuasion -30% Velocity/Stuff
+🤖 ROBO             +50% Accuracy/Arm        -50% Presence
+🧟 Undead           +50% Stamina/Composure   -50% Presence
+
+🦏 Charger +30% Discipline/Intimidation Presence/Velocity -30% Contact/Performance, Control/Stamina
+🕊️ Courier +30% Aiming/Contact Control/Persuasion -30% Intimidation/Muscle Presence/Stuff
+🐑 Guardian +30% Lift/Selflessness Presence/Stamina -30% Aiming/Cunning Control/Persuasion
+🐕 Loyal +30% Contact/Selflessness Guts/Presence -30% Aiming/Greed Accuracy/Stuff
+🦬 Majestic +30% Intimidation/Muscle Presence/Stuff -30% Insight/Speed Control/Rotation
+🦉 Observer +30% Aiming/Insight Rotation/Stamina -30% Determination/Performance Defiance/Stuff
+🦊 Sneaky +30% Cunning/Discipline Defiance/Stamina -30% Contact/Lift Persuasion/Velocity
+🦝 Thief +30% Stealth/Greed Stuff/Accuracy -30% Selflessness/Wisdom Control/Presence
+🐎 Thoroughbred +30% Performance/Contact Rotation/Velocity -30% Intimidation/Vision Accuracy/Persuasion
+🐜 Tireless +30% Cunning/Intimidation Stamina/Velocity -30% Contact/Performance Guts/Rotation
+🐢 Wise +30% Insight/Wisdom Stuff/Stamina -30% Contact/Speed Rotation/Velocity
+🐍 Venomous +30% Aiming/Stealth Accuracy/Stamina -30% Greed/Determination Guts/Persuasion

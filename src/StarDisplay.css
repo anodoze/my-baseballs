@@ -1,0 +1,11 @@
+.star-row{
+  display: flex;
+}
+
+.star, .left-half-star{
+  width: 25px;
+  height: 25px;
+}
+.left-half-star{
+  clip-path: inset(0 50% 0 0);
+}

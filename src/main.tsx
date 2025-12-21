@@ -5,7 +5,7 @@ import Home from './Home.tsx'
 import { HashRouter, Routes, Route } from 'react-router'
 import Gazette from './Gazette/Gazette.tsx'
 import Beginner from './Beginner.tsx'
-// import Problems from './Problems.tsx'
+import Problems from './Problems.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={(<Home/>)} />
         <Route path="/gazette" element={(<Gazette/>)} />
         <Route path="/beginners-guide" element={(<Beginner/>)} />
-        {/* <Route path="/problems" element={(<Problems/>)} /> */}
+        <Route path="/problems" element={(<Problems/>)} />
       </Routes>
     </HashRouter>
   </StrictMode>,

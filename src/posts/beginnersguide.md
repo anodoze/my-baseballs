@@ -43,132 +43,49 @@ For more detail on what these attributes do, see the [Attributes](#attributes) s
 
 ## Daily Activities
 
-[this section will be updated when we see what changes season 6 brings]
+[this section will be updated when we see what changes season 10 brings]
 
 ## Attributes
 
 Attribute Definitions are taken from the [mmolb glossary](https://mmolb.com/glossary), plus some description of community concensus of what we think they do. Attributes in **Bold** are considered especially critical, attributes in *Italics* will probably not contribute much to overall player performance.
 
-### Batting
-- Aiming – Batter's ability to hit Line Drives
+**Aiming** – Batter's ability to hit Line Drives.
+**Contact** – Batter's ability to make contact, putting the ball in play.
+*Cunning* – Batter's ability to draw a Hit By Pitch.
+Determination – Batter's ability to hit a Foul on pitches in the Strike Zone.
+Discipline – Batter's ability to remain disciplined at the plate, increasing Balls.
+Insight – Batter's ability to hit a Single.
+Intimidation – Batter's ability to intimidate the pitcher, reducing Swinging Strikes.
+Lift – Batter's ability to hit Fly Balls.
+**Muscle** – Batter's ability to hit Doubles, Triples, and Home Runs.
+*Selflessness* – Batter's willingness to hit into a sacrifice play.
+Vision – Batter's ability to track the pitch as it's coming at them, reducing Called Strikes.
+Wisdom – Batter's ability to learn from each pitch, increasing their overall effectiveness as the Count of the current Plate Appearance increases.
 
-  More Aiming will cause batters to hit fewer ground balls and more line drives, which are harder to field and allow the batter to get on base more easily. This competes slightly with Lift.
+Acrobatics – Fielder's ability to field Line Drives.
+Agility – Fielder's ability to field Fly Balls.
+Arm – Fielder's ability to throw the ball, reducing Doubles and Triples.
+Awareness – Fielder's ability to turn a Double Play, and Catcher's ability to catch a runner attempting to steal a base.
+Composure – Fielder's ability to play without making Errors.
+Dexterity – Fielder's ability to make quick dextrous moves, preventing runners from getting extra bases.
+Patience – Fielder's ability to field Popups.
+Reaction – Fielder's ability to field Ground Balls.
 
-- Contact – Batter's ability to make contact, putting the ball in play
+*Greed* – Baserunner's willingness to attempt to steal a base.
+**Performance** – Batter's ability to distract fielders, allowing them to reach base more often when a ball is in play.
+**Speed** – Player's raw speed on the basepaths. Increases Hits when Batting and extra bases when Baserunning.
+Stealth – Baserunner's ability to remain undetected when attempting to steal a base, increasing the success of stolen base attempts, and increasing their willingness to attempt to steal a base.
 
-  unsure of exact effect, generally seems to help get the ball in play
+Accuracy – Pitcher's ability to pitch to their intended zone.
+**Control** – Pitcher's ability to have control of their pitch, reducing Balls.
+Defiance – Pitcher's ability to remain in the game during a Mound Visit. Also increases the amount of Energy restored on success.
+Guts – Pitcher's ability to play better when their Energy is reduced below one third of their total, increasing their overall effectiveness.
+Persuasion – Pitcher's ability to pitch a Foul ball.
+**Presence** – Pitcher's ability to frighten the Batter, reducing Home Runs.
+Rotation – Pitcher's ability to throw pitches with a high spin rate, reducing balls in play.
+Stamina – Pitcher's ability to remain in top form, reducing their penalty when Energy is lost and increasing their overall effectiveness.
+Stuff – Pitcher's ability to throw dirty pitches that result in more Ground Balls or Popups.
+**Velocity** – Pitcher's ability to throw hard and fast, increasing Called Strikes and Swinging Strikes.
 
-- *Cunning* – Batter's ability to draw a Hit By Pitch
-
-  this is an extremely rare event, even doubling its frequency just won't have a large effect on a player's performance. it is extremely funny though
-
-- Determination – Batter's ability to remain determined by fouling the ball
-
-  This will help the batter stay at the plate instead of striking out by turning strikes into fouls, and hopefully eventually get a hit. This also forces the pitcher to throw more, tiring them out faster.
-
-- Discipline – Batter's ability to remain disciplined at the plate, laying off of pitches outside the strike zone
-
-  This will make your batter less likely to strike out swinging and more likely to draw a walk, both good
-
-- Insight – Batter's ability to choose an optimal location to hit a ball in play
-
-  makes hit balls harder to defend, so the batter is more likely to get on base
-
-- Intimidation – Batter's ability to scare a pitcher away from throwing in the strike zone
-
-  testing indicates this does not do what it says on the tin, but it's still really good so go for it
-
-- Lift – Batter's ability to hit Fly Balls
-
-  Makes the batter hit more fly balls and fewer ground balls or line drives. competes slightly with Aiming. Fly balls are more likely to turn into home runs than ground balls or line drives, but they are easier to field than line drives. Players with a lot of Lift will benefit most from extra Muscle to make fly balls into homers instead of outs.
-
-- **Muscle** – Batter's ability to make powerful hits
-
-  Muscle makes line drives and fly balls more likely to turn into homeruns. This is the attribute most correlated with OPS, it's really really good.
-
-- *Selflessness* – Batter's willingness to hit into a sacrifice play
-
-  we're not 100% sure what this does, but it doesn't seem worth spending points on at this time
-
-- Vision – Batter's ability to track the pitch as it's coming at them
-
-  the inverse of Discipline, this increases swings at pitches inside the strike zone, making a batter less likely to strike out looking. 
-
-- Wisdom – Batter's ability to learn from each pitch
-
-    Batter's ability to learn from each pitch
-
-Priority – hidden attibute that determines a batter's position in the lineup
-
-### Defense
-- Acrobatics – Fielder's ability to field Line Drives
-- Agility – Fielder's ability to field Fly Balls
-- Arm – Fielder's ability to throw the ball
-- Awareness – Fielder's ability to make tough plays
-- Composure – Fielder's ability to play without making Errors
-- Dexterity – Fielder's ability to make quick dextrous moves, preventing runners from getting extra bases
-- *Patience* – Fielder's ability to field Popups
-- Reaction – Fielder's ability to field Ground Balls
-
-Defenders are highly specialized, so it's best to group them by position. Attributes are listed from most to least important.
-
-**Outfield:** Acrobatics, Agility, Arm
-
-**Infield:** Reaction, Composure, Arm (3B cares more about arm than any other infielder 2B also likes Acrobatics since they get line drives to the face sometimes)
-
-**Catcher:** Awareness
-
-**Pitchers:** you'll get augment options for them but tbh it does not really matter, as it's rare for pitchers to field the ball. The pitcher's most important defensive stats are their pitching stats.
-
-### Baserunning
-- *Greed* – Baserunner's willingness to attempt to  steal a base
-- **Performance** – Baserunner's ability to distract fielders
-- Speed – Baserunner's raw speed on the basepaths
-- Stealth – Baserunner's ability to remain undetected when attempting to steal a base
-
-### Pitching
-- Accuracy – Pitcher's ability to pitch to their intended zone
-
-  Extremely important for pitches that are intended to go in the zone, like fastballs, seems generally good 
-
-- Control – Pitcher's ability to have control of their pitch, remaining inside the strike zone
-
-  best for pitches that frequently go out of the zone, like sliders and knuckle curves, seems to cause batters to chase pitches more
-
-- Defiance – Pitcher's ability to defy the Manager and remain in the game for longer
-
-  Does exactly what it says on the tin. it's good on good pitchers, and bad on bad pitchers. it's doesn't seem to need to be raised beyond 3-4 stars to keep an excellent starter on the mound for complete games.
-
-- Guts – Pitcher's ability to play better when their Energy is low
-
-  improves a pitcher's performance when tired (~50 pitches thrown for starters and ~25 for relievers), it appears that guts is strong enough that many pitchers perform significantly better when "tired"
-
-- Persuasion – Pitcher's ability to draw foul balls
-
-  we belive this makes potential-hits into fouls instead. essentially pitcher-side determination. 
-
-- Presence – Pitcher's ability to scare the batter, reduce powerful hits
-
-  very important for preventing hits from becoming homeruns
-
-- Rotation – Pitcher's ability to throw pitches with a high spin rate which are hard to hit
-
-  best for in-zone pitches, especially fastballs, as it scares batters away from swinging at in-zone pitches
-
-- Stamina – Pitcher's ability to remain in top form even as they lose Energy
-
-  affects pitcher performance as they get more tired
-
-- Stuff – Pitcher's ability to throw dirty pitches that result in more Ground Balls or Popups
-
-  good, but reliant on your defense to pick up the easy outs. 
-
-- **Velocity** – Pitcher's ability to throw hard and fast, making their pitches in the strike zone more effective
-
-  This is the best stat for pretty much every pitcher, if you have the chance to raise it, you should
-
-### Luck -  A player's ability to defy the odds
-we are not sure how this affects player performance, if at all. It does seem related to some special events, such as tokens earned in the photo contest during Geomagnetic Storm weather. 
-
-
-
+Priority – Determines a batter's position in the Lineup. Higher Priority players will bat ahead of lower Priority players.
+Luck – A player's ability to affect the outcomes of weather events. Does not directly affect the performance of a player.
