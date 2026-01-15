@@ -48,19 +48,14 @@ function StarDisplay ({baseStars, totalStars}: StarDisplayProps) {
   return (
     <div className='star-row'>
       {baseStarRow}
-      {/* render trailing base half star */}
       {baseHasHalf && ( <Star className='star' id='left-half-star'/> )}
       
       {diffHasHalf && baseHasHalf && (
           <Star className={starClass} id="right-half-star"/>
       )}
-
-
       {Array.from({ length: diffDisplay }, (_, i) => (
           <Star key={`diff-${i}`} className={starClass}/>
       ))}
-      
-
       {diffHasHalf && !baseHasHalf && totalMatch && (
           <Star className={starClass} id="left-half-star"/>
       )}

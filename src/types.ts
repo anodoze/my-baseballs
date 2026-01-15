@@ -175,6 +175,10 @@ export interface TeamData {
   Modifications: any[];
   Name:	string;
   Players: PlayerShort[];
+  Bench: {
+    Batters: PlayerShort[];
+    Pitchers: PlayerShort[];
+  }
   Record: TeamRecord;
   SeasonRecords: {
     [key: string]: string

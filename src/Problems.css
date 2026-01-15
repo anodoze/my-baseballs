@@ -1,0 +1,36 @@
+:root{
+  --bright: #eee0fc;
+  --dark: #0a0213;
+  --core: #2e1a47;
+  --trim: #a96bea;
+  --secondary: #950d77;
+  --accent: #ec2388;
+}
+.problems{
+  background-color: var(--dark);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+h1, h2, h3, h4, h5{
+  text-decoration: none;
+}
+.player-group{
+  display: flex;
+  flex-wrap: wrap;
+}
+.player-card{
+  font-family:'Trebuchet MS', sans-serif;
+  background-color: var(--core);
+  color: var(--bright);
+  max-width: 600px;
+  margin: 3px
+}
+.talk-card{
+  width: 250px;
+}
+.batting-card, .pitching-card{
+  display: flex;
+  flex-wrap: wrap;
+}
+

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Player } from "./types";
 import TalkCard from "./TalkCard";
-import './PlayerCard.css'
 
 
 interface PlayerCardProps {
@@ -35,19 +34,20 @@ function PlayerCard({playerID}: PlayerCardProps) {
   return (
     <div className="player-card">
       {error ? error : null }
+      <div className="player-number">{playerData?.Number}</div>
       <h1>
         {playerData?.FirstName} {playerData?.LastName}
       </h1>
-      <div className="batting-card">
+      {playerData?.PositionType == "Batter" && <div className="batting-card">
         <TalkCard talk={playerData?.AttributeStars.Batting}/>
         <div>
           <TalkCard talk={playerData?.AttributeStars.Defense}/>
           <TalkCard talk={playerData?.AttributeStars.Baserunning}/>
         </div>
-      </div>
-      <div className="pitching-card">
+      </div>}
+      {playerData?.PositionType == "Pitcher" && <div className="pitching-card">
         <TalkCard talk={playerData?.AttributeStars.Pitching}/>
-      </div>
+      </div>}
     </div>
   );
 }
