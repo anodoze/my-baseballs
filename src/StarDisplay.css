@@ -1,11 +1,26 @@
 .star-row{
   display: flex;
+  flex-wrap: wrap;
+  width: 100%
 }
-
-.star, .left-half-star{
-  width: 25px;
+.star, 
+.left-half-star, 
+.right-half-star{
+  width: 24px;
   height: 25px;
+  fill: yellow;
 }
-.left-half-star{
-  clip-path: inset(0 50% 0 0);
+.bonus-star {
+  fill: green;
+}
+.penalty-star {
+  fill: red;
+}
+#left-half-star{
+  clip-path: inset(0 12px 0 0);
+  margin-right: -12px
+}
+#right-half-star{
+  clip-path: inset(0 0 0 12px);
+  margin-left: -12px
 }

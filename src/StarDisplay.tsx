@@ -1,28 +1,69 @@
 import './StarDisplay.css'
-import Star from './assets/star.svg'
+import clsx from 'clsx';
+import Star from './assets/star.svg?react'
 
 function starNumber (value: number) {
-  return (Math.round(((value * 100)/25) * 2))/2
+  const starnum = (Math.round(value * 8))/2 
+  console.log("starnum", starnum)
+  return starnum
 }
 
-function StarDisplay ({stars}: {stars: number}) {
+interface StarDisplayProps {
+  baseStars: number;
+  totalStars: number;
+}
+
+function StarDisplay ({baseStars, totalStars}: StarDisplayProps) {
+
+  console.log("baseStars:", baseStars, "totalStars:", totalStars)
+
+  const diff = totalStars - baseStars;
+  const diffIsNegative = diff < 0;
+  const base = diffIsNegative 
+    ? starNumber(baseStars + diff) 
+    : starNumber(baseStars);
+
+  console.log("diff:", diff, "base:", base)
   
-  const starDisplay = stars ? starNumber(stars) : 0;
-  const fullStars = Math.floor(starDisplay);
-  const hasHalfStar = starDisplay % 1 !== 0;
+  const baseDisplay = Math.floor(base);
+  const baseHasHalf = base % 1 !== 0;
+  
+  const diffDisplay = Math.floor(starNumber(Math.abs(diff)));
+  const diffHasHalf = (Math.abs(diff) % 1 !== 0) 
+
+  const total = starNumber(totalStars);
+  const displayTotal = baseDisplay + diffDisplay
+  const totalMatch = total == displayTotal
+
+
+  const starClass = clsx('star', {
+    'bonus-star': !diffIsNegative,
+    'penalty-star': diffIsNegative,
+  });
+
+  const baseStarRow = Array.from({ length: baseDisplay }, (_, i) => (
+        <Star key={`base-${i}`} className='star'/>
+      ))
 
   return (
     <div className='star-row'>
-      {Array.from({ length: fullStars }, (_, i) => (
-        <div key={i} className='star'>
-        <img src={Star} />
-        </div>
+      {baseStarRow}
+      {/* render trailing base half star */}
+      {baseHasHalf && ( <Star className='star' id='left-half-star'/> )}
+      
+      {diffHasHalf && baseHasHalf && (
+          <Star className={starClass} id="right-half-star"/>
+      )}
+
+
+      {Array.from({ length: diffDisplay }, (_, i) => (
+          <Star key={`diff-${i}`} className={starClass}/>
       ))}
-      {hasHalfStar && 
-        <div key="half" className='left-half-star'>
-        <img src={Star} />
-        </div>
-      }
+      
+
+      {diffHasHalf && !baseHasHalf && totalMatch && (
+          <Star className={starClass} id="left-half-star"/>
+      )}
     </div>
   )
 }

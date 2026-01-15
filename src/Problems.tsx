@@ -28,8 +28,7 @@ function Problems() {
 
   return (
     <>
-      <h1>{teamData.Location} {teamData.Name}</h1>
-      <h3>{teamData.Players[0].FirstName}</h3>
+      <h1>{teamData.Emoji} {teamData.Location} {teamData.Name} {teamData.Emoji}</h1>
       <PlayerCard playerID={teamData.Players[0].PlayerID} />
       <PlayerCard playerID={teamData.Players[1].PlayerID} />
       <PlayerCard playerID={teamData.Players[2].PlayerID} />

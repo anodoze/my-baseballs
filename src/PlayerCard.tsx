@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Player } from "./types";
-// import TalkCard from "./TalkCard";
+import TalkCard from "./TalkCard";
+import './PlayerCard.css'
 
 
 interface PlayerCardProps {
@@ -32,15 +33,21 @@ function PlayerCard({playerID}: PlayerCardProps) {
   }, [playerID]);
 
   return (
-    <div>
+    <div className="player-card">
       {error ? error : null }
-      <h2>
+      <h1>
         {playerData?.FirstName} {playerData?.LastName}
-      </h2>
-      {/* <TalkCard talk={playerData?.Talk.Batting}/> */}
-      {/* <TalkCard talk={playerData?.Talk.Defense}/> */}
-      {/* <TalkCard talk={playerData?.Talk.Baserunning}/> */}
-      {/* <TalkCard talk={playerData?.Talk.Pitching}/> */}
+      </h1>
+      <div className="batting-card">
+        <TalkCard talk={playerData?.AttributeStars.Batting}/>
+        <div>
+          <TalkCard talk={playerData?.AttributeStars.Defense}/>
+          <TalkCard talk={playerData?.AttributeStars.Baserunning}/>
+        </div>
+      </div>
+      <div className="pitching-card">
+        <TalkCard talk={playerData?.AttributeStars.Pitching}/>
+      </div>
     </div>
   );
 }

@@ -1,28 +1,31 @@
 import StarDisplay from "./StarDisplay";
 
 interface TalkCardProps {
-  talk: {
-    quote: string;
-    attributes: { [key: string]: number }
-    stars: {
-      [key: string]: {
-        base_total: number;
-        total: number;
-      }
+  talk?: {
+    [key: string]: {
+      base_total: number;
+      total: number;
     }
   }
 }
 
 function TalkCard ({talk}: TalkCardProps) {
+  if (!talk) return null;
+
+  console.log(talk)
   
-  const attributeList = talk?.stars
-    ?  Object.keys(talk.stars).map(attr => 
-    <li key={attr} >  {attr} {Math.round(talk.stars[attr].base_total * 100)} <StarDisplay stars={talk.stars[attr].base_total}/></li>
-  ) : null ;
+  const attributeList = Object.keys(talk).map(attr => 
+    <li key={attr} >  
+      {attr} {Math.round(talk[attr].total * 100)} 
+      <StarDisplay 
+        baseStars={talk[attr].base_total} 
+        totalStars={talk[attr].total}
+      />
+    </li>
+  );
 
   return(
-    <div>
-      {talk?.quote}
+    <div className="talk-card">
       <ul>
         { attributeList }
       </ul>

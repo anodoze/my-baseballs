@@ -42,15 +42,15 @@ D Tier
 🤖 ROBO             +50% Accuracy/Arm        -50% Presence
 🧟 Undead           +50% Stamina/Composure   -50% Presence
 
-🦏 Charger +30% Discipline/Intimidation Presence/Velocity -30% Contact/Performance, Control/Stamina
-🕊️ Courier +30% Aiming/Contact Control/Persuasion -30% Intimidation/Muscle Presence/Stuff
-🐑 Guardian +30% Lift/Selflessness Presence/Stamina -30% Aiming/Cunning Control/Persuasion
-🐕 Loyal +30% Contact/Selflessness Guts/Presence -30% Aiming/Greed Accuracy/Stuff
-🦬 Majestic +30% Intimidation/Muscle Presence/Stuff -30% Insight/Speed Control/Rotation
-🦉 Observer +30% Aiming/Insight Rotation/Stamina -30% Determination/Performance Defiance/Stuff
-🦊 Sneaky +30% Cunning/Discipline Defiance/Stamina -30% Contact/Lift Persuasion/Velocity
-🦝 Thief +30% Stealth/Greed Stuff/Accuracy -30% Selflessness/Wisdom Control/Presence
-🐎 Thoroughbred +30% Performance/Contact Rotation/Velocity -30% Intimidation/Vision Accuracy/Persuasion
-🐜 Tireless +30% Cunning/Intimidation Stamina/Velocity -30% Contact/Performance Guts/Rotation
-🐢 Wise +30% Insight/Wisdom Stuff/Stamina -30% Contact/Speed Rotation/Velocity
-🐍 Venomous +30% Aiming/Stealth Accuracy/Stamina -30% Greed/Determination Guts/Persuasion
+🦏 Charger          +30% Presence/Velocity,  -30% Control/Stamina
+🕊️ Courier          +30% Control/Persuasion  -30% Presence/Stuff
+🐑 Guardian         +30% Presence/Stamina    -30% Control/Persuasion
+🐕 Loyal            +30% Guts/Presence       -30% Accuracy/Stuff
+🦬 Majestic         +30% Presence/Stuff      -30% Control/Rotation
+🦉 Observer         +30% Rotation/Stamina    -30% Defiance/Stuff
+🦊 Sneaky           +30% Defiance/Stamina    -30% Persuasion/Velocity
+🦝 Thief            +30% Stuff/Accuracy      -30% Control/Presence
+🐎 Thoroughbred     +30% Rotation/Velocity   -30% Accuracy/Persuasion
+🐜 Tireless         +30% Stamina/Velocity    -30% Guts/Rotation
+🐢 Wise             +30% Stuff/Stamina       -30% Rotation/Velocity
+🐍 Venomous         +30% Accuracy/Stamina    -30% Guts/Persuasion

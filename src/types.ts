@@ -10,8 +10,10 @@ export interface Boon {
 
 export interface Equipment {
   Cost?: number;
+  Durability?: number;
   Effects: Array<{
     Attribute: string;
+    Tier?: number;
     Type: string;
     Value: number;
   }>;
@@ -43,7 +45,6 @@ export interface StarAttribute {
 export interface Talk {
   attributes: { [key: string]: number };
   day: number | string;
-  quote: string;
   season: number;
   stars: { [key: string]: StarAttribute };
 }
@@ -63,10 +64,8 @@ export interface Player {
     Head?: Equipment;
   };
   FirstName: string;
-  GreaterBoon: Boon | null;
   Home: string;
   LastName: string;
-  LesserBoon: Boon | null;
   Likes: string;
   Modifications: any[];
   Number: number;
@@ -75,16 +74,60 @@ export interface Player {
   Position: string;
   PositionType: "Batter" | "Pitcher";
   SeasonStats: { [seasonId: string]: { [recordType: string]: string } };
-  Stats: { [teamId: string]: PlayerStats };
+  Stats: { [teamId: string]: PlayerStats }; // keyed but empty now
   Talk: {
     Baserunning: Talk;
     Batting: Talk;
     Defense: Talk;
     Pitching: Talk;
   };
+  AttributeStars: {
+    Baserunning: AttributeStarsCategory;
+    Batting: AttributeStarsCategory;
+    Defense: AttributeStarsCategory;
+    Pitching: AttributeStarsCategory;
+  };
+  AugmentHistory: any[];
+  BaseAttributes: { [key: string]: number | number[] | string[] };
+  FoodBuffs: FoodBuff[];
+  GreaterBoon: Boon[] | null;  // Changed from single to array
+  LesserBoon: Boon[] | null;   // Changed from single to array
+  Level: number;
+  PendingLevelUps: any[];
+  PitchCategoryBonuses: { [key: string]: any };
+  PitchTypeBonuses: { [key: string]: any };
+  ScheduledLevelUps: LevelUp[];
+  Suffix: string | null;
+  XP: number;
   TeamID: string;
   Throws: string;
   _id: string;
+}
+
+interface FoodBuff {
+  applied_at: string;
+  attribute: string;
+  emoji: string;
+  instance_id: string;
+  name: string;
+}
+
+interface LevelUp {
+  applied_at: string;
+  choice: {
+    amount: number;
+    attribute: string;
+    id: string;
+    label: string;
+    type: string;
+  };
+  effective_at: string;
+  id: string;
+  level: number;
+}
+
+interface AttributeStarsCategory {
+  [attribute: string]: StarAttribute;
 }
 
 export interface PlayerShort {

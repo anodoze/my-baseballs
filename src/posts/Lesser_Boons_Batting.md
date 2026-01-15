@@ -11,6 +11,7 @@ A Tier
 
 ⚾ One With All     +30% Selflessness/Contact     -30% Determination/Greed
 🌟 Shiny            +30% Insight/Vision           -30% Cunning/Stealth
+🐍 Venomous         +30% Aiming/Stealth           -30% Greed/Determination
 
 B Tier
 
@@ -53,7 +54,5 @@ D Tier
 🐑 Guardian         +30% Lift/Selflessness        -30% Aiming/Cunning
 🐕 Loyal            +30% Contact/Selflessness     -30% Aiming/Greed
 🦊 Sneaky           +30% Cunning/Discipline       -30% Contact/Lift
-
 🐜 Tireless         +30% Cunning/Intimidation     -30% Contact/Performance
 🐢 Wise             +30% Insight/Wisdom           -30% Contact/Speed
-🐍 Venomous         +30% Aiming/Stealth           -30% Greed/Determination
