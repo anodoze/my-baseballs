@@ -1,4 +1,3 @@
-import './StarDisplay.css'
 import clsx from 'clsx';
 import Star from './assets/star.svg?react'
 
@@ -15,15 +14,11 @@ interface StarDisplayProps {
 
 function StarDisplay ({baseStars, totalStars}: StarDisplayProps) {
 
-  console.log("baseStars:", baseStars, "totalStars:", totalStars)
-
   const diff = totalStars - baseStars;
   const diffIsNegative = diff < 0;
   const base = diffIsNegative 
     ? starNumber(baseStars + diff) 
     : starNumber(baseStars);
-
-  console.log("diff:", diff, "base:", base)
   
   const baseDisplay = Math.floor(base);
   const baseHasHalf = base % 1 !== 0;

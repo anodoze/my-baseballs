@@ -104,7 +104,7 @@ export interface Player {
   _id: string;
 }
 
-interface FoodBuff {
+export interface FoodBuff {
   applied_at: string;
   attribute: string;
   emoji: string;
@@ -112,7 +112,7 @@ interface FoodBuff {
   name: string;
 }
 
-interface LevelUp {
+export interface LevelUp {
   applied_at: string;
   choice: {
     amount: number;

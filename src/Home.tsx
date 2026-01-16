@@ -1,6 +1,6 @@
 import notbehere from './assets/notbehere.jpg'
 
-function App() {
+function Home() {
   return (
     <>
       <img src={notbehere} alt="how the hell did you get up here?" />
@@ -8,4 +8,4 @@ function App() {
   )
 }
 
-export default App
+export default Home

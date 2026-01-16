@@ -1,36 +1,88 @@
-:root{
-  --bright: #eee0fc;
-  --dark: #0a0213;
-  --core: #2e1a47;
-  --trim: #a96bea;
-  --secondary: #950d77;
-  --accent: #ec2388;
-}
-.problems{
-  background-color: var(--dark);
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
 h1, h2, h3, h4, h5{
   text-decoration: none;
 }
 .player-group{
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  margin: auto
 }
 .player-card{
   font-family:'Trebuchet MS', sans-serif;
-  background-color: var(--core);
+  background-color: var(--base);
   color: var(--bright);
-  max-width: 600px;
+  max-width: 730px;
   margin: 3px
 }
-.talk-card{
-  width: 250px;
-}
 .batting-card, .pitching-card{
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
 }
+.player-title {
+  display: flex;
+  align-items: center;
+}
+.player-number {
+  padding: 5px;
+  background-color: var(--star-yellow);
+  color: var(--dark);
+  margin-right: 8px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+
+.talk-card{
+  width: 250px;
+  margin: 0px 5px 0px 5px;
+  border-radius: 4px;
+  height: min-content;
+}
+.talk-card * li{
+  display: flex;
+  padding: 5px;
+}
+
+.attribute-display{
+  display: flex;
+  align-items: center;
+}
+.attribute-title {
+  padding: 2px;
+  margin: 0 8px 0px 0px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+
+.star-row{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%
+}
+.star, 
+.left-half-star, 
+.right-half-star{
+  width: 24px;
+  height: 25px;
+  fill: var(--star-yellow);
+}
+.bonus-star {
+  fill: var(--star-green);
+}
+.penalty-star {
+  fill: var(--star-red);
+}
+#left-half-star{
+  clip-path: inset(0 12px 0 0);
+  margin-right: -12px
+}
+#right-half-star{
+  clip-path: inset(0 0 0 12px);
+  margin-left: -12px
+}
+
+li { background: var(--core-accent); }
+li:nth-child(odd) { background: var(--core); }
 

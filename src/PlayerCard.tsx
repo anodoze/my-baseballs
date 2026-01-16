@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Player } from "./types";
 import TalkCard from "./TalkCard";
+import Statbox from "./Statbox";
+import LevelUp from "./LevelUp";
 
 
 interface PlayerCardProps {
@@ -31,23 +33,30 @@ function PlayerCard({playerID}: PlayerCardProps) {
     });
   }, [playerID]);
 
+  const levelUpList = playerData?.ScheduledLevelUps.map(i => 
+    <li >
+      {/* <LevelUp levelUps={i}/> */}
+    </li>
+  )
+
   return (
     <div className="player-card">
       {error ? error : null }
-      <div className="player-number">{playerData?.Number}</div>
-      <h1>
-        {playerData?.FirstName} {playerData?.LastName}
-      </h1>
+      <div className="player-title">
+        <div className="player-number">#{playerData?.Number}</div>
+        <h1>{playerData?.FirstName} {playerData?.LastName}</h1>
+      </div>
       {playerData?.PositionType == "Batter" && <div className="batting-card">
-        <TalkCard talk={playerData?.AttributeStars.Batting}/>
+        <TalkCard title={"Batting"} talk={playerData?.AttributeStars.Batting}/>
         <div>
-          <TalkCard talk={playerData?.AttributeStars.Defense}/>
-          <TalkCard talk={playerData?.AttributeStars.Baserunning}/>
+          <TalkCard title={"Defense"} talk={playerData?.AttributeStars.Defense}/>
+          <TalkCard title={"Baserunning"} talk={playerData?.AttributeStars.Baserunning}/>
         </div>
       </div>}
       {playerData?.PositionType == "Pitcher" && <div className="pitching-card">
-        <TalkCard talk={playerData?.AttributeStars.Pitching}/>
+        <TalkCard title={"Pitching"} talk={playerData?.AttributeStars.Pitching}/>
       </div>}
+      <LevelUp levelUps={playerData?.ScheduledLevelUps} />
     </div>
   );
 }

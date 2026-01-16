@@ -4,7 +4,7 @@ function Title(){
       <div className='frame'>
         <text>The Official Unofficial Periodical of the Amphibian League</text>
       </div>
-      <h1>The Wet Gazette</h1>
+      <h1 style={{ textDecoration: "underline" }}>The Wet Gazette</h1>
       <div className='frame'>
         <text>Brought to you by chickadee and the No Tuesday Problems</text>
       </div>

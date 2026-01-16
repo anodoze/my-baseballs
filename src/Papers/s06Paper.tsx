@@ -30,7 +30,7 @@ function S06Paper(){
         <div className='feature_c'>
           <div className='halftone-edge'>
             <div className='halftone-dots'>
-              <img src={UrrloksMostWanted} />
+              <img src={UrrloksMostWanted} style={{ width: '100%' }} />
             </div>
           </div>
             <h1>Corruption Report</h1>

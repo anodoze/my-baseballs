@@ -1,3 +1,4 @@
+import styles from './news-styling.module.css'
 import './Gazette.css'
 import S05Paper from '../Papers/s05Paper'
 import S06Paper from '../Papers/s06Paper'
@@ -7,7 +8,7 @@ import S09Paper from '../Papers/s09Paper'
 
 function Gazette(){
   return (
-    <div className='shadow-container'>
+    <div className={styles.container}>
       <S09Paper/>
       <div>
         <p>---</p>

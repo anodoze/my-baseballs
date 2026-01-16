@@ -8,5 +8,5 @@ export default defineConfig({
     svgr(),
     react()
   ],
-  base: 'https://anodoze.github.io/my-baseballs/'
+  base: '/'
 })
