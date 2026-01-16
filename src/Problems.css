@@ -61,7 +61,6 @@ h1, h2, h3, h4, h5{
 }
 .level-display {
   margin: 4px;
-  padding: 6px;
   border-radius: 4px;
   max-width: 250px;
 }
@@ -119,3 +118,10 @@ h1, h2, h3, h4, h5{
 li { background: var(--core-accent); }
 li:nth-child(odd) { background: var(--core); }
 
+.pitch-chart{
+  width: 250px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 6px;
+  line-height: 28px;
+}

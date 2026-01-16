@@ -4,6 +4,7 @@ import TalkCard from "./TalkCard";
 import Statbox from "./Statbox";
 import LevelUp from "./LevelUp";
 import BoonDisplay from "./BoonIcon";
+import PitchChart from "./PitchChart";
 
 
 interface PlayerCardProps {
@@ -39,7 +40,7 @@ function PlayerCard({playerID}: PlayerCardProps) {
       {error ? error : null }
       <div className="player-title">
         <div className="player-number">#{playerData?.Number}</div>
-        <h1>{playerData?.FirstName} {playerData?.LastName}</h1>
+        <h1>{playerData?.Position}  {playerData?.FirstName} {playerData?.LastName}</h1>
         <div className="boons">
           <BoonDisplay boon={playerData?.LesserBoon[0]} />
           <BoonDisplay boon={playerData?.LesserBoon[1]} />
@@ -57,6 +58,12 @@ function PlayerCard({playerID}: PlayerCardProps) {
       </div>}
       {playerData?.PositionType == "Pitcher" && <div className="pitching-card">
         <TalkCard title={"Pitching"} talk={playerData?.AttributeStars.Pitching}/>
+        <PitchChart 
+          pitchSelection={playerData?.PitchSelection} 
+          pitchTypes={playerData.PitchTypes}
+          pitchCategoryBonuses={playerData.PitchCategoryBonuses}
+          pitchTypeBonuses={playerData.PitchTypeBonuses}
+        />
       </div>}
       <LevelUp levelUps={playerData?.ScheduledLevelUps} />
     </div>

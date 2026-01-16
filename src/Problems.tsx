@@ -29,7 +29,7 @@ function Problems() {
 
   return (
     <div className="problems">
-      <h1>{teamData.Emoji} {teamData.Location} {teamData.Name} {teamData.Emoji}</h1>
+      {/* <h1>{teamData.Emoji} {teamData.Location} {teamData.Name} {teamData.Emoji}</h1> */}
       <div className="player-group">
         <PlayerCard playerID={teamData.Players[0].PlayerID} />
         <PlayerCard playerID={teamData.Players[1].PlayerID} />

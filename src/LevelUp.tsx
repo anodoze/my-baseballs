@@ -1,9 +1,14 @@
 interface LevelUpChoice {
   amount?: number;
   attribute?: string;
+  bonus?: number;
+  category?: string;
   id: string;
   label: string;
   type: string;
+  pitch_type?: string;
+  new_pitch?: string;
+  old_pitch?: string;
   boon?: {
     Description: string;
     Emoji: string;
@@ -50,7 +55,47 @@ function LevelUp({ levelUps }: LevelUpDisplayProps) {
               <p>{levelUp.choice.boon.Description}</p>
             </div>
           )}
-          
+
+          {levelUp.choice.type === 'pitch_type_bonus' && (
+            <div className="level-display">
+              <h3>
+                Level {levelUp.level}: +{(levelUp.choice.bonus! * 100)}% effectiveness for {levelUp.choice.pitch_type}
+              </h3>
+            </div>
+          )}
+
+          {levelUp.choice.type === 'pitch_replace' && (
+            <div className="level-display">
+              <h3>
+                Level {levelUp.level}: Replace {levelUp.choice.old_pitch} with {levelUp.choice.new_pitch}
+              </h3>
+            </div>
+          )}
+
+          {levelUp.choice.type === 'pitch_learn' && (
+            <div className="level-display">
+              <h3>
+                Level {levelUp.level}: Learn {levelUp.choice.pitch_type} (Breaking)
+              </h3>
+            </div>
+          )}
+
+          {levelUp.choice.type === 'pitch_category_bonus' && (
+            <div className="level-display">
+              <h3>
+                Level {levelUp.level}: +{(levelUp.choice.bonus! * 100)}% effectiveness for {levelUp.choice.category} pitches
+              </h3>
+            </div>
+          )}
+
+          {levelUp.choice.type === 'pitch_forget' && (
+            <div className="level-display">
+              <h3>
+                Level {levelUp.level}: Forget {levelUp.choice.old_pitch}
+              </h3>
+            </div>
+          )}
+
           <div className="level-display">
             Effective: {new Date(levelUp.effective_at).toLocaleString()}
           </div>
