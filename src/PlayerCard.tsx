@@ -18,7 +18,7 @@ function PlayerCard({playerID}: PlayerCardProps) {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/player/${playerID}`, {
+    fetch(`/api/player/${playerID}`, {
       headers: {
         'Accept': 'application/json'
       }

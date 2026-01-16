@@ -25,7 +25,7 @@ function App() {
         <Route path="/frogs/gazette" element={(<Gazette/>)} />
       </Route>
       <Route path="/beginners-guide" element={(<Beginner/>)} />
-      <Route path="/problems" element={(<Problems/>)} />
+      <Route path="/team/:id" element={(<Problems/>)} />
     </Routes>
   );
 }

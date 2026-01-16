@@ -2,13 +2,15 @@ import PlayerCard from "./PlayerCard";
 import { useState, useEffect } from "react";
 import type { TeamData } from "./types";
 import './Problems.css'
+import { useParams } from "react-router";
 
 function Problems() {
+  const { id } = useParams()
   const [teamData, setTeamData] = useState<TeamData | null>(null)
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/team/6806d81fee9f269dec724b8a', {
+    fetch(`/api/team/${id}`, {
       headers: {
         'Accept': 'application/json'
       }
