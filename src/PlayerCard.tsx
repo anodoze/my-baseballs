@@ -3,6 +3,7 @@ import type { Player } from "./types";
 import TalkCard from "./TalkCard";
 import Statbox from "./Statbox";
 import LevelUp from "./LevelUp";
+import BoonDisplay from "./BoonIcon";
 
 
 interface PlayerCardProps {
@@ -33,18 +34,19 @@ function PlayerCard({playerID}: PlayerCardProps) {
     });
   }, [playerID]);
 
-  const levelUpList = playerData?.ScheduledLevelUps.map(i => 
-    <li >
-      {/* <LevelUp levelUps={i}/> */}
-    </li>
-  )
-
   return (
     <div className="player-card">
       {error ? error : null }
       <div className="player-title">
         <div className="player-number">#{playerData?.Number}</div>
         <h1>{playerData?.FirstName} {playerData?.LastName}</h1>
+        <div className="boons">
+          <BoonDisplay boon={playerData?.LesserBoon[0]} />
+          <BoonDisplay boon={playerData?.LesserBoon[1]} />
+          <BoonDisplay boon={playerData?.LesserBoon[2]} />
+          <BoonDisplay boon={playerData?.GreaterBoon[0]} />
+          <BoonDisplay boon={playerData?.GreaterBoon[1]} />
+        </div>
       </div>
       {playerData?.PositionType == "Batter" && <div className="batting-card">
         <TalkCard title={"Batting"} talk={playerData?.AttributeStars.Batting}/>

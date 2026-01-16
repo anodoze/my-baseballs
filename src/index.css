@@ -1,12 +1,10 @@
 :root {
-    --bright: #eee0fc;
-    --dark: #0a0213;
-    --base: #211432;
-    --core: #372054;
-    --core-accent: #2e1a47;
+    --bright: #e0e2fc;
+    --dark: #080213;
+    --base: #171432;
+    --core: #302054;
+    --core-accent: #261a47;
     --trim: #a96bea;
-    --secondary: #950d77;
-    --accent: #ec2388;
     --star-yellow: rgb(255, 242, 0);
     --star-green: rgb(104, 234, 104);
     --star-red: rgb(255, 111, 27);
@@ -42,8 +40,6 @@ body {
 * {
   box-sizing: border-box;
 }
-
-
 
 body.theme-frogs {
   background-color: green;

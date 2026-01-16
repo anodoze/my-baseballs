@@ -90,8 +90,8 @@ export interface Player {
   AugmentHistory: any[];
   BaseAttributes: { [key: string]: number | number[] | string[] };
   FoodBuffs: FoodBuff[];
-  GreaterBoon: Boon[] | null;  // Changed from single to array
-  LesserBoon: Boon[] | null;   // Changed from single to array
+  GreaterBoon: Boon[] | null;
+  LesserBoon: Boon[] | null;
   Level: number;
   PendingLevelUps: any[];
   PitchCategoryBonuses: { [key: string]: any };

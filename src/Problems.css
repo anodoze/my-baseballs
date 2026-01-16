@@ -11,8 +11,9 @@ h1, h2, h3, h4, h5{
   font-family:'Trebuchet MS', sans-serif;
   background-color: var(--base);
   color: var(--bright);
-  max-width: 730px;
-  margin: 3px
+  max-width: 520px;
+  margin: 3px;
+  height: min-content;
 }
 .batting-card, .pitching-card{
   justify-content: center;
@@ -21,17 +22,49 @@ h1, h2, h3, h4, h5{
 }
 .player-title {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  cursor: pointer;
+  max-width: inherit;
 }
 .player-number {
   padding: 5px;
   background-color: var(--star-yellow);
   color: var(--dark);
-  margin-right: 8px;
+  margin-right: 16px;
   font-size: 30px;
   font-weight: 800;
 }
+.boons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 2px;
+}
+.boon-display {
+  margin: 4px;
+  padding: 6px;
+  background-color: var(--core);
+  border-radius: 4px;
+  max-width: 250px;
+}
 
+.level-up {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--core);
+  width: 100%;
+  margin: 2px;
+}
+.level-display {
+  margin: 4px;
+  padding: 6px;
+  border-radius: 4px;
+  max-width: 250px;
+}
 
 .talk-card{
   width: 250px;
@@ -41,7 +74,7 @@ h1, h2, h3, h4, h5{
 }
 .talk-card * li{
   display: flex;
-  padding: 5px;
+  padding: 0 0 0 5px;
 }
 
 .attribute-display{

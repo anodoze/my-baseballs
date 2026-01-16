@@ -29,32 +29,35 @@ function LevelUp({ levelUps }: LevelUpDisplayProps) {
   if (!levelUps || levelUps.length === 0) return null;
 
   return (
-    <div className="level-ups">
+    <>
       <h3>Scheduled Level-Ups</h3>
+    <div className="boons">
       {levelUps.map(levelUp => (
-        <div key={levelUp.id} className="level-up-item">
-          <div className="level-badge">Level {levelUp.level}</div>
+        <div key={levelUp.id} className="level-up">
           
-          {levelUp.choice.type === 'attribute' && (
-            <div className="attribute-boost">
-              +{levelUp.choice.amount} {levelUp.choice.attribute}
+          {levelUp.choice.amount && levelUp.choice.type === 'attribute' && (
+            <div className="level-display">
+              <h3>
+                Level {levelUp.level}:     
+                +{(levelUp.choice.amount * 100)} {levelUp.choice.attribute}
+              </h3>
             </div>
           )}
           
           {levelUp.choice.type === 'lesser_boon' && levelUp.choice.boon && (
-            <div className="boon-choice">
-              <span className="boon-emoji">{levelUp.choice.boon.Emoji}</span>
-              <span className="boon-name">{levelUp.choice.boon.Name}</span>
-              <p className="boon-description">{levelUp.choice.boon.Description}</p>
+            <div className="level-display">
+              <h3>{levelUp.choice.boon.Emoji} {levelUp.choice.boon.Name}</h3>
+              <p>{levelUp.choice.boon.Description}</p>
             </div>
           )}
           
-          <div className="effective-time">
+          <div className="level-display">
             Effective: {new Date(levelUp.effective_at).toLocaleString()}
           </div>
         </div>
       ))}
     </div>
+    </>
   );
 }
 
