@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Player } from "./types";
 import TalkCard from "./TalkCard";
-import Statbox from "./Statbox";
 import LevelUp from "./LevelUp";
 import BoonDisplay from "./BoonIcon";
 import PitchChart from "./PitchChart";
