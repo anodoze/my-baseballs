@@ -154,9 +154,6 @@ li:nth-child(odd) { background: var(--core); }
 
 /* Mobile only */
 @media (max-width: 768px) {
-  body{
-    background-color: red;
-  }
   .toggle-menu{
     justify-content: space-evenly;
   }
