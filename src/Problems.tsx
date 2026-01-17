@@ -13,7 +13,7 @@ function Problems() {
     console.log("anyone there?")
     console.log("about to fetch:", `/api/team/${id}`)
 
-    fetch(`/api/team/${id}`, {
+    fetch(`https://mmolb-proxy.vercel.app/api/team/${id}`, {
       headers: {
         'Accept': 'application/json'
       }

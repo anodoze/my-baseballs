@@ -17,7 +17,7 @@ function PlayerCard({playerID}: PlayerCardProps) {
 
 
   useEffect(() => {
-    fetch(`/api/player/${playerID}`, {
+    fetch(`https://mmolb-proxy.vercel.app/api/player/${playerID}`, {
       headers: {
         'Accept': 'application/json'
       }
