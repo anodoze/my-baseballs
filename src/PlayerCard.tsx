@@ -42,11 +42,11 @@ function PlayerCard({playerID}: PlayerCardProps) {
         <div className="player-number">#{playerData?.Number}</div>
         <h1>{playerData?.Position}  {playerData?.FirstName} {playerData?.LastName}</h1>
         <div className="boons">
-          <BoonDisplay boon={playerData?.LesserBoon[0]} />
-          <BoonDisplay boon={playerData?.LesserBoon[1]} />
-          <BoonDisplay boon={playerData?.LesserBoon[2]} />
-          <BoonDisplay boon={playerData?.GreaterBoon[0]} />
-          <BoonDisplay boon={playerData?.GreaterBoon[1]} />
+          {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[0]} /> )}
+          {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[1]} /> )}
+          {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[2]} /> )}
+          {playerData?.GreaterBoon?.[0] && ( <BoonDisplay boon={playerData?.GreaterBoon[0]} /> )}
+          {playerData?.GreaterBoon?.[0] && ( <BoonDisplay boon={playerData?.GreaterBoon[1]} /> )}
         </div>
       </div>
       {playerData?.PositionType == "Batter" && <div className="batting-card">
