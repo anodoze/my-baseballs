@@ -37,7 +37,7 @@ function Problems() {
     <div className="problems">
       {/* <h1>{teamData.Emoji} {teamData.Location} {teamData.Name} {teamData.Emoji}</h1> */}
     <div className="toggle-menu">
-      <div style={{fontSize: "26pt"}} > {teamData.Emoji} </div>
+      {/* <div style={{fontSize: "26pt"}} > {teamData.Emoji} </div> */}
       <button className="navbar-button" onClick={() => setShowBatters(!showBatters)}>
         {showBatters ? 'hide batters' : 'show batters'}
       </button>
