@@ -27,11 +27,8 @@ export async function GET(request) {
     const data = await response.json();
 
     return Response.json(data);
-
   } catch (error) {
-
     return Response.json({ error: 'Failed to fetch team data' }, { status: 500 });
-
   }
 
 }

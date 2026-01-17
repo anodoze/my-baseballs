@@ -39,7 +39,9 @@ function PlayerCard({playerID}: PlayerCardProps) {
       {error ? error : null }
       <div className="player-title">
         <div className="player-number">#{playerData?.Number}</div>
-        <h1>{playerData?.Position}  {playerData?.FirstName} {playerData?.LastName}</h1>
+        <a href={`https://mmolb.com/player/${playerID}`}>
+          <h1>{playerData?.Position}  {playerData?.FirstName} {playerData?.LastName}</h1>
+        </a>
         <div className="boons">
           {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[0]} /> )}
           {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[1]} /> )}

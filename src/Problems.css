@@ -1,6 +1,32 @@
 h1, h2, h3, h4, h5{
   text-decoration: none;
 }
+a{
+  color: var(--bright)
+}
+.toggle-menu {
+  position: sticky;
+  top: 0;
+  background: var(--dark);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  z-index: 10;
+}
+.navbar-button{
+  background-color: var(--core-accent);
+  color: var(--bright);
+  padding: 6px;
+  margin: 2px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+.navbar-button:hover {
+  background-color: var(--core);
+}
 .player-group{
   display: flex;
   justify-content: center;
@@ -11,7 +37,7 @@ h1, h2, h3, h4, h5{
   font-family:'Trebuchet MS', sans-serif;
   background-color: var(--base);
   color: var(--bright);
-  max-width: 520px;
+  max-width: 410px;
   margin: 3px;
   height: min-content;
 }
@@ -47,7 +73,7 @@ h1, h2, h3, h4, h5{
   padding: 6px;
   background-color: var(--core);
   border-radius: 4px;
-  max-width: 250px;
+  max-width: 190px;
 }
 
 .level-up {
@@ -62,12 +88,12 @@ h1, h2, h3, h4, h5{
 .level-display {
   margin: 4px;
   border-radius: 4px;
-  max-width: 250px;
+  max-width: 190px;
 }
 
 .talk-card{
-  width: 250px;
-  margin: 0px 5px 0px 5px;
+  width: 190px;
+  margin: 0px 2px 0px 2px;
   border-radius: 4px;
   height: min-content;
 }
@@ -91,13 +117,14 @@ h1, h2, h3, h4, h5{
 .star-row{
   display: flex;
   flex-wrap: wrap;
+  padding: 3px 0 3px 0;
   width: 100%
 }
 .star, 
 .left-half-star, 
 .right-half-star{
-  width: 24px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   fill: var(--star-yellow);
 }
 .bonus-star {
@@ -107,21 +134,21 @@ h1, h2, h3, h4, h5{
   fill: var(--star-red);
 }
 #left-half-star{
-  clip-path: inset(0 12px 0 0);
-  margin-right: -12px
+  clip-path: inset(0 9px 0 0);
+  margin-right: -9px
 }
 #right-half-star{
-  clip-path: inset(0 0 0 12px);
-  margin-left: -12px
+  clip-path: inset(0 0 0 9px);
+  margin-left: -9px
 }
 
 li { background: var(--core-accent); }
 li:nth-child(odd) { background: var(--core); }
 
 .pitch-chart{
-  width: 250px;
-  font-size: 16px;
+  width: 190px;
+  font-size: 15px;
   font-weight: 600;
-  padding: 6px;
-  line-height: 28px;
+  padding: 5px;
+  line-height: 24px;
 }

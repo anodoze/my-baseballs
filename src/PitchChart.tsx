@@ -105,8 +105,8 @@ function PitchChart({ pitchSelection, pitchTypes, pitchCategoryBonuses, pitchTyp
         }]
       },
       options: {
-        // maintainAspectRatio: true,
-        // aspectRatio: 2,
+        maintainAspectRatio: true,
+        aspectRatio: 0.8,
         plugins: {
           legend: {
             position: 'bottom',
