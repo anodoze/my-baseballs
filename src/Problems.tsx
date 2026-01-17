@@ -11,19 +11,24 @@ function Problems() {
 
   useEffect(() => {
     console.log("anyone there?")
+    console.log("about to fetch:", `/api/team/${id}`)
+
     fetch(`/api/team/${id}`, {
       headers: {
         'Accept': 'application/json'
       }
     })
     .then(res => {
+      console.log("got response:", res.status)
       if (!res.ok) throw new Error('Failed to fetch team data.');
       return res.json();
     })
     .then(data => {
+      console.log("got data:", data)
       setTeamData(data);
     })
     .catch(err => {
+      console.log("caught error:", err)
       setError(err.message);
     });
   }, []);
