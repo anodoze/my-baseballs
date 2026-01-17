@@ -10,6 +10,7 @@ function Problems() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log("anyone there?")
     fetch(`/api/team/${id}`, {
       headers: {
         'Accept': 'application/json'
