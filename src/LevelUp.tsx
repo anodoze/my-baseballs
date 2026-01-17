@@ -56,6 +56,13 @@ function LevelUp({ levelUps }: LevelUpDisplayProps) {
             </div>
           )}
 
+          {levelUp.choice.type === 'greater_boon' && levelUp.choice.boon && (
+            <div className="level-display">
+              <h3>{levelUp.choice.boon.Emoji} {levelUp.choice.boon.Name}</h3>
+              <p>{levelUp.choice.boon.Description}</p>
+            </div>
+          )}
+
           {levelUp.choice.type === 'pitch_type_bonus' && (
             <div className="level-display">
               <h3>

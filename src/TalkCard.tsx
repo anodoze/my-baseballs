@@ -12,8 +12,6 @@ interface TalkCardProps {
 
 function TalkCard ({talk, title}: TalkCardProps) {
   if (!talk) return null;
-
-  console.log(talk)
   
   const attributeList = Object.keys(talk).map(attr => 
     <li key={attr} >

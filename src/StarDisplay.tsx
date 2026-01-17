@@ -3,7 +3,6 @@ import Star from './assets/star.svg?react'
 
 function starNumber (value: number) {
   const starnum = (Math.round(value * 8))/2 
-  console.log("starnum", starnum)
   return starnum
 }
 
