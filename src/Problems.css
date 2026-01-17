@@ -177,6 +177,9 @@ li:nth-child(odd) { background: var(--core); }
   .talk-card{
     max-width: 160px;
   }
+  .pitch-chart{
+    max-width: 160px;
+  }
   .boon-display{
     max-width: 100%;
   }

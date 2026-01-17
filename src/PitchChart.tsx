@@ -101,12 +101,16 @@ function PitchChart({ pitchSelection, pitchTypes, pitchCategoryBonuses, pitchTyp
         labels: labels,
         datasets: [{
           data: pitchSelection,
-          backgroundColor: colors
+          backgroundColor: colors,
+          borderWidth: 0.5,
         }]
       },
       options: {
-        maintainAspectRatio: true,
-        aspectRatio: 0.8,
+        // maintainAspectRatio: true,
+        // aspectRatio: 0.8,
+        layout: {
+          padding: 4,
+        },
         plugins: {
           legend: {
             position: 'bottom',
@@ -115,7 +119,12 @@ function PitchChart({ pitchSelection, pitchTypes, pitchCategoryBonuses, pitchTyp
               color: '#FFFFFF',
               font: {
                 size: 16,
-              }
+              },
+              padding: 6,
+              boxWidth: 24,  // default is 40
+              boxHeight: 12, // default is fontSize
+              useBorderRadius: false,
+              // borderWidth: 0,
             }
           }
         }
