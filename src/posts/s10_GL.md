@@ -4,7 +4,7 @@ We're sitting in the middle of a very tight race for Clover playoff spots, in a 
 
 **Yui Nakanishi** has been a killer at the plate, clearing 1.000 OPS in a season where .800 is elite.
 
-Rookie **Hye-Jin Wojciechowski** is struggling under the weight of season 10 pitching, so far only managing a an airplane OPS of .747. We'll see if they can turn it around in the back half.
+Rookie **Hye-Jin Wojciechowski** is struggling under the weight of season 10 pitching, so far only managing an airplane OPS of .747. We'll see if they can turn it around in the back half.
 
 Steady hand **Sam Genet** came out of the changes throwing absolute dirt. Who needs strikeouts? just toss it to the infield for a 1.79 ERA
 

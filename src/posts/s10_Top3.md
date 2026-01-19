@@ -12,7 +12,7 @@ The Problems are back refreshed from our vacation in Liberty League and in the r
 
 **Maude Carr 1.50 ERA:** a whiff merchant who will make you put the ball right on the ground if you do manage to hit it. allows a home run in roughly 1 in 3 games.
 
-**Crust Charlton 1.51 ERA:** a veteran player who's been with us since season 1, the second most-valuable pitcher in Liberty League when we took out little vacation. Crust is pure gas, leaning entirely on strikeouts.
+**Crust Charlton 1.51 ERA:** a veteran player who's been with us since season 1, the second most-valuable pitcher in Liberty League when we took our little vacation. Crust is pure gas, leaning entirely on strikeouts.
 
 **Freeze Criminal Person 41-19 +104 RD** 
 
