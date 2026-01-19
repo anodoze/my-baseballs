@@ -4,15 +4,15 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 const PITCH_NAMES: Record<string, string> = {
-  FF: 'Fastball',
-  FC: 'Cutter',
-  SI: 'Sinker',
-  CU: 'Curveball',
-  KC: 'Knuckle Curve',
-  SL: 'Slider',
-  ST: 'Sweeper',
-  CH: 'Changeup',
-  FS: 'Splitter'
+  FF: 'Fastball (F)',
+  FC: 'Cutter (F)',
+  SI: 'Sinker (F)',
+  CU: 'Curveball (BR)',
+  KC: 'Knuckle Curve (BR)',
+  SL: 'Slider (BR)',
+  ST: 'Sweeper (BR)',
+  CH: 'Changeup (OF)',
+  FS: 'Splitter (OF)'
 };
 
 const PITCH_COLORS: Record<string, string> = {

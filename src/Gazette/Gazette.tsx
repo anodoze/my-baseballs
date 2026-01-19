@@ -5,10 +5,17 @@ import S06Paper from '../Papers/s06Paper'
 import S07Paper from '../Papers/s07Paper'
 import S08Paper from '../Papers/s08Paper'
 import S09Paper from '../Papers/s09Paper'
+import S10Paper from '../Papers/s10Paper'
 
 function Gazette(){
   return (
     <div className={styles.container}>
+      <S10Paper/>
+      <div>
+        <p>---</p>
+        <p>---</p>
+        <p>---</p>
+      </div>
       <S09Paper/>
       <div>
         <p>---</p>
