@@ -11,8 +11,8 @@ const PITCH_NAMES: Record<string, string> = {
   KC: 'Knuckle Curve (BR)',
   SL: 'Slider (BR)',
   ST: 'Sweeper (BR)',
-  CH: 'Changeup (OF)',
-  FS: 'Splitter (OF)'
+  CH: 'Changeup (OS)',
+  FS: 'Splitter (OS)'
 };
 
 const PITCH_COLORS: Record<string, string> = {
