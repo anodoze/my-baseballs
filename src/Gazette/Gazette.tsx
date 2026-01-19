@@ -9,6 +9,7 @@ import S10Paper from '../Papers/s10Paper'
 
 function Gazette(){
   return (
+    <div className='shadow-container'>
     <div className={styles.container}>
       <S10Paper/>
       <div>
@@ -41,6 +42,7 @@ function Gazette(){
         <p>---</p>
       </div>
       <S05Paper/>
+    </div>
     </div>
   )
 }
