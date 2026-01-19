@@ -107,7 +107,7 @@ function PitchChart({ pitchSelection, pitchTypes, pitchCategoryBonuses, pitchTyp
       },
       options: {
         // maintainAspectRatio: true,
-        // aspectRatio: 0.8,
+        aspectRatio: 0.8,
         layout: {
           padding: 4,
         },
@@ -118,7 +118,7 @@ function PitchChart({ pitchSelection, pitchTypes, pitchCategoryBonuses, pitchTyp
             labels: {
               color: '#FFFFFF',
               font: {
-                size: 16,
+                size: 15,
               },
               padding: 6,
               boxWidth: 24,  // default is 40
