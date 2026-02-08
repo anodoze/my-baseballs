@@ -26,12 +26,23 @@ a{
 .navbar-button:hover {
   background-color: var(--core);
 }
-.player-group{
+/* .player-group{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin: auto
+} */
+
+.player-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px); /* base unit for abbreviated */
+  grid-auto-rows: min-content;
+  gap: 1rem;
+  margin: auto;
+  grid-auto-flow: dense;
+  justify-content: center;
 }
+
 .player-card{
   font-family:'Trebuchet MS', sans-serif;
   background-color: var(--base);
@@ -39,6 +50,8 @@ a{
   max-width: 420px;
   margin: 3px;
   height: min-content;
+    grid-column: span 3; /* takes 3 abbreviated-sized slots */
+  grid-row: span 1; /* don't let it stretch vertically into other rows */
 }
 .batting-card, .pitching-card{
   justify-content: center;
@@ -153,7 +166,7 @@ li:nth-child(odd) { background: var(--core); }
 }
 
 /* Mobile only */
-@media (max-width: 768px) {
+@media (max-width: 419px) {
   .toggle-menu{
     justify-content: space-evenly;
   }
