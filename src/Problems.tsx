@@ -1,5 +1,6 @@
 import PlayerCard from "./PlayerCard";
-import { useMemo, useState, useEffect } from "react";
+import TeamNavbar from "./TeamNavbar";
+import { useState, useEffect } from "react";
 import type { TeamData } from "./types";
 import './Problems.css'
 import { useParams } from "react-router";
@@ -8,8 +9,10 @@ function Problems() {
   const { id } = useParams()
   const [teamData, setTeamData] = useState<TeamData | null>(null)
   const [error, setError] = useState<string | null>(null);
-
   const [playerVisibility, setPlayerVisibility] = useState<Record<string, boolean>>({})
+  const [batterDisplayMode, setBatterDisplayMode] = useState<'all' | 'batting' | 'defense' | 'baserunning'>('all');
+  const [pitcherDisplayMode, setPitcherDisplayMode] = useState<'all' | 'pitching'>('all');
+
 
   const togglePlayer = (playerID: string) => {
     setPlayerVisibility(prev => ({
@@ -22,10 +25,24 @@ function Problems() {
     setPlayerVisibility(prev => ({ ...prev, ...updates }));
   };
 
+  const teamNameDisplay = `${teamData?.Emoji} ${teamData?.Location} ${teamData?.Name}`
+
   const batterIDs = teamData?.Players.slice(0, 9).map(p => p.PlayerID) ?? [];
   const benchBatterIDs = teamData?.Bench.Batters.map(p => p.PlayerID) ?? [];
   const pitcherIDs = teamData?.Players.slice(9, 18).map(p => p.PlayerID) ?? [];
   const benchPitcherIDs = teamData?.Bench.Pitchers.map(p => p.PlayerID) ?? [];
+
+  const allBatterIDs = [...batterIDs, ...benchBatterIDs];
+  const allPitcherIDs = [...pitcherIDs, ...benchPitcherIDs];
+
+  const batterPosOverrides = {
+  [batterIDs[8]]: 'DH',
+    ...Object.fromEntries(benchBatterIDs.map(id => [id, 'B']))
+  };
+
+  const pitcherPosOverrides = Object.fromEntries(
+    benchPitcherIDs.map(id => [id, 'B'])
+  );
   
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
   
@@ -70,9 +87,8 @@ function Problems() {
     });
   }, []);
 
-  const renderPlayers = (playerIDs: string[], posOverrides?: Record<string, string>) => {
-    // const expandedIDs = playerIDs.filter(id => playerVisibility[id] ?? true);
-    // const collapsedIDs = playerIDs.filter(id => !(playerVisibility[id] ?? true));
+  const renderPlayers = (playerIDs: string[], positionType: 'Batter' | 'Pitcher', posOverrides?: Record<string, string>) => {
+
     const sortedIDs = isMobile 
       ? playerIDs
       : [
@@ -86,6 +102,7 @@ function Problems() {
         playerID={id}
         showPlayer={playerVisibility[id] ?? false}
         displayPosition={posOverrides?.[id] ?? null}
+        displayMode={positionType === 'Batter' ? batterDisplayMode : pitcherDisplayMode}
         onToggle={() => togglePlayer(id)}
       />
     ));
@@ -95,30 +112,23 @@ function Problems() {
 
   return (
     <div className="problems">
-      {/* <h1>{teamData.Emoji} {teamData.Location} {teamData.Name} {teamData.Emoji}</h1> */}
-      <div className="toggle-menu">
-        <button onClick={() => toggleGroup(batterIDs, true)}>
-          show all batters
-        </button>
-        <button onClick={() => toggleGroup(batterIDs, false)}>
-          hide all batters
-        </button>
-        <button onClick={() => toggleGroup(pitcherIDs, true)}>
-          show all pitchers
-        </button>
-        <button onClick={() => toggleGroup(pitcherIDs, false)}>
-          hide all pitchers
-        </button>
+      <TeamNavbar 
+        teamName={teamNameDisplay}
+        batterIDs={allBatterIDs}
+        pitcherIDs={allPitcherIDs}
+        toggleGroup={toggleGroup}
+        batterDisplayMode={batterDisplayMode}
+        setBatterDisplayMode={setBatterDisplayMode}
+        pitcherDisplayMode={pitcherDisplayMode}
+        setPitcherDisplayMode={setPitcherDisplayMode}
+      />
+
+      <div className="player-group">
+        {renderPlayers(allBatterIDs, 'Batter', batterPosOverrides)}
       </div>
 
       <div className="player-group">
-        {renderPlayers(batterIDs, {[batterIDs[8]]: 'DH' })}
-        {renderPlayers(benchBatterIDs, Object.fromEntries(benchBatterIDs.map(id => [id, 'B'])))}
-      </div>
-
-      <div className="player-group">
-        {renderPlayers(pitcherIDs)}
-        {renderPlayers(benchPitcherIDs, Object.fromEntries(benchPitcherIDs.map(id => [id, 'B'])))}
+        {renderPlayers(allPitcherIDs, 'Pitcher', pitcherPosOverrides)}
       </div>
 
     </div>

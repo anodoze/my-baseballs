@@ -44,13 +44,20 @@ a{
   max-width: 420px;
   margin: 3px;
   height: min-content;
-  grid-column: span 3; /* takes 3 abbreviated-sized slots */
-  grid-row: span 1; /* don't let it stretch vertically into other rows */
+  grid-column: span 3;
+  grid-row: span 1;
 }
 .batting-card, .pitching-card{
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
+}
+.isolated{
+  width: 380px;
+}
+.batting-card.isolated .talk-card, .pitching-card.isolated .talk-card {
+  width: 100%;
 }
 .player-title {
   display: flex;
