@@ -1,7 +1,6 @@
 import PlayerCard from "./PlayerCard";
 import { useMemo, useState, useEffect } from "react";
 import type { TeamData } from "./types";
-// import type { Player } from "./types";
 import './Problems.css'
 import { useParams } from "react-router";
 
@@ -27,14 +26,33 @@ function Problems() {
   const benchBatterIDs = teamData?.Bench.Batters.map(p => p.PlayerID) ?? [];
   const pitcherIDs = teamData?.Players.slice(9, 18).map(p => p.PlayerID) ?? [];
   const benchPitcherIDs = teamData?.Bench.Pitchers.map(p => p.PlayerID) ?? [];
-
-  const sortedBatterIDs = useMemo(() => {
-    const expandedIDs = batterIDs.filter(id => playerVisibility[id] ?? true);
-    const collapsedIDs = batterIDs.filter(id => !(playerVisibility[id] ?? true));
-    return [...expandedIDs, ...collapsedIDs];
-  }, [batterIDs, playerVisibility]);
-
+  
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => { // initialize visibility so that roster ordering works
+    if (!teamData) return;
+    
+    const allPlayerIDs = [
+      ...teamData.Players.slice(0, 9).map(p => p.PlayerID),
+      ...teamData.Bench.Batters.map(p => p.PlayerID),
+      ...teamData.Players.slice(9, 18).map(p => p.PlayerID),
+      ...teamData.Bench.Pitchers.map(p => p.PlayerID)
+    ];
+    
+    const initialVisibility = Object.fromEntries(
+      allPlayerIDs.map(id => [id, false])
+  );
+  
+  setPlayerVisibility(initialVisibility);
+}, [teamData]);
+
+  useEffect(() => { // fetch player from mmolb api
     fetch(`https://mmolb-proxy.vercel.app/api/team/${id}`, {
       headers: {
         'Accept': 'application/json'
@@ -52,15 +70,22 @@ function Problems() {
     });
   }, []);
 
-  const renderPlayers = (playerIDs: string[]) => {
-    const expandedIDs = playerIDs.filter(id => playerVisibility[id] ?? true);
-    const collapsedIDs = playerIDs.filter(id => !(playerVisibility[id] ?? true));
+  const renderPlayers = (playerIDs: string[], posOverrides?: Record<string, string>) => {
+    // const expandedIDs = playerIDs.filter(id => playerVisibility[id] ?? true);
+    // const collapsedIDs = playerIDs.filter(id => !(playerVisibility[id] ?? true));
+    const sortedIDs = isMobile 
+      ? playerIDs
+      : [
+          ...playerIDs.filter(id => playerVisibility[id] ?? true),
+          ...playerIDs.filter(id => !(playerVisibility[id] ?? true))
+        ];
     
-    return [...expandedIDs, ...collapsedIDs].map(id => (
+    return sortedIDs.map(id => (
       <PlayerCard
         key={id}
         playerID={id}
         showPlayer={playerVisibility[id] ?? false}
+        displayPosition={posOverrides?.[id] ?? null}
         onToggle={() => togglePlayer(id)}
       />
     ));
@@ -71,86 +96,29 @@ function Problems() {
   return (
     <div className="problems">
       {/* <h1>{teamData.Emoji} {teamData.Location} {teamData.Name} {teamData.Emoji}</h1> */}
-    <div className="toggle-menu">
-      <button onClick={() => toggleGroup(batterIDs, true)}>
-        show all batters
-      </button>
-      <button onClick={() => toggleGroup(batterIDs, false)}>
-        hide all batters
-      </button>
-    </div>
-
-      <div className="player-group">
-        {renderPlayers(batterIDs)}
-        {/* <PlayerCard playerID={teamData.Players[0].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[0].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[0].PlayerID)}
-        />        
-        <PlayerCard playerID={teamData.Players[1].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[1].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[1].PlayerID)}
-        />        
-        <PlayerCard playerID={teamData.Players[2].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[2].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[2].PlayerID)}
-        />        
-        <PlayerCard playerID={teamData.Players[3].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[3].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[3].PlayerID)}
-        />
-        <PlayerCard playerID={teamData.Players[4].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[4].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[4].PlayerID)}
-        />        
-        <PlayerCard playerID={teamData.Players[5].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[5].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[5].PlayerID)}
-        />        
-        <PlayerCard playerID={teamData.Players[6].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[6].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[6].PlayerID)}
-        />        
-        <PlayerCard playerID={teamData.Players[7].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[7].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[7].PlayerID)}
-        />
-        <PlayerCard playerID={teamData.Players[8].PlayerID} 
-          showPlayer={playerVisibility[teamData.Players[8].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Players[8].PlayerID)}
-        />
-
-        <PlayerCard playerID={teamData.Bench.Batters[0].PlayerID} 
-          showPlayer={playerVisibility[teamData.Bench.Batters[0].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Bench.Batters[0].PlayerID)}
-        />
-        <PlayerCard playerID={teamData.Bench.Batters[1].PlayerID} 
-          showPlayer={playerVisibility[teamData.Bench.Batters[1].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Bench.Batters[1].PlayerID)}
-        />        
-        <PlayerCard playerID={teamData.Bench.Batters[2].PlayerID} 
-          showPlayer={playerVisibility[teamData.Bench.Batters[2].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Bench.Batters[2].PlayerID)}
-        />
-        <PlayerCard playerID={teamData.Bench.Batters[3].PlayerID} 
-          showPlayer={playerVisibility[teamData.Bench.Batters[3].PlayerID] ?? false}
-          onToggle={() => togglePlayer(teamData.Bench.Batters[3].PlayerID)}
-        /> */}
+      <div className="toggle-menu">
+        <button onClick={() => toggleGroup(batterIDs, true)}>
+          show all batters
+        </button>
+        <button onClick={() => toggleGroup(batterIDs, false)}>
+          hide all batters
+        </button>
+        <button onClick={() => toggleGroup(pitcherIDs, true)}>
+          show all pitchers
+        </button>
+        <button onClick={() => toggleGroup(pitcherIDs, false)}>
+          hide all pitchers
+        </button>
       </div>
 
       <div className="player-group">
-        {/* <PlayerCard playerID={teamData.Players[9].PlayerID} />
-        <PlayerCard playerID={teamData.Players[10].PlayerID} />
-        <PlayerCard playerID={teamData.Players[11].PlayerID} />
-        <PlayerCard playerID={teamData.Players[12].PlayerID} />
-        <PlayerCard playerID={teamData.Players[13].PlayerID} />
-        <PlayerCard playerID={teamData.Players[14].PlayerID} />
-        <PlayerCard playerID={teamData.Players[15].PlayerID} />
-        <PlayerCard playerID={teamData.Players[16].PlayerID} />
-        <PlayerCard playerID={teamData.Players[17].PlayerID} />
-        <PlayerCard playerID={teamData.Bench.Pitchers[0].PlayerID} />
-        <PlayerCard playerID={teamData.Bench.Pitchers[1].PlayerID} />
-        <PlayerCard playerID={teamData.Bench.Pitchers[2].PlayerID} />
-        <PlayerCard playerID={teamData.Bench.Pitchers[3].PlayerID} /> */}
+        {renderPlayers(batterIDs, {[batterIDs[8]]: 'DH' })}
+        {renderPlayers(benchBatterIDs, Object.fromEntries(benchBatterIDs.map(id => [id, 'B'])))}
+      </div>
+
+      <div className="player-group">
+        {renderPlayers(pitcherIDs)}
+        {renderPlayers(benchPitcherIDs, Object.fromEntries(benchPitcherIDs.map(id => [id, 'B'])))}
       </div>
 
     </div>

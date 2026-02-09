@@ -5,15 +5,17 @@ import LevelUp from "./LevelUp";
 import BoonDisplay from "./BoonIcon";
 import PitchChart from "./PitchChart";
 import PlayerAbbreviated from "./PlayerAbbreviated";
+import CaretDown from "./assets/caret-down.svg?react"
 
 
 interface PlayerCardProps {
   playerID: string;
-  showPlayer: boolean;
+  displayPosition: string | null;
+  showPlayer: boolean | false;
   onToggle: () => void;
 }
 
-function PlayerCard({playerID, showPlayer, onToggle}: PlayerCardProps) {
+function PlayerCard({playerID, displayPosition, showPlayer, onToggle}: PlayerCardProps) {
 
   const [playerData, setPlayerData] = useState<Player | null>(null)
   const [error, setError] = useState<string | null>(null);
@@ -45,6 +47,7 @@ function PlayerCard({playerID, showPlayer, onToggle}: PlayerCardProps) {
       <PlayerAbbreviated 
         playerData={playerData}
         showPlayer={showPlayer}
+        displayPosition={displayPosition}
         onToggle={onToggle}
       />
     )
@@ -59,9 +62,10 @@ function PlayerCard({playerID, showPlayer, onToggle}: PlayerCardProps) {
           onClick={onToggle}
         >
           #{playerData?.Number}
+          <CaretDown className='icon' />
         </div>
         <a href={`https://mmolb.com/player/${playerID}`}>
-          <h1>{playerData?.Position}  {playerData?.FirstName} {playerData?.LastName}</h1>
+          <h1>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h1>
         </a>
         <div className="boons">
           {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[0]} /> )}

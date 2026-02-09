@@ -1,11 +1,13 @@
 import type { Player } from "./types";
+import CaretForward from './assets/caret-forward.svg?react'
 
 interface PlayerAbbreviatedProps {
   playerData: Player | null;
+  displayPosition: string | null;
   onToggle: () => void; 
 }
 
-function PlayerAbbreviated ({playerData, onToggle}: PlayerAbbreviatedProps){
+function PlayerAbbreviated ({playerData, displayPosition, onToggle}: PlayerAbbreviatedProps){
   if (!playerData) return null;
 
   return (
@@ -16,9 +18,10 @@ function PlayerAbbreviated ({playerData, onToggle}: PlayerAbbreviatedProps){
           onClick={onToggle}
         >
           #{playerData?.Number}
+          <CaretForward className='icon' />
         </div>
         <a href={`https://mmolb.com/player/${playerData._id}`}>
-          <h1>{playerData?.Position}  {playerData?.FirstName} {playerData?.LastName}</h1>
+          <h1>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h1>
         </a>
       </div>
     </div>
