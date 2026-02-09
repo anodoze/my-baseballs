@@ -54,7 +54,7 @@ a{
   margin: auto;
 }
 .isolated{
-  width: 380px;
+  max-width: 380px;
 }
 .batting-card.isolated .talk-card, .pitching-card.isolated .talk-card {
   width: 100%;
@@ -192,13 +192,19 @@ li:nth-child(odd) { background: var(--core); }
     clip-path: inset(0 0 0 7px);
     margin-left: -7px
   }
-  .talk-card{
+  /* .talk-card{
     max-width: 160px;
-  }
+  } */
   .pitch-chart{
     max-width: 160px;
   }
   .boon-display{
     max-width: 100%;
+  }
+  .isolated{
+    max-width: 360px;
+  }
+  .batting-card.isolated .talk-card, .pitching-card.isolated .talk-card {
+    width: 100%;
   }
 }
