@@ -17,7 +17,7 @@ function TeamNavbar({
   batterIDs, 
   pitcherIDs, 
   toggleGroup, 
-  batterDisplayMode, 
+  // batterDisplayMode, 
   setBatterDisplayMode,
   pitcherDisplayMode,
   setPitcherDisplayMode 
