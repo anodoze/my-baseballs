@@ -21,7 +21,7 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
 
   const [playerData, setPlayerData] = useState<Player | null>(null)
   const [error, setError] = useState<string | null>(null);
-  const hasFetched = useRef(false); // this is a fallback for if the component is unnecessarily re-mounting, but we should address the mount issue at some point
+  const hasFetched = useRef(false); // fallback for if the component is unnecessarily re-mounting because fetching is spensy
 
   useEffect(() => {
     if (hasFetched.current) return;
@@ -29,7 +29,7 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
 
     const cacheKey = `player-${playerID}`;
     const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
-    const TTL = 30*60000 // 30 minutes
+    const TTL = 20*60000 // 20 minutes
     const fresh = stored.timestamp && 
       stored.timestamp > getLastInvalidation() &&
       (Date.now() - stored.timestamp) < TTL; 

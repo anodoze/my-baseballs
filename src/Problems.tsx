@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import type { TeamData } from "./types";
 import './Problems.css'
 import { useParams } from "react-router";
-import { getLastInvalidation } from "./net-utils";
 
 function Problems() {
   const { id } = useParams()
@@ -70,14 +69,11 @@ function Problems() {
   setPlayerVisibility(initialVisibility);
 }, [teamData]);
 
-  useEffect(() => { // fetch team from mmolb api
-
+  useEffect(() => { 
     const cacheKey = `team-${id}`;
     const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
-    const TTL = 5*60000 // 5 minutes
-    const fresh = stored.timestamp && 
-      stored.timestamp > getLastInvalidation() &&
-      (Date.now() - stored.timestamp) < TTL; 
+    const TTL = 2*60000 // 2 minutes
+    const fresh = stored.timestamp && (Date.now() - stored.timestamp) < TTL; 
 
     if (fresh) {
       setTeamData(stored.data);
@@ -102,7 +98,6 @@ function Problems() {
   }, []);
 
   const renderPlayers = (playerIDs: string[], positionType: 'Batter' | 'Pitcher', posOverrides?: Record<string, string>) => {
-
     const sortedIDs = isMobile 
       ? playerIDs
       : [
