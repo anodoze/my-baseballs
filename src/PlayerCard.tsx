@@ -26,7 +26,6 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
   useEffect(() => {
     if (hasFetched.current) return;
     hasFetched.current = true;
-    console.log("fetching player data...")
 
     const cacheKey = `player-${playerID}`;
     const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import type { TeamData } from "./types";
 import './Problems.css'
 import { useParams } from "react-router";
+import { getLastInvalidation } from "./net-utils";
 
 function Problems() {
   const { id } = useParams()
@@ -69,7 +70,20 @@ function Problems() {
   setPlayerVisibility(initialVisibility);
 }, [teamData]);
 
-  useEffect(() => { // fetch player from mmolb api
+  useEffect(() => { // fetch team from mmolb api
+
+    const cacheKey = `team-${id}`;
+    const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
+    const TTL = 5*60000 // 5 minutes
+    const fresh = stored.timestamp && 
+      stored.timestamp > getLastInvalidation() &&
+      (Date.now() - stored.timestamp) < TTL; 
+
+    if (fresh) {
+      setTeamData(stored.data);
+      return;
+    }
+
     fetch(`https://mmolb-proxy.vercel.app/api/team/${id}`, {
       headers: {
         'Accept': 'application/json'
