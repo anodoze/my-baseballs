@@ -7,6 +7,7 @@ import PitchChart from "./PitchChart";
 import PlayerAbbreviated from "./PlayerAbbreviated";
 import CaretDown from "./assets/caret-down.svg?react"
 import clsx from 'clsx';
+import { getLastInvalidation } from "./net-utils";
 
 interface PlayerCardProps {
   playerID: string;
@@ -26,6 +27,19 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
     if (hasFetched.current) return;
     hasFetched.current = true;
     console.log("fetching player data...")
+
+    const cacheKey = `player-${playerID}`;
+    const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
+    const TTL = 30*60000 // 30 minutes
+    const fresh = stored.timestamp && 
+      stored.timestamp > getLastInvalidation() &&
+      (Date.now() - stored.timestamp) < TTL; 
+
+    if (fresh) {
+      setPlayerData(stored.data);
+      return;
+    }
+
     fetch(`https://mmolb-proxy.vercel.app/api/player/${playerID}`, {
       headers: {
         'Accept': 'application/json'
@@ -37,6 +51,7 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
     })
     .then(data => {
       setPlayerData(data);
+      localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
     })
     .catch(err => {
       setError(err.message);
