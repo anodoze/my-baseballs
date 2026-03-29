@@ -1,4 +1,6 @@
 export default async function handler(request) {
+  console.log("handler invoked", request.url);
+  
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
