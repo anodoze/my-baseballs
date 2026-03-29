@@ -1,16 +1,22 @@
 export default async function handler(request) {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  };
+
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers });
+  }
+
   const id = request.url.split('/').pop();
-  
+
   try {
     const response = await fetch(`https://mmolb.com/api/player/${id}`);
+    if (!response.ok) throw new Error(`Upstream error: ${response.status}`);
     const data = await response.json();
-    return new Response(JSON.stringify(data), {
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(JSON.stringify(data), { headers });
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: 'Failed to fetch player data' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers });
   }
 }
