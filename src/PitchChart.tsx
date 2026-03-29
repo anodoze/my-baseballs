@@ -27,23 +27,23 @@ const PITCH_COLORS: Record<string, string> = {
   FS: '#32c386'
 };
 
-const PITCH_CATEGORIES: Record<string, 'Fast' | 'Breaking' | 'Offspeed'> = {
-  FF: 'Fast',
-  FC: 'Fast',
-  SI: 'Fast',
-  CU: 'Breaking',
-  KC: 'Breaking',
-  SL: 'Breaking',
-  ST: 'Breaking',
-  CH: 'Offspeed',
-  FS: 'Offspeed'
-};
+// const PITCH_CATEGORIES: Record<string, 'Fast' | 'Breaking' | 'Offspeed'> = {
+//   FF: 'Fast',
+//   FC: 'Fast',
+//   SI: 'Fast',
+//   CU: 'Breaking',
+//   KC: 'Breaking',
+//   SL: 'Breaking',
+//   ST: 'Breaking',
+//   CH: 'Offspeed',
+//   FS: 'Offspeed'
+// };
 
-const CATEGORY_COLORS: Record<string, string> = {
-  Fast: '#FF6384',
-  Breaking: '#36A2EB',
-  Offspeed: '#4BC0C0'
-};
+// const CATEGORY_COLORS: Record<string, string> = {
+//   Fast: '#FF6384',
+//   Breaking: '#36A2EB',
+//   Offspeed: '#4BC0C0'
+// };
 
 interface PitchChartProps {
   pitchSelection: number[];

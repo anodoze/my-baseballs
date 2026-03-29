@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Player } from "./types";
 import TalkCard from "./TalkCard";
 import LevelUp from "./LevelUp";
@@ -22,7 +22,7 @@ interface PlayerCardProps {
 function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showScheduled, onToggle }: PlayerCardProps) {
   const [playerData, setPlayerData] = useState<Player | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const hasFetched = useRef(false);
+  // const hasFetched = useRef(false);
 
   useEffect(() => {
     // if (hasFetched.current) return;
