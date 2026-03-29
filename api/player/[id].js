@@ -1,12 +1,16 @@
-export default async function handler(req, res) {
-  const { id } = req.query;
+export default async function handler(request) {
+  const id = request.url.split('/').pop();
   
   try {
     const response = await fetch(`https://mmolb.com/api/player/${id}`);
     const data = await response.json();
-    res.json(data);
-    console.log("player", data)
+    return new Response(JSON.stringify(data), {
+      headers: { 'Content-Type': 'application/json' }
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch player data' });
+    return new Response(
+      JSON.stringify({ error: 'Failed to fetch player data' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }
