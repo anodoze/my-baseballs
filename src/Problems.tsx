@@ -84,7 +84,7 @@ function Problems() {
 
   useEffect(() => { 
 
-    console.log("fetching team data...")
+    console.log("fetching team data...", id)
     fetch(`/api/team/${id}`, {
       headers: {
         'Accept': 'application/json'
