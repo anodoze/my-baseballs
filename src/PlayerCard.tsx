@@ -74,9 +74,9 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
           #{playerData?.Number}
           <CaretDown className='icon' />
         </div>
-        <a href={`https://mmolb.com/player/${playerID}`}>
-          <h1>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h1>
-        </a>
+        {/* <a href={`https://mmolb.com/player/${playerID}`}> */}
+          <h2>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h2>
+        {/* </a> */}
         <div className="boons">
           {playerData?.LesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
           {/* {playerData?.GreaterBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)} */}
@@ -89,10 +89,10 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
             <TalkCard title="Batting" attributes={attributes} category="Batting" />
           )}
           {displayMode === 'all' && (
-            <>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
               <TalkCard title="Defense" attributes={attributes} category="Defense" />
               <TalkCard title="Baserunning" attributes={attributes} category="Baserunning" />
-            </>
+            </div>
           )}
           {displayMode === 'defense' && (
             <TalkCard title="Defense" attributes={attributes} category="Defense" />
@@ -116,8 +116,9 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
           )}
         </div>
       )}
-
-      <LevelUp levelUps={playerData?.ScheduledLevelUps} />
+      {showScheduled &&
+        <LevelUp levelUps={playerData?.ScheduledLevelUps} />
+      }
     </div>
   );
 }

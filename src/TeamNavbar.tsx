@@ -50,7 +50,7 @@ function TeamNavbar({
         <button onClick={() => setBatterDisplayMode('defense')}>Isolate Defense</button>
         <button onClick={() => setBatterDisplayMode('baserunning')}>Isolate Baserunning</button>
         <button onClick={() => setBatterDisplayMode('all')}>Show All Attributes</button>
-        <button onClick={() => setShowScheduled(!showScheduled)}>Preview Scheduled Levels</button>
+        <button onClick={() => setShowScheduled(!showScheduled)}>{showScheduled ? 'Hide Pending Levels' : 'Show Pending Levels'}</button>
         
         <button onClick={() => setPitcherDisplayMode(pitcherDisplayMode === 'all' ? 'pitching' : 'all')}>
           {pitcherDisplayMode === 'all' ? 'Hide Pitch Chart' : 'Show Pitch Chart'}

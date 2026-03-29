@@ -29,9 +29,9 @@ a{
 
 .player-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 150px);
+  grid-template-columns: repeat(auto-fit, 141px);
   grid-auto-rows: min-content;
-  gap: 8px;
+  gap: 2px;
   margin: auto;
   grid-auto-flow: dense;
   justify-content: center;
@@ -42,16 +42,22 @@ a{
   background-color: var(--base);
   color: var(--bright);
   max-width: 420px;
-  margin: 3px;
+  margin: 2px;
   height: min-content;
   grid-column: span 3;
   grid-row: span 1;
 }
-.batting-card, .pitching-card{
+.batting-card{
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+}
+.pitching-card .talk-card{
+  width: 100%;
+  max-width: 380px;
+  margin: auto;
+
 }
 .isolated{
   max-width: 380px;
@@ -67,11 +73,11 @@ a{
   max-width: inherit;
 }
 .player-number {
-  padding: 5px;
+  padding: 4px;
   background-color: var(--star-yellow);
   color: var(--dark);
   margin-right: 16px;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 800;
 }
 .boons {
@@ -101,7 +107,7 @@ a{
 .level-display {
   margin: 4px;
   border-radius: 4px;
-  max-width: 190px;
+  max-width: 200px;
 }
 
 .talk-card{
@@ -166,11 +172,12 @@ li { background: var(--core-accent); }
 li:nth-child(odd) { background: var(--core); }
 
 .pitch-chart{
-  width: 206px;
+  width: 400px;
   font-size: 15px;
   font-weight: 600;
   padding: 5px;
   line-height: 24px;
+  margin: auto;
 }
 
 /* Mobile only */

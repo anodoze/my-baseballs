@@ -20,9 +20,9 @@ function PlayerAbbreviated ({playerData, displayPosition, onToggle}: PlayerAbbre
           #{playerData?.Number}
           <CaretForward className='icon' />
         </div>
-        <a href={`https://mmolb.com/player/${playerData._id}`}>
-          <h1>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h1>
-        </a>
+        {/* <a href={`https://mmolb.com/player/${playerData._id}`}> */}
+          <h2>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h2>
+        {/* </a> */}
       </div>
     </div>
   )

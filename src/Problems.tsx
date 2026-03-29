@@ -13,6 +13,7 @@ function Problems() {
   const [batterDisplayMode, setBatterDisplayMode] = useState<'all' | 'batting' | 'defense' | 'baserunning'>('all');
   const [pitcherDisplayMode, setPitcherDisplayMode] = useState<'all' | 'pitching'>('all');
   const [showScheduled, setShowScheduled] = useState(false);
+  const [previewScheduled, setPreviewScheduled] = useState(false);
 
 
   const togglePlayer = (playerID: string) => {
@@ -73,7 +74,7 @@ function Problems() {
   useEffect(() => { 
     const cacheKey = `team-${id}`;
     const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
-    const TTL = 2*60000 // 2 minutes
+    const TTL = 30000 // 30 Seconds
     const fresh = stored.timestamp && (Date.now() - stored.timestamp) < TTL; 
 
     if (fresh) {

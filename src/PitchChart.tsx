@@ -80,13 +80,13 @@ function PitchChart({ pitchSelection, pitchTypes, }: PitchChartProps) {
       },
       options: {
         // maintainAspectRatio: true,
-        aspectRatio: 0.8,
+        aspectRatio: 3,
         layout: {
           padding: 4,
         },
         plugins: {
           legend: {
-            position: 'bottom',
+            position: 'right',
             align: 'start',
             labels: {
               color: '#FFFFFF',
