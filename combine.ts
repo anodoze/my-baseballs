@@ -3,13 +3,9 @@ import * as path from "path";
 
 const files = [
   "src/Problems.tsx",
-  "src/Problems.tsx",
-  "src/PlayerAbbreviated.tsx",
   "src/PlayerCard.tsx",
-  "src/TalkCard.tsx",
-  "src/TeamNavbar.tsx",
-  "src/LevelUp.tsx",
-  "src/types.ts"
+  "api/team/[id].js",
+  "api/player/[id].js"
 ];
 
 const workingDir = process.cwd();
