@@ -10,6 +10,8 @@ interface TeamNavbarProps {
   setBatterDisplayMode: (mode: 'all' | 'batting' | 'defense' | 'baserunning') => void;
   pitcherDisplayMode: 'all' | 'pitching';
   setPitcherDisplayMode: (mode: 'all' | 'pitching') => void;
+  showScheduled: boolean;
+  setShowScheduled: (show: boolean) => void;
 }
 
 function TeamNavbar({ 
@@ -20,7 +22,9 @@ function TeamNavbar({
   // batterDisplayMode, 
   setBatterDisplayMode,
   pitcherDisplayMode,
-  setPitcherDisplayMode 
+  setPitcherDisplayMode,
+  showScheduled,
+  setShowScheduled 
 }: TeamNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,6 +50,7 @@ function TeamNavbar({
         <button onClick={() => setBatterDisplayMode('defense')}>Isolate Defense</button>
         <button onClick={() => setBatterDisplayMode('baserunning')}>Isolate Baserunning</button>
         <button onClick={() => setBatterDisplayMode('all')}>Show All Attributes</button>
+        <button onClick={() => setShowScheduled(!showScheduled)}>Preview Scheduled Levels</button>
         
         <button onClick={() => setPitcherDisplayMode(pitcherDisplayMode === 'all' ? 'pitching' : 'all')}>
           {pitcherDisplayMode === 'all' ? 'Hide Pitch Chart' : 'Show Pitch Chart'}

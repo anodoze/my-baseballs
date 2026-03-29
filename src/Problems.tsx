@@ -12,6 +12,7 @@ function Problems() {
   const [playerVisibility, setPlayerVisibility] = useState<Record<string, boolean>>({})
   const [batterDisplayMode, setBatterDisplayMode] = useState<'all' | 'batting' | 'defense' | 'baserunning'>('all');
   const [pitcherDisplayMode, setPitcherDisplayMode] = useState<'all' | 'pitching'>('all');
+  const [showScheduled, setShowScheduled] = useState(false);
 
 
   const togglePlayer = (playerID: string) => {
@@ -112,6 +113,7 @@ function Problems() {
         showPlayer={playerVisibility[id] ?? false}
         displayPosition={posOverrides?.[id] ?? null}
         displayMode={positionType === 'Batter' ? batterDisplayMode : pitcherDisplayMode}
+        showScheduled={showScheduled}
         onToggle={() => togglePlayer(id)}
       />
     ));
@@ -130,6 +132,8 @@ function Problems() {
         setBatterDisplayMode={setBatterDisplayMode}
         pitcherDisplayMode={pitcherDisplayMode}
         setPitcherDisplayMode={setPitcherDisplayMode}
+        showScheduled={showScheduled}
+        setShowScheduled={setShowScheduled}
       />
 
       <div className="player-group">

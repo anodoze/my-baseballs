@@ -48,41 +48,14 @@ const CATEGORY_COLORS: Record<string, string> = {
 interface PitchChartProps {
   pitchSelection: number[];
   pitchTypes: string[];
-  pitchTypeBonuses: Record<string, number>;
-  pitchCategoryBonuses: Record<string, number>;
 }
 
-function PitchChart({ pitchSelection, pitchTypes, pitchCategoryBonuses, pitchTypeBonuses }: PitchChartProps) {
+function PitchChart({ pitchSelection, pitchTypes, }: PitchChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
 
   const labels = pitchTypes.map(type => PITCH_NAMES[type] || type);
   const colors = pitchTypes.map(type => PITCH_COLORS[type] || '#999999');
-
-  const pitchBonuses = Object.entries(pitchTypeBonuses).map(([type, bonus]) => {
-    const category = PITCH_CATEGORIES[type];
-    const color = category ? CATEGORY_COLORS[category] : '#999';    
-    return (
-      <div key={type}>
-        <span style={{ color }}>
-          {PITCH_NAMES[type] || type}
-        </span>
-        : {(bonus * 100).toFixed(0)}%
-      </div>
-    );
-  })
-
-  const categoryBonuses = Object.entries(pitchCategoryBonuses).map(([category, bonus]) => {
-    const color = category ? CATEGORY_COLORS[category] : '#999';
-    return (
-      <div key={category}>
-        <span style={{ color }}>
-          {category}
-        </span>
-        : {(bonus * 100).toFixed(0)}%
-      </div>
-    );
-  })
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -141,14 +114,6 @@ function PitchChart({ pitchSelection, pitchTypes, pitchCategoryBonuses, pitchTyp
   return (
     <div className='pitch-chart'>
         <canvas ref={canvasRef} />
-      <div className='pitch-bonuses'>
-        <h3>Pitch Type Bonuses</h3>
-        {pitchBonuses}
-      </div>
-      <div className='pitch-bonuses'>
-        <h3>Pitch Category Bonuses</h3>
-        {categoryBonuses}
-      </div>
     </div>
   ) 
 }

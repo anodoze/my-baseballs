@@ -1,60 +1,74 @@
 import clsx from 'clsx';
-import Star from './assets/star.svg?react'
+import Star from './assets/star.svg?react';
 
-function starNumber (value: number) {
-  const starnum = (Math.round(value * 8))/2 
-  return starnum
+function starNumber(value: number) {
+  return (Math.round(value * 8)) / 2;
 }
 
 interface StarDisplayProps {
   baseStars: number;
-  totalStars: number;
+  equipStars: number;
+  boonStars: number;
 }
 
-function StarDisplay ({baseStars, totalStars}: StarDisplayProps) {
+function StarDisplay({ baseStars, equipStars, boonStars }: StarDisplayProps) {
+  const boonIsNegative = boonStars < 0;
 
-  const diff = totalStars - baseStars;
-  const diffIsNegative = diff < 0;
-  const base = diffIsNegative 
-    ? starNumber(baseStars + diff) 
-    : starNumber(baseStars);
-  
-  const baseDisplay = Math.floor(base);
-  const baseHasHalf = base % 1 !== 0;
-  
-  const diffDisplay = Math.floor(starNumber(Math.abs(diff)));
-  const diffHasHalf = (Math.abs(diff) % 1 !== 0) 
+  const roundedBase = starNumber(baseStars);
+  const roundedBaseEquip = starNumber(baseStars + equipStars);
+  const roundedTotal = starNumber(baseStars + equipStars + boonStars);
 
-  const total = starNumber(totalStars);
-  const displayTotal = baseDisplay + diffDisplay
-  const totalMatch = total == displayTotal
+  let finalBase: number;
+  let finalEquip: number;
+  let finalBoon: number;
+
+  if (boonIsNegative) {
+    finalBase = Math.min(roundedBase, roundedTotal);
+    finalEquip = roundedTotal - finalBase;
+    finalBoon = roundedBaseEquip - roundedTotal;
+  } else {
+    finalBase = Math.min(roundedBase, roundedBaseEquip);
+    finalEquip = roundedBaseEquip - finalBase;
+    finalBoon = roundedTotal - roundedBaseEquip;
+  }
+
+  const baseWhole = Math.floor(finalBase);
+  const baseHasHalf = finalBase % 1 !== 0;
+
+  const effectiveEquip = (baseHasHalf && finalEquip > 0) ? finalEquip - 0.5 : finalEquip;
+  const equipWhole = Math.floor(effectiveEquip);
+  const equipHasHalf = effectiveEquip % 1 !== 0;
+
+  const preBoonTrailing = finalEquip > 0 ? equipHasHalf : baseHasHalf;
+
+  const effectiveBoon = (preBoonTrailing && finalBoon > 0) ? finalBoon - 0.5 : finalBoon;
+  const boonWhole = Math.floor(effectiveBoon);
+  const boonHasHalf = effectiveBoon % 1 !== 0;
 
 
-  const starClass = clsx('star', {
-    'bonus-star': !diffIsNegative,
-    'penalty-star': diffIsNegative,
-  });
-
-  const baseStarRow = Array.from({ length: baseDisplay }, (_, i) => (
-        <Star key={`base-${i}`} className='star'/>
-      ))
+  const equipClass = clsx('star', 'equip-star');
+  const boonClass = clsx('star', boonIsNegative ? 'penalty-star' : 'bonus-star');
 
   return (
     <div className='star-row'>
-      {baseStarRow}
-      {baseHasHalf && ( <Star className='star' id='left-half-star'/> )}
-      
-      {diffHasHalf && baseHasHalf && (
-          <Star className={starClass} id="right-half-star"/>
-      )}
-      {Array.from({ length: diffDisplay }, (_, i) => (
-          <Star key={`diff-${i}`} className={starClass}/>
+      {Array.from({ length: baseWhole }, (_, i) => (
+        <Star key={`base-${i}`} className='star' />
       ))}
-      {diffHasHalf && !baseHasHalf && totalMatch && (
-          <Star className={starClass} id="left-half-star"/>
-      )}
+      {baseHasHalf && <Star className='star' id='left-half-star' />}
+
+      {baseHasHalf && finalEquip > 0 && <Star className={equipClass} id='right-half-star' />}
+      {Array.from({ length: equipWhole }, (_, i) => (
+        <Star key={`equip-${i}`} className={equipClass} />
+      ))}
+      {equipHasHalf && <Star className={equipClass} id='left-half-star' />}
+
+      {preBoonTrailing && finalBoon > 0 && <Star className={boonClass} id='right-half-star' />}
+      {Array.from({ length: boonWhole }, (_, i) => (
+        <Star key={`boon-${i}`} className={boonClass} />
+      ))}
+      {boonHasHalf && <Star className={boonClass} id='left-half-star' />}
     </div>
-  )
+  );
 }
 
 export default StarDisplay;

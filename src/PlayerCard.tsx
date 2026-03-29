@@ -5,23 +5,24 @@ import LevelUp from "./LevelUp";
 import BoonDisplay from "./BoonIcon";
 import PitchChart from "./PitchChart";
 import PlayerAbbreviated from "./PlayerAbbreviated";
-import CaretDown from "./assets/caret-down.svg?react"
+import CaretDown from "./assets/caret-down.svg?react";
 import clsx from 'clsx';
 import { getLastInvalidation } from "./net-utils";
+import { computeAttributes, } from "./attributeEngine";
 
 interface PlayerCardProps {
   playerID: string;
   displayPosition: string | null;
-  showPlayer: boolean | false;
+  showPlayer: boolean;
   displayMode: 'all' | 'batting' | 'defense' | 'baserunning' | 'pitching';
+  showScheduled: boolean;
   onToggle: () => void;
 }
 
-function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggle}: PlayerCardProps) {
-
-  const [playerData, setPlayerData] = useState<Player | null>(null)
+function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showScheduled, onToggle }: PlayerCardProps) {
+  const [playerData, setPlayerData] = useState<Player | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const hasFetched = useRef(false); // fallback for if the component is unnecessarily re-mounting because fetching is spensy
+  const hasFetched = useRef(false);
 
   useEffect(() => {
     if (hasFetched.current) return;
@@ -29,10 +30,10 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
 
     const cacheKey = `player-${playerID}`;
     const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
-    const TTL = 20*60000 // 20 minutes
-    const fresh = stored.timestamp && 
+    const TTL = 20 * 60000;
+    const fresh = stored.timestamp &&
       stored.timestamp > getLastInvalidation() &&
-      (Date.now() - stored.timestamp) < TTL; 
+      (Date.now() - stored.timestamp) < TTL;
 
     if (fresh) {
       setPlayerData(stored.data);
@@ -40,41 +41,36 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
     }
 
     fetch(`https://mmolb-proxy.vercel.app/api/player/${playerID}`, {
-      headers: {
-        'Accept': 'application/json'
-      }
+      headers: { 'Accept': 'application/json' }
     })
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to fetch player data.');
-      return res.json();
-    })
-    .then(data => {
-      setPlayerData(data);
-      localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
-    })
-    .catch(err => {
-      setError(err.message);
-    });
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch player data.');
+        return res.json();
+      })
+      .then(data => {
+        setPlayerData(data);
+        localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
+      })
+      .catch(err => setError(err.message));
   }, [playerID]);
 
   if (!showPlayer) {
     return (
-      <PlayerAbbreviated 
+      <PlayerAbbreviated
         playerData={playerData}
         displayPosition={displayPosition}
         onToggle={onToggle}
       />
-    )
+    );
   }
+
+  const attributes = playerData ? computeAttributes(playerData, showScheduled) : null;
 
   return (
     <div className="player-card">
-      {error ? error : null }
+      {error ? error : null}
       <div className="player-title">
-        <div 
-          className="player-number"
-          onClick={onToggle}
-        >
+        <div className="player-number" onClick={onToggle}>
           #{playerData?.Number}
           <CaretDown className='icon' />
         </div>
@@ -82,46 +78,45 @@ function PlayerCard({playerID, displayPosition, showPlayer, displayMode, onToggl
           <h1>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h1>
         </a>
         <div className="boons">
-          {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[0]} /> )}
-          {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[1]} /> )}
-          {playerData?.LesserBoon?.[0] && ( <BoonDisplay boon={playerData?.LesserBoon[2]} /> )}
-          {playerData?.GreaterBoon?.[0] && ( <BoonDisplay boon={playerData?.GreaterBoon[0]} /> )}
-          {playerData?.GreaterBoon?.[0] && ( <BoonDisplay boon={playerData?.GreaterBoon[1]} /> )}
+          {playerData?.LesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
+          {/* {playerData?.GreaterBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)} */}
         </div>
       </div>
-      {playerData?.PositionType == "Batter" && (
-        <div className={clsx('batting-card', { 'isolated': displayMode !== 'all'})}>
+
+      {playerData?.PositionType === 'Batter' && attributes && (
+        <div className={clsx('batting-card', { 'isolated': displayMode !== 'all' })}>
           {(displayMode === 'all' || displayMode === 'batting') && (
-            <TalkCard title={"Batting"} talk={playerData?.AttributeStars.Batting}/>
+            <TalkCard title="Batting" attributes={attributes} category="Batting" />
           )}
-          {displayMode === 'all' && <div>
-            <TalkCard title={"Defense"} talk={playerData?.AttributeStars.Defense}/>
-            <TalkCard title={"Baserunning"} talk={playerData?.AttributeStars.Baserunning}/>
-          </div>}
+          {displayMode === 'all' && (
+            <>
+              <TalkCard title="Defense" attributes={attributes} category="Defense" />
+              <TalkCard title="Baserunning" attributes={attributes} category="Baserunning" />
+            </>
+          )}
           {displayMode === 'defense' && (
-            <TalkCard title={"Defense"} talk={playerData?.AttributeStars.Defense}/>
+            <TalkCard title="Defense" attributes={attributes} category="Defense" />
           )}
           {displayMode === 'baserunning' && (
-            <TalkCard title={"Baserunning"} talk={playerData?.AttributeStars.Baserunning}/>
+            <TalkCard title="Baserunning" attributes={attributes} category="Baserunning" />
           )}
         </div>
       )}
-      
-      {playerData?.PositionType == "Pitcher" && (
-        <div className={clsx('pitching-card', { 'isolated': displayMode !== 'all'})}>
+
+      {playerData?.PositionType === 'Pitcher' && attributes && (
+        <div className={clsx('pitching-card', { 'isolated': displayMode !== 'all' })}>
           {(displayMode === 'all' || displayMode === 'pitching') && (
-            <TalkCard title={"Pitching"} talk={playerData?.AttributeStars.Pitching}/>
+            <TalkCard title="Pitching" attributes={attributes} category="Pitching" />
           )}
           {displayMode === 'all' && (
-            <PitchChart 
-              pitchSelection={playerData?.PitchSelection} 
+            <PitchChart
+              pitchSelection={playerData.PitchSelection}
               pitchTypes={playerData.PitchTypes}
-              pitchCategoryBonuses={playerData.PitchCategoryBonuses}
-              pitchTypeBonuses={playerData.PitchTypeBonuses}
             />
           )}
         </div>
       )}
+
       <LevelUp levelUps={playerData?.ScheduledLevelUps} />
     </div>
   );

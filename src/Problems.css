@@ -146,6 +146,9 @@ a{
 .penalty-star {
   fill: var(--star-red);
 }
+.equip-star {
+  fill: var(--star-equip)
+}
 #left-half-star{
   clip-path: inset(0 10px 0 0);
   margin-right: -10px

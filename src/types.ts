@@ -1,7 +1,3 @@
-export interface PlayerStats {
-  [key: string]: number;
-}
-
 export interface Boon {
   Description: string;
   Emoji: string;
@@ -28,80 +24,10 @@ export interface Equipment {
   Suffixes?: string[];
 }
 
-export interface StarAttribute {
+export interface BaseAttributeBonus {
+  amount: number;
   attribute: string;
-  base_display: string;
-  base_regular: number;
-  base_shiny: number;
-  base_stars: number;
-  base_total: number;
-  display: string;
-  regular: number;
-  shiny: number;
-  stars: number;
-  total: number;
-}
-
-export interface Talk {
-  attributes: { [key: string]: number };
-  day: number | string;
-  season: number;
-  stars: { [key: string]: StarAttribute };
-}
-
-export interface Player {
-  Augments: number;
-  Bats: string;
-  Birthday: number;
-  Birthseason: number;
-  Dislikes: string;
-  Durability: number;
-  Equipment: {
-    Accessory?: Equipment;
-    Body?: Equipment;
-    Feet?: Equipment;
-    Hands?: Equipment;
-    Head?: Equipment;
-  };
-  FirstName: string;
-  Home: string;
-  LastName: string;
-  Likes: string;
-  Modifications: any[];
-  Number: number;
-  PitchSelection: number[];
-  PitchTypes: string[];
-  Position: string;
-  PositionType: "Batter" | "Pitcher";
-  SeasonStats: { [seasonId: string]: { [recordType: string]: string } };
-  Stats: { [teamId: string]: PlayerStats }; // keyed but empty now
-  Talk: {
-    Baserunning: Talk;
-    Batting: Talk;
-    Defense: Talk;
-    Pitching: Talk;
-  };
-  AttributeStars: {
-    Baserunning: AttributeStarsCategory;
-    Batting: AttributeStarsCategory;
-    Defense: AttributeStarsCategory;
-    Pitching: AttributeStarsCategory;
-  };
-  AugmentHistory: any[];
-  BaseAttributes: { [key: string]: number | number[] | string[] };
-  FoodBuffs: FoodBuff[];
-  GreaterBoon: Boon[] | null;
-  LesserBoon: Boon[] | null;
-  Level: number;
-  PendingLevelUps: any[];
-  PitchCategoryBonuses: { [key: string]: any };
-  PitchTypeBonuses: { [key: string]: any };
-  ScheduledLevelUps: LevelUp[];
-  Suffix: string | null;
-  XP: number;
-  TeamID: string;
-  Throws: string;
-  _id: string;
+  source: string;
 }
 
 export interface FoodBuff {
@@ -112,22 +38,80 @@ export interface FoodBuff {
   name: string;
 }
 
-export interface LevelUp {
-  applied_at: string;
-  choice: {
-    amount: number;
-    attribute: string;
-    id: string;
-    label: string;
-    type: string;
-  };
-  effective_at: string;
+export interface LevelUpChoice {
+  amount?: number;
+  attribute?: string;
+  bonus?: number;
+  category?: string;
   id: string;
-  level: number;
+  label: string;
+  type: string;
+  pitch_type?: string;
+  new_pitch?: string;
+  old_pitch?: string;
+  boon?: Boon;
+  description?: string;
+  name?: string;
 }
 
-interface AttributeStarsCategory {
-  [attribute: string]: StarAttribute;
+export interface ScheduledLevelUp {
+  choice: LevelUpChoice;
+  id: string;
+  level: number;
+  scheduled_at: string;
+}
+
+export interface PendingLevelUp {
+  earned_at: string;
+  id: string;
+  level: number;
+  options?: LevelUpChoice[];
+}
+
+export interface Player {
+  AugmentHistory: any[];
+  BaseAttributeBonuses: BaseAttributeBonus[];
+  Bats: string;
+  Birthday: number | string;
+  Birthseason: number;
+  Dislikes: string;
+  Equipment: {
+    Accessory?: Equipment;
+    Body?: Equipment;
+    Feet?: Equipment;
+    Hands?: Equipment;
+    Head?: Equipment;
+  };
+  FirstName: string;
+  FoodBuffs: FoodBuff[];
+  GreaterBoon: Boon[];
+  GreaterDurability: number;
+  Home: string;
+  LastName: string;
+  Legacy?: boolean;
+  LesserBoon: Boon[];
+  LesserDurability: number;
+  Level: number;
+  Likes: string;
+  Modifications: any[];
+  Number: number;
+  PendingLevelUps: PendingLevelUp[];
+  PitchSelection: number[];
+  PitchTypes: string[];
+  Position: string;
+  PositionType: 'Batter' | 'Pitcher';
+  Priority: number;
+  ScheduledLevelUps: ScheduledLevelUp[];
+  SeasonStats: Record<string, Record<string, string>>;
+  Stats: Record<string, any>;
+  Suffix: string | null;
+  TeamID: string;
+  Throws: string;
+  _id: string;
+}
+
+export interface PlayerStats {
+  [key: string]: number;
 }
 
 export interface PlayerShort {
@@ -135,18 +119,23 @@ export interface PlayerShort {
   BenchRole: string | null;
   Emoji: string;
   FirstName: string;
-  GreaterBoon: Boon | null;
+  FoodBuffs: FoodBuff[];
+  FreeRecomp?: boolean;
+  GreaterBoon: Boon[];
   LastName: string;
-  LesserBoon: Boon | null;
+  LesserBoon: Boon[];
+  Level: number;
   Modifications: any[];
   Number: number;
+  PendingLevelUps: PendingLevelUp[];
   PlayerID: string;
   Position: string;
-  PositionType: "Batter" | "Pitcher";
+  PositionType: 'Batter' | 'Pitcher';
   Slot: string;
   SlotLabel: string;
   SlotType: string;
   Stats: PlayerStats;
+  Suffix: string | null;
 }
 
 export interface SeasonRecord {
@@ -156,32 +145,28 @@ export interface SeasonRecord {
 }
 
 export interface TeamRecord {
-  Kumite: SeasonRecord;
-  "Postseason Round 2": SeasonRecord;
-  "Regular Season": SeasonRecord;
+  'Regular Season': SeasonRecord;
   [key: string]: SeasonRecord | undefined;
 }
 
 export interface TeamData {
-  Abbreviation: string;
+  Abbreviation?: string;
   BallparkName: string;
   BallparkUseCity: boolean;
   Championships: number;
   Color: string;
   Emoji: string;
-  FullLocation:	string;
-  League:	string;
-  Location:	string;
+  FullLocation?: string;
+  League: string;
+  Location: string;
   Modifications: any[];
-  Name:	string;
+  Name: string;
   Players: PlayerShort[];
   Bench: {
     Batters: PlayerShort[];
     Pitchers: PlayerShort[];
-  }
-  Record: TeamRecord;
-  SeasonRecords: {
-    [key: string]: string
   };
+  Record: TeamRecord;
+  SeasonRecords?: Record<string, string>;
   _id: string;
 }
