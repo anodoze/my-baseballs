@@ -12,7 +12,13 @@ export default async function handler(request) {
   const id = request.url.split('/').pop();
 
   try {
-    const response = await fetch(`https://mmolb.com/api/team/${id}`);
+
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), 5000);
+
+    const response = await fetch(`https://mmolb.com/api/team/${id}`, {
+      signal: controller.signal
+    });
     if (!response.ok) throw new Error(`Upstream error: ${response.status}`);
     const data = await response.json();
     return new Response(JSON.stringify(data), { headers });
