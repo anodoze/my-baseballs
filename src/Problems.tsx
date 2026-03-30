@@ -14,6 +14,7 @@ function Problems() {
   const [pitcherDisplayMode, setPitcherDisplayMode] = useState<'all' | 'pitching'>('all');
   const [showScheduled, setShowScheduled] = useState(false);
   // const [previewScheduled, setPreviewScheduled] = useState(false);
+  const [invertAttributes, setInvertAttributes] = useState(false);
 
 
   const togglePlayer = (playerID: string) => {
@@ -119,6 +120,7 @@ function Problems() {
         displayMode={positionType === 'Batter' ? batterDisplayMode : pitcherDisplayMode}
         showScheduled={showScheduled}
         onToggle={() => togglePlayer(id)}
+        invertAttributes={invertAttributes}
       />
     ));
   };
@@ -138,6 +140,8 @@ function Problems() {
         setPitcherDisplayMode={setPitcherDisplayMode}
         showScheduled={showScheduled}
         setShowScheduled={setShowScheduled}
+        invertAttributes={invertAttributes}
+        setInvertAttributes={setInvertAttributes}
       />
 
       <div className="player-group">

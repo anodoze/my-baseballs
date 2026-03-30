@@ -17,9 +17,10 @@ interface PlayerCardProps {
   displayMode: 'all' | 'batting' | 'defense' | 'baserunning' | 'pitching';
   showScheduled: boolean;
   onToggle: () => void;
+  invertAttributes: boolean;
 }
 
-function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showScheduled, onToggle }: PlayerCardProps) {
+function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showScheduled, onToggle, invertAttributes }: PlayerCardProps) {
   const [playerData, setPlayerData] = useState<Player | null>(null);
   const [error, setError] = useState<string | null>(null);
   // const hasFetched = useRef(false);
@@ -66,6 +67,12 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
 
   const attributes = playerData ? computeAttributes(playerData, showScheduled) : null;
 
+  const displayType = playerData
+    ? (invertAttributes
+      ? (playerData.PositionType === 'Batter' ? 'Pitcher' : 'Batter')
+      : playerData.PositionType)
+    : null;
+
   return (
     <div className="player-card">
       {error ? error : null}
@@ -83,7 +90,7 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
         </div>
       </div>
 
-      {playerData?.PositionType === 'Batter' && attributes && (
+      {displayType === 'Batter' && attributes && (
         <div className={clsx('batting-card', { 'isolated': displayMode !== 'all' })}>
           {(displayMode === 'all' || displayMode === 'batting') && (
             <TalkCard title="Batting" attributes={attributes} category="Batting" />
@@ -103,12 +110,12 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
         </div>
       )}
 
-      {playerData?.PositionType === 'Pitcher' && attributes && (
+      {displayType === 'Pitcher' && attributes && (
         <div className={clsx('pitching-card', { 'isolated': displayMode !== 'all' })}>
           {(displayMode === 'all' || displayMode === 'pitching') && (
             <TalkCard title="Pitching" attributes={attributes} category="Pitching" />
           )}
-          {displayMode === 'all' && (
+          {displayMode === 'all' && playerData && (
             <PitchChart
               pitchSelection={playerData.PitchSelection}
               pitchTypes={playerData.PitchTypes}

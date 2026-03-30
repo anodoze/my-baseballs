@@ -12,6 +12,8 @@ interface TeamNavbarProps {
   setPitcherDisplayMode: (mode: 'all' | 'pitching') => void;
   showScheduled: boolean;
   setShowScheduled: (show: boolean) => void;
+  invertAttributes: boolean;
+  setInvertAttributes: (invert: boolean) => void;
 }
 
 function TeamNavbar({ 
@@ -24,7 +26,9 @@ function TeamNavbar({
   pitcherDisplayMode,
   setPitcherDisplayMode,
   showScheduled,
-  setShowScheduled 
+  setShowScheduled,
+  invertAttributes,
+  setInvertAttributes
 }: TeamNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -51,9 +55,11 @@ function TeamNavbar({
         <button onClick={() => setBatterDisplayMode('baserunning')}>Isolate Baserunning</button>
         <button onClick={() => setBatterDisplayMode('all')}>Show All Attributes</button>
         <button onClick={() => setShowScheduled(!showScheduled)}>{showScheduled ? 'Hide Pending Levels' : 'Show Pending Levels'}</button>
-        
         <button onClick={() => setPitcherDisplayMode(pitcherDisplayMode === 'all' ? 'pitching' : 'all')}>
           {pitcherDisplayMode === 'all' ? 'Hide Pitch Chart' : 'Show Pitch Chart'}
+        </button>
+        <button onClick={() => setInvertAttributes(!invertAttributes)}>
+          {invertAttributes ? 'Show Primary Attributes' : 'Show Other Attributes'}
         </button>
       </div>
     </nav>
