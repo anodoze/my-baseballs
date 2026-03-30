@@ -40,7 +40,7 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
     //   return;
     // }
 
-    fetch(`/api/player/${playerID}`, {
+    fetch(`https://mmolb-proxy.onrender.com/api/player/${playerID}`, {
       headers: { 'Accept': 'application/json' }
     })
       .then(res => {
