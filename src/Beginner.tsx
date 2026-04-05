@@ -1,6 +1,5 @@
 import Markdown from 'react-markdown'
 import beginnersguide from './posts/beginnersguide.md?raw'
-// import './Gazette/Gazette.css'
 
 function Beginner() {
   return(

@@ -7,7 +7,6 @@ import PitchChart from "./PitchChart";
 import PlayerAbbreviated from "./PlayerAbbreviated";
 import CaretDown from "./assets/caret-down.svg?react";
 import clsx from 'clsx';
-// import { getLastInvalidation } from "./net-utils";
 import { computeAttributes, } from "./attributeEngine";
 
 interface PlayerCardProps {
@@ -23,23 +22,8 @@ interface PlayerCardProps {
 function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showScheduled, onToggle, invertAttributes }: PlayerCardProps) {
   const [playerData, setPlayerData] = useState<Player | null>(null);
   const [error, setError] = useState<string | null>(null);
-  // const hasFetched = useRef(false);
 
   useEffect(() => {
-    // if (hasFetched.current) return;
-    // hasFetched.current = true;
-
-    // const cacheKey = `player-${playerID}`;
-    // const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
-    // const TTL = 20 * 60000;
-    // const fresh = stored.timestamp &&
-    //   stored.timestamp > getLastInvalidation() &&
-    //   (Date.now() - stored.timestamp) < TTL;
-
-    // if (fresh) {
-    //   setPlayerData(stored.data);
-    //   return;
-    // }
 
     fetch(`https://mmolb-proxy.onrender.com/api/player/${playerID}`, {
       headers: { 'Accept': 'application/json' }
@@ -50,7 +34,6 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
       })
       .then(data => {
         setPlayerData(data);
-        // localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
       })
       .catch(err => setError(err.message));
   }, [playerID]);
@@ -81,12 +64,9 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
           #{playerData?.Number}
           <CaretDown className='icon' />
         </div>
-        {/* <a href={`https://mmolb.com/player/${playerID}`}> */}
           <h2>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h2>
-        {/* </a> */}
         <div className="boons">
           {playerData?.LesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
-          {/* {playerData?.GreaterBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)} */}
         </div>
       </div>
 

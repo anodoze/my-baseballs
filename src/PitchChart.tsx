@@ -119,23 +119,3 @@ function PitchChart({ pitchSelection, pitchTypes, }: PitchChartProps) {
 }
 
 export default PitchChart;
-
-// Fast
-// FF: Fastball
-// FC: Cutter
-// SI: Sinker
-
-// Breaking
-// CU: Curveball
-// KC: Knuckle Curve
-// SL: Slider
-// ST: Sweeper
-
-// Offspeed
-// CH: Changeup
-// FS: Splitter
-
-// PitchTypeBonuses [ 
-//   FS: 0.05,
-//   CU: 0.1
-// ]

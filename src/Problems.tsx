@@ -72,17 +72,6 @@ function Problems() {
   setPlayerVisibility(initialVisibility);
 }, [teamData]);
 
-  // move back into useEffect to use
-    // const cacheKey = `team-${id}`;
-    // const stored = JSON.parse(localStorage.getItem(cacheKey) ?? '{}');
-    // const TTL = 30000 // 30 Seconds
-    // const fresh = stored.timestamp && (Date.now() - stored.timestamp) < TTL; 
-
-    // if (fresh) {
-    //   setTeamData(stored.data);
-    //   return;
-    // }
-
   useEffect(() => { 
 
     console.log("fetching team data...", id)

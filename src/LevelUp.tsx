@@ -1,25 +1,5 @@
 import type { ScheduledLevelUp } from "./types";
 
-// interface LevelUpChoice {
-//   amount?: number;
-//   attribute?: string;
-//   bonus?: number;
-//   category?: string;
-//   id: string;
-//   label: string;
-//   type: string;
-//   pitch_type?: string;
-//   new_pitch?: string;
-//   old_pitch?: string;
-//   boon?: {
-//     Description: string;
-//     Emoji: string;
-//     Name: string;
-//   };
-//   description?: string;
-//   name?: string;
-// }
-
 interface LevelUpDisplayProps {
   levelUps?: ScheduledLevelUp[];
 }
