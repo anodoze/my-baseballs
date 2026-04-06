@@ -1,74 +1,45 @@
-import clsx from 'clsx';
-import Star from './assets/star.svg?react';
-
-function starNumber(value: number) {
-  return (Math.round(value * 8)) / 2;
-}
+import './pips.css';
 
 interface StarDisplayProps {
   baseStars: number;
+  augmentStars: number;
   equipStars: number;
   boonStars: number;
+  total: number;
 }
 
-function StarDisplay({ baseStars, equipStars, boonStars }: StarDisplayProps) {
-  const boonIsNegative = boonStars < 0;
+function pipCount(value: number) {
+  return Math.round(value * 10)
+}
 
-  const roundedBase = starNumber(baseStars);
-  const roundedBaseEquip = starNumber(baseStars + equipStars);
-  const roundedTotal = starNumber(baseStars + equipStars + boonStars);
+function StarDisplay({ baseStars, augmentStars, equipStars, boonStars, total }: StarDisplayProps) {
+  const boonIsNegative = boonStars < 0
 
-  let finalBase: number;
-  let finalEquip: number;
-  let finalBoon: number;
+  const withoutBoon = total - boonStars
+  const scale = withoutBoon !== 0 ? total / withoutBoon : 1
 
-  if (boonIsNegative) {
-    finalBase = Math.min(roundedBase, roundedTotal);
-    finalEquip = roundedTotal - finalBase;
-    finalBoon = roundedBaseEquip - roundedTotal;
-  } else {
-    finalBase = Math.min(roundedBase, roundedBaseEquip);
-    finalEquip = roundedBaseEquip - finalBase;
-    finalBoon = roundedTotal - roundedBaseEquip;
-  }
+  const basePips    = pipCount(baseStars * (boonIsNegative ? scale : 1))
+  const augmentPips = pipCount(augmentStars * (boonIsNegative ? scale : 1))
+  const totalPips   = pipCount(total)
+  const equipPips   = totalPips - basePips - augmentPips
+  const boonPips    = pipCount(Math.abs(boonStars))
 
-  const baseWhole = Math.floor(finalBase);
-  const baseHasHalf = finalBase % 1 !== 0;
-
-  const effectiveEquip = (baseHasHalf && finalEquip > 0) ? finalEquip - 0.5 : finalEquip;
-  const equipWhole = Math.floor(effectiveEquip);
-  const equipHasHalf = effectiveEquip % 1 !== 0;
-
-  const preBoonTrailing = finalEquip > 0 ? equipHasHalf : baseHasHalf;
-
-  const effectiveBoon = (preBoonTrailing && finalBoon > 0) ? finalBoon - 0.5 : finalBoon;
-  const boonWhole = Math.floor(effectiveBoon);
-  const boonHasHalf = effectiveBoon % 1 !== 0;
-
-
-  const equipClass = clsx('star', 'equip-star');
-  const boonClass = clsx('star', boonIsNegative ? 'penalty-star' : 'bonus-star');
-
+  const pips = [
+    ...Array(basePips).fill('base'),
+    ...Array(augmentPips).fill('augment'),
+    ...Array(Math.max(0, equipPips)).fill('equip'),
+    ...(boonIsNegative
+      ? Array(boonPips).fill('penalty')
+      : Array(boonPips).fill('bonus')),
+  ]
+  
   return (
-    <div className='star-row'>
-      {Array.from({ length: baseWhole }, (_, i) => (
-        <Star key={`base-${i}`} className='star' />
+    <div className='pip-row'>
+      {pips.map((type, i) => (
+        <div key={i} className={`pip pip-${type}`} >.</div>
       ))}
-      {baseHasHalf && <Star className='star' id='left-half-star' />}
-
-      {baseHasHalf && finalEquip > 0 && <Star className={equipClass} id='right-half-star' />}
-      {Array.from({ length: equipWhole }, (_, i) => (
-        <Star key={`equip-${i}`} className={equipClass} />
-      ))}
-      {equipHasHalf && <Star className={equipClass} id='left-half-star' />}
-
-      {preBoonTrailing && finalBoon > 0 && <Star className={boonClass} id='right-half-star' />}
-      {Array.from({ length: boonWhole }, (_, i) => (
-        <Star key={`boon-${i}`} className={boonClass} />
-      ))}
-      {boonHasHalf && <Star className={boonClass} id='left-half-star' />}
     </div>
-  );
+  )
 }
 
 export default StarDisplay;

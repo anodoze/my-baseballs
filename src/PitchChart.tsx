@@ -46,16 +46,17 @@ const PITCH_COLORS: Record<string, string> = {
 // };
 
 interface PitchChartProps {
-  pitchSelection: number[];
-  pitchTypes: string[];
+  pitchSelection: number[] | null;
+  pitchTypes: string[] | null;
 }
 
 function PitchChart({ pitchSelection, pitchTypes, }: PitchChartProps) {
+  if (!pitchSelection || !pitchTypes) return
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
 
-  const labels = pitchTypes.map(type => PITCH_NAMES[type] || type);
-  const colors = pitchTypes.map(type => PITCH_COLORS[type] || '#999999');
+  const labels = pitchTypes?.map(type => PITCH_NAMES[type] || type);
+  const colors = pitchTypes?.map(type => PITCH_COLORS[type] || '#999999');
 
   useEffect(() => {
     if (!canvasRef.current) return;

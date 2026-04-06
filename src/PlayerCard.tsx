@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
-import type { Player } from "./types";
+import type { Player } from "./types/types";
 import TalkCard from "./TalkCard";
-import LevelUp from "./LevelUp";
+import LevelDisplay from "./LevelDisplay";
 import BoonDisplay from "./BoonIcon";
 import PitchChart from "./PitchChart";
 import PlayerAbbreviated from "./PlayerAbbreviated";
 import CaretDown from "./assets/caret-down.svg?react";
 import clsx from 'clsx';
-import { computeAttributes, } from "./attributeEngine";
 
 interface PlayerCardProps {
   playerID: string;
-  displayPosition: string | null;
+  playerData: Player | null;
   showPlayer: boolean;
   displayMode: 'all' | 'batting' | 'defense' | 'baserunning' | 'pitching';
   showScheduled: boolean;
@@ -19,54 +17,39 @@ interface PlayerCardProps {
   invertAttributes: boolean;
 }
 
-function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showScheduled, onToggle, invertAttributes }: PlayerCardProps) {
-  const [playerData, setPlayerData] = useState<Player | null>(null);
-  const [error, setError] = useState<string | null>(null);
+function PlayerCard({ playerData, showPlayer, displayMode, showScheduled, onToggle, invertAttributes }: PlayerCardProps) {
 
-  useEffect(() => {
-
-    fetch(`https://mmolb-proxy.onrender.com/api/player/${playerID}`, {
-      headers: { 'Accept': 'application/json' }
-    })
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch player data.');
-        return res.json();
-      })
-      .then(data => {
-        setPlayerData(data);
-      })
-      .catch(err => setError(err.message));
-  }, [playerID]);
+  if (!playerData) return;
 
   if (!showPlayer) {
     return (
       <PlayerAbbreviated
         playerData={playerData}
-        displayPosition={displayPosition}
+        displayPosition={playerData.slot}
         onToggle={onToggle}
       />
     );
   }
 
-  const attributes = playerData ? computeAttributes(playerData, showScheduled) : null;
+  // const attributes = playerData ? computeAttributes(playerData, showScheduled) : null;
+  const attributes = playerData.player_details?.details.attributeBreakdown
 
   const displayType = playerData
     ? (invertAttributes
-      ? (playerData.PositionType === 'Batter' ? 'Pitcher' : 'Batter')
-      : playerData.PositionType)
+      ? (playerData.position_type === 'Batter' ? 'Pitcher' : 'Batter')
+      : playerData.position_type)
     : null;
 
   return (
     <div className="player-card">
-      {error ? error : null}
       <div className="player-title">
         <div className="player-number" onClick={onToggle}>
-          #{playerData?.Number}
+          #{playerData?.number}
           <CaretDown className='icon' />
         </div>
-          <h2>{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</h2>
+          <h2>{playerData?.slot} {playerData?.first_name} {playerData?.last_name}</h2>
         <div className="boons">
-          {playerData?.LesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
+          {playerData?.player_details?.details.lesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
         </div>
       </div>
 
@@ -97,14 +80,14 @@ function PlayerCard({ playerID, displayPosition, showPlayer, displayMode, showSc
           )}
           {displayMode === 'all' && playerData && (
             <PitchChart
-              pitchSelection={playerData.PitchSelection}
-              pitchTypes={playerData.PitchTypes}
+              pitchSelection={playerData.player_details?.details.pitchSelection ?? null}
+              pitchTypes={playerData.player_details?.details.pitchTypes ?? null}
             />
           )}
         </div>
       )}
       {showScheduled &&
-        <LevelUp levelUps={playerData?.ScheduledLevelUps} />
+        <LevelDisplay levelUps={playerData?.player_details?.details.scheduledLevelUps} />
       }
     </div>
   );

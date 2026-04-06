@@ -1,0 +1,22 @@
+.pip-row{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.pip {
+  background-color: yellow;
+  width: 4px;
+  height: 28px;
+}
+.pip-penalty{
+  background-color: red;
+}
+.pip-bonus{
+  background-color: aqua;
+}
+.pip-equip{
+  background-color: green;
+}
+.pip-augment{
+  background-color: plum;
+}

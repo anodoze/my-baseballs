@@ -5,6 +5,7 @@ import Gazette from './Gazette/Gazette.tsx'
 import Beginner from './Beginner.tsx'
 import Problems from './Problems.tsx'
 import Home from './Home.tsx'
+import TeamLookup from './TeamLookup.tsx'
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/frogs/gazette" element={(<Gazette/>)} />
       </Route>
       <Route path="/beginners-guide" element={(<Beginner/>)} />
+      <Route path="/team/" element={(<TeamLookup/>)} />
       <Route path="/team/:id" element={(<Problems/>)} />
     </Routes>
   );

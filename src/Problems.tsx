@@ -1,13 +1,16 @@
 import PlayerCard from "./PlayerCard";
 import TeamNavbar from "./TeamNavbar";
 import { useState, useEffect } from "react";
-import type { TeamData } from "./types";
+import type { TeamData } from "./db";
+import type { Player, PlayerDetails } from "./types/types";
 import './Problems.css'
 import { useParams } from "react-router";
+import { fetchTeam } from "./db";
 
 function Problems() {
   const { id } = useParams()
   const [teamData, setTeamData] = useState<TeamData | null>(null)
+  const [players, setPlayers] = useState<Player[]>([])
   const [error, setError] = useState<string | null>(null);
   const [playerVisibility, setPlayerVisibility] = useState<Record<string, boolean>>({})
   const [batterDisplayMode, setBatterDisplayMode] = useState<'all' | 'batting' | 'defense' | 'baserunning'>('all');
@@ -28,24 +31,17 @@ function Problems() {
     setPlayerVisibility(prev => ({ ...prev, ...updates }));
   };
 
-  const teamNameDisplay = `${teamData?.Emoji} ${teamData?.Location} ${teamData?.Name}`
+  const teamNameDisplay = `${teamData?.emoji} ${teamData?.location} ${teamData?.name}`
 
-  const batterIDs = teamData?.Players.slice(0, 9).map(p => p.PlayerID) ?? [];
-  const benchBatterIDs = teamData?.Bench.Batters.map(p => p.PlayerID) ?? [];
-  const pitcherIDs = teamData?.Players.slice(9, 18).map(p => p.PlayerID) ?? [];
-  const benchPitcherIDs = teamData?.Bench.Pitchers.map(p => p.PlayerID) ?? [];
+  const batterIDs = [
+    ...teamData?.players.slice(0, 9) ?? [],
+    ...teamData?.players.slice(18, 22) ?? [],
+  ].map(p => p.id) ?? [];
 
-  const allBatterIDs = [...batterIDs, ...benchBatterIDs];
-  const allPitcherIDs = [...pitcherIDs, ...benchPitcherIDs];
-
-  const batterPosOverrides = {
-  [batterIDs[8]]: 'DH',
-    ...Object.fromEntries(benchBatterIDs.map(id => [id, 'B']))
-  };
-
-  const pitcherPosOverrides = Object.fromEntries(
-    benchPitcherIDs.map(id => [id, 'B'])
-  );
+  const pitcherIDs = [
+    ...teamData?.players.slice(9, 18) ?? [],
+    ...teamData?.players.slice(22, 26) ?? [],
+  ].map(p => p.id) ?? [];
   
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
   
@@ -56,15 +52,11 @@ function Problems() {
   }, []);
 
   useEffect(() => { // initialize visibility so that roster ordering works
-    if (!teamData) return;
-    
+    if (!teamData) return;  
     const allPlayerIDs = [
-      ...teamData.Players.slice(0, 9).map(p => p.PlayerID),
-      ...teamData.Bench.Batters.map(p => p.PlayerID),
-      ...teamData.Players.slice(9, 18).map(p => p.PlayerID),
-      ...teamData.Bench.Pitchers.map(p => p.PlayerID)
-    ];
-    
+      ...batterIDs,
+      ...pitcherIDs
+    ];   
     const initialVisibility = Object.fromEntries(
       allPlayerIDs.map(id => [id, false])
   );
@@ -73,26 +65,23 @@ function Problems() {
 }, [teamData]);
 
   useEffect(() => { 
-
     console.log("fetching team data...", id)
-    fetch(`https://mmolb-proxy.onrender.com/api/team/${id}`, {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to fetch team data.');
-      return res.json();
-    })
-    .then(data => {
+    fetchTeam(`${id}`).then(data =>{
+      console.log(data)
       setTeamData(data);
+      setPlayers(data.players?.map(p => ({ // todo: find out if we can avoid this insane casting nonsesnse
+      ...p,
+      player_details: p.player_details 
+        ? { details: p.player_details.details as unknown as PlayerDetails }
+        : null
+    })) ?? [])
     })
-    .catch(err => {
-      setError(err.message);
-    });
+    .catch(error => {
+      setError(error.message)
+    })
   }, []);
 
-  const renderPlayers = (playerIDs: string[], positionType: 'Batter' | 'Pitcher', posOverrides?: Record<string, string>) => {
+  const renderPlayers = (playerIDs: string[], positionType: 'Batter' | 'Pitcher') => {
     const sortedIDs = isMobile 
       ? playerIDs
       : [
@@ -104,8 +93,8 @@ function Problems() {
       <PlayerCard
         key={id}
         playerID={id}
+        playerData={players.find(p => p.id === id) ?? null}
         showPlayer={playerVisibility[id] ?? false}
-        displayPosition={posOverrides?.[id] ?? null}
         displayMode={positionType === 'Batter' ? batterDisplayMode : pitcherDisplayMode}
         showScheduled={showScheduled}
         onToggle={() => togglePlayer(id)}
@@ -120,8 +109,8 @@ function Problems() {
     <div className="problems">
       <TeamNavbar 
         teamName={teamNameDisplay}
-        batterIDs={allBatterIDs}
-        pitcherIDs={allPitcherIDs}
+        batterIDs={batterIDs}
+        pitcherIDs={pitcherIDs}
         toggleGroup={toggleGroup}
         batterDisplayMode={batterDisplayMode}
         setBatterDisplayMode={setBatterDisplayMode}
@@ -134,11 +123,11 @@ function Problems() {
       />
 
       <div className="player-group">
-        {renderPlayers(allBatterIDs, 'Batter', batterPosOverrides)}
+        {renderPlayers(batterIDs, 'Batter')}
       </div>
 
       <div className="player-group">
-        {renderPlayers(allPitcherIDs, 'Pitcher', pitcherPosOverrides)}
+        {renderPlayers(pitcherIDs, 'Pitcher')}
       </div>
 
     </div>

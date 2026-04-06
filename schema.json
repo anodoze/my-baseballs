@@ -1,0 +1,682 @@
+[
+  {
+    "table_name": "leagues",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "leagues",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "leagues",
+    "column_name": "color",
+    "data_type": "text"
+  },
+  {
+    "table_name": "leagues",
+    "column_name": "emoji",
+    "data_type": "text"
+  },
+  {
+    "table_name": "leagues",
+    "column_name": "league_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "player_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "discipline",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "vision",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "intimidation",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "muscle",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "contact",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "cunning",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "selflessness",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "determination",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "wisdom",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "insight",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "aiming",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "lift",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "control",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "velocity",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "rotation",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "stuff",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "deception",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "intuition",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "persuasion",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "presence",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "defiance",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "accuracy",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "stamina",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "guts",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "performance",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "speed",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "greed",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "stealth",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "arm",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "dexterity",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "reaction",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "acrobatics",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "agility",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "patience",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "awareness",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "composure",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_attributes",
+    "column_name": "luck",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_details",
+    "column_name": "player_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "player_details",
+    "column_name": "details",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "player_details",
+    "column_name": "last_updated",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "player_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "plate_appearances",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "at_bats",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "runs",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "singles",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "doubles",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "triples",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "home_runs",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "runs_batted_in",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "walked",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "struck_out",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "hit_by_pitch",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "stolen_bases",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "caught_stealing",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "left_on_base",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "sac_flies",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "reached_on_error",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "grounded_into_double_play",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "hits",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "ba",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "obp",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "slg",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "ops",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "babip",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "putouts",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "assists",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "errors",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "double_plays",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "force_outs",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "runners_caught_stealing",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "allowed_stolen_bases",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "rcs_pct",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "appearances",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "starts",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "wins",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "losses",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "saves",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "holds",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "outs",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "batters_faced",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "hits_allowed",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "home_runs_allowed",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "earned_runs",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "walks",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "strikeouts",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "pitches_thrown",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "complete_games",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "shutouts",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "no_hitters",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "quality_starts",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "hit_batters",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "mound_visits",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "inherited_runners",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "inherited_runs_allowed",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "games_finished",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "innings_pitched",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "era",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "whip",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "k9",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "bb9",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "h9",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "hr9",
+    "data_type": "double precision"
+  },
+  {
+    "table_name": "player_stats",
+    "column_name": "last_updated",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "players",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "players",
+    "column_name": "team_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "players",
+    "column_name": "first_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "players",
+    "column_name": "last_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "players",
+    "column_name": "suffix",
+    "data_type": "text"
+  },
+  {
+    "table_name": "players",
+    "column_name": "number",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "players",
+    "column_name": "position",
+    "data_type": "text"
+  },
+  {
+    "table_name": "players",
+    "column_name": "position_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "players",
+    "column_name": "level",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "players",
+    "column_name": "last_updated",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "players",
+    "column_name": "slot",
+    "data_type": "text"
+  },
+  {
+    "table_name": "scrape_runs",
+    "column_name": "id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "scrape_runs",
+    "column_name": "started_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "scrape_runs",
+    "column_name": "finished_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "scrape_runs",
+    "column_name": "teams_scraped",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "scrape_runs",
+    "column_name": "errors",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "scrape_runs",
+    "column_name": "notes",
+    "data_type": "text"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "league_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "location",
+    "data_type": "text"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "emoji",
+    "data_type": "text"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "color",
+    "data_type": "text"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "wins",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "losses",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "rundiff",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "teams",
+    "column_name": "last_updated",
+    "data_type": "timestamp with time zone"
+  }
+]
