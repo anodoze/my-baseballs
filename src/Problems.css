@@ -39,7 +39,7 @@ a{
 
 .player-card{
   font-family:'Trebuchet MS', sans-serif;
-  background-color: var(--base);
+  background-color: var(--core);
   color: var(--bright);
   max-width: 420px;
   margin: 2px;
@@ -47,17 +47,8 @@ a{
   grid-column: span 3;
   grid-row: span 1;
 }
-.batting-card{
-  justify-content: center;
+.batting-card, .pitching-card{
   display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-}
-.pitching-card .talk-card{
-  width: 100%;
-  max-width: 380px;
-  margin: auto;
-
 }
 .isolated{
   max-width: 380px;
@@ -74,10 +65,19 @@ a{
 }
 .player-number {
   padding: 4px;
-  background-color: var(--star-yellow);
+  background-color: var(--star-gold);
   color: var(--dark);
-  margin-right: 16px;
-  font-size: 20px;
+  margin-right: 12px;
+  font-size: 18px;
+  font-weight: 800;
+  border: solid 2px black;
+  position: relative; 
+  top: -4px; 
+  left: -4px;
+  filter: drop-shadow(black 2px 0px 4px)
+}
+.player-name{
+  font-size: 16px;
   font-weight: 800;
 }
 .boons {
@@ -88,11 +88,11 @@ a{
   margin: 2px;
 }
 .boon-display {
-  margin: 4px;
-  padding: 6px;
-  background-color: var(--core);
-  border-radius: 4px;
+  margin: 2px;
+  padding: 4px;
+  background-color: var(--base);
   max-width: 200px;
+  font-size: 11px;
 }
 
 .level-up {
@@ -111,34 +111,45 @@ a{
 }
 
 .talk-card{
-  width: 206px;
-  margin: 0px 2px 0px 2px;
-  background-color: var(--core);
+  width: 204px;
+  margin: 0px 3px 3px 3px;
+  background-color: var(--dark);
   height: min-content;
+  border: solid black 2px;
+}
+.talk-title{
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
+  padding-top: 6px;
 }
 .talk-card * li {
   display: flex;
   background: var(--core-accent); 
-  margin: 6px 3px;
+  margin: 6px 0px;
+}
+.talk-card * ul {
+  margin-bottom: -2px;
 }
 
 .attribute-display{
-  display: flex;
-  align-items: left;
+  filter: drop-shadow(black 2px 0px 4px)
 }
 .attribute-title {
   padding: 2px;
   margin: 4px; 
-  text-align: center;
+  text-align: left;
   height: 30px;
   position: absolute;
+  min-width: 200px;
+  filter: drop-shadow(black 2px 2px 2px)
 }
 
 .star-row{
   display: flex;
   flex-wrap: wrap;
   padding: 3px 0 3px 0;
-  width: 100%
+  width: 100%;
 }
 .icon{
   width: 20px;
@@ -146,12 +157,13 @@ a{
 }
 
 .pitch-chart{
-  width: 400px;
+  width: 204px;
   font-size: 15px;
   font-weight: 600;
   padding: 5px;
   line-height: 24px;
   margin: auto;
+  filter: drop-shadow(black 2px 2px 4px)
 }
 
 /* Mobile only */

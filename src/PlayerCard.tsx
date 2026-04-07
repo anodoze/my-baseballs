@@ -47,11 +47,11 @@ function PlayerCard({ playerData, showPlayer, displayMode, showScheduled, onTogg
           #{playerData?.number}
           <CaretDown className='icon' />
         </div>
-          <h2>{playerData?.slot} {playerData?.first_name} {playerData?.last_name}</h2>
+          <div className="player-name">{playerData?.slot} {playerData?.first_name} {playerData?.last_name}</div>
+      </div>
         <div className="boons">
           {playerData?.player_details?.details.lesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
         </div>
-      </div>
 
       {displayType === 'Batter' && attributes && (
         <div className={clsx('batting-card', { 'isolated': displayMode !== 'all' })}>

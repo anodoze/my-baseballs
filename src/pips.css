@@ -6,7 +6,7 @@
   --star-equip: #785ef0;
 }    
 .fake-pip {
-  height: 28px;
+  height: 26px;
   width: 0px;
 }    
 .pip-row{
@@ -17,8 +17,8 @@
 .pip {
   background-color: var(--star-gold);
   color: var(--star-gold);
-  width: 4px;
-  height: 28px;
+  width: 5px;
+  height: 26px;
 }
 .pip-augment{
   background-color: var(--star-light);

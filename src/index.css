@@ -1,9 +1,9 @@
 :root {
     --bright: white;
-    --dark: #black;
+    --dark: black;
     --base: #0d0d0d;
     --core: #252525;
-    --core-accent: #555555;
+    --core-accent: #666666;
     --trim: #a96bea;
 
     --star-gold: #ffb000;

@@ -22,14 +22,14 @@ interface TalkCardProps {
 function TalkCard({ title, attributes, category }: TalkCardProps) {
   const attrNames = ATTRIBUTE_CATEGORIES[category];
 
-  const attributeList = attrNames.map(attr => {
-    const result = attributes[attr];
+  const attributeList = attrNames.map(attribute => {
+    const result = attributes[attribute];
     if (!result) return null;
     return (
-      <li key={attr}>
+      <li key={attribute}>
         <div className="attribute-display">
           <div className="attribute-title">
-            <b>{attr.substring(0, 3).toUpperCase()}</b> {Math.round(result.total * 100)}
+            <b>{attribute}</b> {Math.round(result.total * 100)}
           </div>
           <StarDisplay
             baseStars={result.baseValue}
@@ -45,7 +45,7 @@ function TalkCard({ title, attributes, category }: TalkCardProps) {
 
   return (
     <div className="talk-card">
-      <h3>{title}</h3>
+      <div className="talk-title">{title}</div>
       <ul>{attributeList}</ul>
     </div>
   );

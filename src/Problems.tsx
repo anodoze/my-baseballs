@@ -52,6 +52,7 @@ function Problems() {
 
   useEffect(() => { // initialize visibility so that roster ordering works
     if (!teamData) return;  
+    document.title = `${teamData?.emoji} ${teamData?.location} ${teamData?.name}`
     const allPlayerIDs = [
       ...batterIDs,
       ...pitcherIDs
