@@ -16,7 +16,6 @@ function Problems() {
   const [batterDisplayMode, setBatterDisplayMode] = useState<'all' | 'batting' | 'defense' | 'baserunning'>('all');
   const [pitcherDisplayMode, setPitcherDisplayMode] = useState<'all' | 'pitching'>('all');
   const [showScheduled, setShowScheduled] = useState(false);
-  // const [previewScheduled, setPreviewScheduled] = useState(false);
   const [invertAttributes, setInvertAttributes] = useState(false);
 
 

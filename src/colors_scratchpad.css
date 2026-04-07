@@ -1,0 +1,83 @@
+
+:root{
+
+    --grey-01: #E7E7E7;
+    --grey-02: #CFCFCF;
+    --grey-03: #B6B6B6;
+    --grey-04: #9E9E9E;
+    --grey-05: #868686;
+    --grey-06: #6E6E6E;
+    --grey-07: #555555;
+    --grey-08: #3D3D3D;
+    --grey-09: #252525;
+    --grey-10: #0D0D0D;
+
+    --gold-01: #FFF7E6;
+    --gold-02: #FFE8B8;
+    --gold-03: #FFDA8A;
+    --gold-04: #FFCB5C;
+    --gold-05: #FFBD2E;
+    --gold-00: #FFB000;
+    --gold-06: #D18F00;
+    --gold-07: #A37000;
+    --gold-08: #755000;
+    --gold-09: #473100;
+    --gold-10: #1A1100;
+
+    --orange-01: #FFEFE6;
+    --orange-02: #FFD3B8;
+    --orange-03: #FFB78A;
+    --orange-04: #FF9A5C;
+    --orange-05: #FF7E2E;
+    --orange-00: #FE6100;
+    --orange-06: #D15000;
+    --orange-07: #A33F00;
+    --orange-08: #752D00;
+    --orange-09: #471B00;
+    --orange-10: #1A0A00;
+
+    --magenta-01: #FBE9F2;
+    --magenta-02: #F5C2DA;
+    --magenta-03: #EF9AC3;
+    --magenta-04: #E873AB;
+    --magenta-05: #E24B94;
+    --magenta-00: #DC267F;
+    --magenta-06: #B41D66;
+    --magenta-07: #8C1750;
+    --magenta-08: #651039;
+    --magenta-09: #3D0A23;
+    --magenta-10: #16040C;
+
+    --purple-01: #ECE8FD;
+    --purple-02: #C9BEF9;
+    --purple-03: #A694F5;
+    --purple-00: #785EF0;
+    --purple-04: #5F40ED;
+    --purple-05: #3C16E9;
+    --purple-06: #3212BF;
+    --purple-07: #270E95;
+    --purple-08: #1C0A6B;
+    --purple-09: #110641;
+    --purple-10: #060217;
+
+    --blue-01: #E6EDFF;
+    --blue-02: #B8CCFF;
+    --blue-03: #8AABFF;
+    --blue-00: #648FFF;
+    --blue-04: #2E69FF;
+    --blue-05: #0048FF;
+    --blue-06: #003BD1;
+    --blue-07: #002EA3;
+    --blue-08: #002175;
+    --blue-09: #001447;
+    --blue-10: #00071A;
+    
+    --orange-00: #FE6100;
+    --orange-04: #FF9A5C;
+    --orange-02: #FFD3B8;
+    --orange-01: #FFEFE6;
+    --blue-01: #E6EDFF;
+    --blue-02: #B8CCFF;
+    --blue-00: #648FFF;
+    --blue-05: #0048FF; 
+}

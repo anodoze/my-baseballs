@@ -16,15 +16,15 @@ const PITCH_NAMES: Record<string, string> = {
 };
 
 const PITCH_COLORS: Record<string, string> = {
-  FF: '#dd1111',
-  FC: '#ff84b3',
-  SI: '#740505',
-  CU: '#8be8ff',
-  KC: '#228be0',
-  SL: '#1c24b5',
-  ST: '#b810dd',
-  CH: '#144117',
-  FS: '#32c386'
+  FF: '#FFB000',
+  FC: '#FFDA8A',
+  SI: '#FE6100',
+  KC: '#B8CCFF',
+  CU: '#648FFF',
+  ST: '#0048FF',
+  SL: '#785EF0',
+  CH: '#EF9AC3',
+  FS: '#DC267F'
 };
 
 // const PITCH_CATEGORIES: Record<string, 'Fast' | 'Breaking' | 'Offspeed'> = {
@@ -40,9 +40,9 @@ const PITCH_COLORS: Record<string, string> = {
 // };
 
 // const CATEGORY_COLORS: Record<string, string> = {
-//   Fast: '#FF6384',
-//   Breaking: '#36A2EB',
-//   Offspeed: '#4BC0C0'
+//   Fast: '#FFB000',
+//   Breaking: '#648FFF',
+//   Offspeed: '#DC267F'
 // };
 
 interface PitchChartProps {
@@ -76,7 +76,8 @@ function PitchChart({ pitchSelection, pitchTypes, }: PitchChartProps) {
         datasets: [{
           data: pitchSelection,
           backgroundColor: colors,
-          borderWidth: 0.5,
+          borderWidth: 2,
+          borderColor: '#000'
         }]
       },
       options: {
@@ -90,7 +91,7 @@ function PitchChart({ pitchSelection, pitchTypes, }: PitchChartProps) {
             position: 'right',
             align: 'start',
             labels: {
-              color: '#FFFFFF',
+              color: '#fff',
               font: {
                 size: 15,
               },

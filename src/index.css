@@ -1,14 +1,16 @@
 :root {
-    --bright: #e0e2fc;
-    --dark: #080213;
-    --base: #171432;
-    --core: #302054;
-    --core-accent: #261a47;
+    --bright: white;
+    --dark: #black;
+    --base: #0d0d0d;
+    --core: #252525;
+    --core-accent: #555555;
     --trim: #a96bea;
-    --star-yellow: rgb(255, 242, 0);
-    --star-green: rgb(0, 162, 232);
-    --star-red: rgb(255, 111, 27);
-    --star-equip: rgb(25, 254, 9);
+
+    --star-gold: #ffb000;
+    --star-light: #ffda8a;
+    --star-blue: #648fff;
+    --star-red: #fe6100;
+    --star-equip: #785ef0;
 
   font-family: "Georgia", "Times New Roman", Times, serif;
   font-size: small;
