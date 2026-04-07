@@ -113,24 +113,25 @@ a{
 .talk-card{
   width: 206px;
   margin: 0px 2px 0px 2px;
-  border-radius: 4px;
+  background-color: var(--core);
   height: min-content;
 }
-.talk-card * li{
+.talk-card * li {
   display: flex;
-  padding: 0 0 0 5px;
+  background: var(--core-accent); 
+  margin: 6px 3px;
 }
 
 .attribute-display{
   display: flex;
-  align-items: center;
+  align-items: left;
 }
 .attribute-title {
   padding: 2px;
-  margin: 0 8px 0px 0px;
+  margin: 4px; 
   text-align: center;
-  width: 40px;
-  height: 40px;
+  height: 30px;
+  position: absolute;
 }
 
 .star-row{
@@ -139,37 +140,10 @@ a{
   padding: 3px 0 3px 0;
   width: 100%
 }
-.star, 
-.left-half-star, 
-.right-half-star{
-  width: 20px;
-  height: 20px;
-  fill: var(--star-yellow);
-}
-.bonus-star {
-  fill: var(--star-green);
-}
-.penalty-star {
-  fill: var(--star-red);
-}
-.equip-star {
-  fill: var(--star-equip)
-}
-#left-half-star{
-  clip-path: inset(0 10px 0 0);
-  margin-right: -10px
-}
-#right-half-star{
-  clip-path: inset(0 0 0 10px);
-  margin-left: -10px
-}
 .icon{
   width: 20px;
   height: 20px;
 }
-
-li { background: var(--core-accent); }
-li:nth-child(odd) { background: var(--core); }
 
 .pitch-chart{
   width: 400px;

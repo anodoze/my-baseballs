@@ -1,22 +1,38 @@
+:root {
+  --star-gold: #ffb000;
+  --star-light: #ffda8a;
+  --star-blue: #648fff;
+  --star-red: #fe6100;
+  --star-equip: #785ef0;
+}    
+.fake-pip {
+  height: 28px;
+  width: 0px;
+}    
 .pip-row{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 .pip {
-  background-color: yellow;
+  background-color: var(--star-gold);
+  color: var(--star-gold);
   width: 4px;
   height: 28px;
 }
+.pip-augment{
+  background-color: var(--star-light);
+  color: var(--star-light);
+}
 .pip-penalty{
-  background-color: red;
+  background-color: var(--star-red);
+  color: var(--star-red);
 }
 .pip-bonus{
-  background-color: aqua;
+  background-color: var(--star-blue);
+  color: var(--star-blue);
 }
 .pip-equip{
-  background-color: green;
-}
-.pip-augment{
-  background-color: plum;
+  background-color: var(--star-equip);
+  color: var(--star-equip);
 }

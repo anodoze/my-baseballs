@@ -35,6 +35,7 @@ function StarDisplay({ baseStars, augmentStars, equipStars, boonStars, total }: 
   
   return (
     <div className='pip-row'>
+      <div className='fake-pip'></div>
       {pips.map((type, i) => (
         <div key={i} className={`pip pip-${type}`} >.</div>
       ))}
