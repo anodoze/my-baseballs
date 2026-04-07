@@ -527,7 +527,97 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      mv_batting_leaderboard: {
+        Row: {
+          first_name: string | null
+          last_name: string | null
+          league_id: string | null
+          league_name: string | null
+          league_type: string | null
+          pa_threshold: number | null
+          plate_appearances: number | null
+          player_id: string | null
+          position: string | null
+          rank_in_league: number | null
+          stat_key: string | null
+          stat_value: number | null
+          team_id: string | null
+          team_name: string | null
+        }
+        Relationships: []
+      }
+      mv_games_played: {
+        Row: {
+          games_played: number | null
+          league_type: string | null
+        }
+        Relationships: []
+      }
+      mv_league_batting_context: {
+        Row: {
+          avg_ba: number | null
+          avg_babip: number | null
+          avg_obp: number | null
+          avg_ops: number | null
+          avg_slg: number | null
+          league_id: string | null
+          league_name: string | null
+          league_type: string | null
+          qualified_batters: number | null
+          sum_1b: number | null
+          sum_2b: number | null
+          sum_3b: number | null
+          sum_ab: number | null
+          sum_bb: number | null
+          sum_h: number | null
+          sum_hbp: number | null
+          sum_hr: number | null
+          sum_k: number | null
+          sum_sf: number | null
+        }
+        Relationships: []
+      }
+      mv_league_pitching_context: {
+        Row: {
+          avg_bb9: number | null
+          avg_era: number | null
+          avg_h9: number | null
+          avg_hr9: number | null
+          avg_k9: number | null
+          avg_whip: number | null
+          fip_constant: number | null
+          league_id: string | null
+          league_name: string | null
+          league_type: string | null
+          qualified_pitchers: number | null
+          sum_bb: number | null
+          sum_er: number | null
+          sum_h: number | null
+          sum_hr: number | null
+          sum_ip: number | null
+          sum_k: number | null
+        }
+        Relationships: []
+      }
+      mv_pitching_leaderboard: {
+        Row: {
+          first_name: string | null
+          innings_pitched: number | null
+          ip_threshold: number | null
+          last_name: string | null
+          league_id: string | null
+          league_name: string | null
+          league_type: string | null
+          player_id: string | null
+          position: string | null
+          rank_in_league: number | null
+          stat_key: string | null
+          stat_value: number | null
+          team_id: string | null
+          team_name: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
