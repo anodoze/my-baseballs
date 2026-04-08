@@ -6,7 +6,7 @@ import Beginner from './Beginner.tsx'
 import Problems from './Problems.tsx'
 import Home from './Home.tsx'
 import TeamLookup from './TeamLookup.tsx'
-import StatsLeaderboard from './StatsLeaderboard.tsx'
+import StatsLeaderboards from './StatsLeaderboards.tsx'
 
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
       <Route path="/beginners-guide" element={(<Beginner/>)} />
       <Route path="/team/" element={(<TeamLookup/>)} />
       <Route path="/team/:id" element={(<Problems/>)} />
-      <Route path="/leaderboard" element={(<StatsLeaderboard/>)} />
+      <Route path="/leaderboard/" element={(<StatsLeaderboards/>)} />
     </Routes>
   );
 }

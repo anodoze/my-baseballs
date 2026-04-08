@@ -43,7 +43,7 @@ function Problems() {
 
 
   const batterIDs = ([
-    ...players.slice(0, 12) ?? []
+    ...players.slice(0, 13) ?? []
   ].map(p => p.id) ?? [])
 
   const pitcherIDs = ([
