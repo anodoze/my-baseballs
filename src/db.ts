@@ -158,8 +158,11 @@ export type BattingLeaderboardRow = {
   player_id: string
   first_name: string
   last_name: string
+  suffix: string | null
   position: string
   team_name: string
+  team_location: string
+  team_emoji: string
   team_id: string
   league_id: string
   league_name: string
@@ -175,8 +178,11 @@ export type PitchingLeaderboardRow = {
   player_id: string
   first_name: string
   last_name: string
+  suffix: string | null
   position: string
   team_name: string
+  team_location: string
+  team_emoji: string
   team_id: string
   league_id: string
   league_name: string
