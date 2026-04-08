@@ -128,7 +128,7 @@ a{
   background: var(--core-accent); 
   margin: 6px 0px;
 }
-.talk-card * ul {
+.talk-card > ul {
   margin-bottom: -2px;
 }
 

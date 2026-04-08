@@ -27,10 +27,10 @@ function StarDisplay({ baseStars, augmentStars, equipStars, boonStars, total }: 
   const pips = [
     ...Array(basePips).fill('base'),
     ...Array(augmentPips).fill('augment'),
+    ...Array(Math.max(0, equipPips)).fill('equip'),
     ...(boonIsNegative
       ? Array(boonPips).fill('penalty')
       : Array(boonPips).fill('bonus')),
-    ...Array(Math.max(0, equipPips)).fill('equip'),
   ]
   
   return (

@@ -7,6 +7,14 @@ import './Problems.css'
 import { useParams } from "react-router";
 import { fetchTeam } from "./db";
 
+const SLOT_ORDER = [
+  'C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF', 'DH',
+  'B1', 'B2', 'B3', 'B4',
+  'SP1', 'SP2', 'SP3', 'SP4', 'SP5',
+  'RP1', 'RP2', 'RP3', 'CL',
+  'P1', 'P2', 'P3', 'P4',
+];
+
 function Problems() {
   const { id } = useParams()
   const [teamData, setTeamData] = useState<TeamData | null>(null)
@@ -18,6 +26,9 @@ function Problems() {
   const [showScheduled, setShowScheduled] = useState(false);
   const [invertAttributes, setInvertAttributes] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  
+  const teamNameDisplay = `${teamData?.emoji} ${teamData?.location} ${teamData?.name}`
 
   const togglePlayer = (playerID: string) => {
     setPlayerVisibility(prev => ({
@@ -30,19 +41,14 @@ function Problems() {
     setPlayerVisibility(prev => ({ ...prev, ...updates }));
   };
 
-  const teamNameDisplay = `${teamData?.emoji} ${teamData?.location} ${teamData?.name}`
 
-  const batterIDs = [
-    ...teamData?.players.slice(0, 9) ?? [],
-    ...teamData?.players.slice(18, 22) ?? [],
-  ].map(p => p.id) ?? [];
+  const batterIDs = ([
+    ...players.slice(0, 12) ?? []
+  ].map(p => p.id) ?? [])
 
-  const pitcherIDs = [
-    ...teamData?.players.slice(9, 18) ?? [],
-    ...teamData?.players.slice(22, 26) ?? [],
-  ].map(p => p.id) ?? [];
-  
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  const pitcherIDs = ([
+    ...players.slice(13, 26) ?? []
+  ].map(p => p.id) ?? [])
   
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 600);
@@ -52,11 +58,13 @@ function Problems() {
 
   useEffect(() => { // initialize visibility so that roster ordering works
     if (!teamData) return;  
-    document.title = `${teamData?.emoji} ${teamData?.location} ${teamData?.name}`
+    document.title = teamNameDisplay
+
     const allPlayerIDs = [
       ...batterIDs,
       ...pitcherIDs
-    ];   
+    ];  
+    
     const initialVisibility = Object.fromEntries(
       allPlayerIDs.map(id => [id, false])
   );
@@ -68,13 +76,20 @@ function Problems() {
     console.log("fetching team data...", id)
     fetchTeam(`${id}`).then(data =>{
       console.log(data)
+      data.players.sort((a, b) => {
+        const ai = SLOT_ORDER.indexOf(a.slot);
+        const bi = SLOT_ORDER.indexOf(b.slot);
+        return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      })
+
       setTeamData(data);
-      setPlayers(data.players?.map(p => ({ // todo: find out if we can avoid this insane casting nonsesnse
+
+      setPlayers(data.players.map(p => ({ // todo: find out if we can avoid this insane casting nonsesnse
       ...p,
       player_details: p.player_details 
         ? { details: p.player_details.details as unknown as PlayerDetails }
         : null
-    })) ?? [])
+      })) ?? [])
     })
     .catch(error => {
       setError(error.message)
@@ -121,15 +136,12 @@ function Problems() {
         invertAttributes={invertAttributes}
         setInvertAttributes={setInvertAttributes}
       />
-
       <div className="player-group">
         {renderPlayers(batterIDs, 'Batter')}
       </div>
-
       <div className="player-group">
         {renderPlayers(pitcherIDs, 'Pitcher')}
       </div>
-
     </div>
   )
 }
