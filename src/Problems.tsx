@@ -1,5 +1,5 @@
 import PlayerCard from "./PlayerCard";
-import TeamNavbar from "./TeamNavbar";
+import TeamMenu from "./TeamMenu";
 import { useState, useEffect } from "react";
 import type { TeamData } from "./db";
 import type { Player, PlayerDetails } from "./types/types";
@@ -122,7 +122,7 @@ function Problems() {
 
   return (
     <div className="problems">
-      <TeamNavbar 
+      <TeamMenu 
         teamName={teamNameDisplay}
         batterIDs={batterIDs}
         pitcherIDs={pitcherIDs}

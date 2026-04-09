@@ -50,9 +50,9 @@ a{
 .batting-card, .pitching-card{
   display: flex;
 }
-.isolated{
+/* .isolated{
   max-width: 380px;
-}
+} */
 .batting-card.isolated .talk-card, .pitching-card.isolated .talk-card {
   width: 100%;
 }

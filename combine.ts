@@ -2,10 +2,14 @@ import * as fs from "fs";
 import * as path from "path";
 
 const files = [
+  "src/App.tsx",
+  "src/Home.tsx",
+  "src/Leaderboard.tsx",
+  "src/LevelDisplay.tsx",
+  "src/main.tsx",
   "src/Problems.tsx",
-  "src/PlayerCard.tsx",
-  "api/team/[id].js",
-  "api/player/[id].js"
+  "src/StatsLeaderboards.tsx",
+  "src/TeamNavbar.tsx"
 ];
 
 const workingDir = process.cwd();

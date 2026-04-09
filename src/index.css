@@ -16,7 +16,9 @@
   font-size: small;
   font-weight: 400;
 
-  color: #1d1d1d;
+  background-color: var(--dark);
+  color: var(--bright);
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -44,23 +46,19 @@ body {
   box-sizing: border-box;
 }
 
-body.theme-frogs {
-  background-color: green;
-}
-
 body.theme-main {
   background-color: var(--dark);
 }
 
 button {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--bright);
   background-color: var(--base);
   border: none;
-  padding: 12px;
+  padding: 8px;
   margin: 4px;
 }
-button:hover, button:active {
+button:active, button:hover{
   background-color: var(--core-accent);
 }

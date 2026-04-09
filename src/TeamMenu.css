@@ -1,0 +1,73 @@
+.team-navbar {
+  position: relative;
+  font-size: 16px;
+  font-weight: 800;
+}
+.team-title{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: -30px;
+  width: 100%;
+  z-index: 0;
+}
+.menu-flex{
+  max-width: 400px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.menu-bar-flex{
+  display: flex;
+}
+
+.menu{
+  z-index: 100;
+}
+.hamburger {
+  display: none;
+  z-index: 100;
+}
+
+.menu-block{
+  width: 100%;
+  margin: 8px;
+}
+.menu-block-title{
+  font-size: 14px;
+}
+#menu-block-button {
+  width: 40%;
+  margin: 8px;
+  border-radius: none;
+  font-size: 14px;
+}
+#menu-block-button.active {
+  background-color: var(--core-accent);
+}
+
+.nav-buttons {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--dark);
+  padding: 1rem;
+  z-index: 100;
+}
+
+.nav-buttons.open {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .hamburger {
+    display: inline;
+  }
+
+  .menu{
+    display: none;
+  }
+}
