@@ -13,8 +13,8 @@ type LeagueInfo = {
   LeagueType: string
 }
 
-const BATTING_STAT_ORDER = ['BA', 'BABIP', 'HR', ...]
-const PITCHING_STAT_ORDER = ['ERA', 'WHIP', ...]
+const BATTING_STAT_ORDER = ['BA', 'BABIP', 'HR']
+const PITCHING_STAT_ORDER = ['ERA', 'WHIP']
 
 const LEAGUES: LeagueInfo[] = [
   { id: 'Lesser', Name: 'All Lesser Leagues',    Emoji: '',  Color: '5b9340', LeagueType: 'Lesser' },
