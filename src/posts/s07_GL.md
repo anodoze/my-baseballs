@@ -1,1 +1,0 @@
-Look, we have a lot of openings for  a great player but let's keep Room For Improvement section short this time around: **what the hell is that .526 OPS Dick**. 
