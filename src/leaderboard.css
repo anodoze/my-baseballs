@@ -1,3 +1,18 @@
+.leaderboard-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.league-selector{
+  font-size: 20px;
+  color: var(--bright);
+  background-color: var(--core);
+  border: none;
+  margin: 4px;
+  min-width: 300px;
+  text-align: center;
+}
+
 .leaderboard {
   color: var(--bright);
   max-width: 300px;

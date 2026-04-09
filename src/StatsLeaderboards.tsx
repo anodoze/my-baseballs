@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { groupByBoard, fetchBattingLeaderboard, fetchPitchingLeaderboard, fetchGreaterPitchingLeaderboard, fetchGreaterLeaderboard, fetchLesserLeaderboard, fetchLesserPitchingLeaderboard } from "./db"
+import { groupByBoard, fetchBattingLeaderboard, fetchPitchingLeaderboard, fetchGreaterPitchingLeaderboard, fetchGreaterBattingLeaderboard, fetchLesserBattingLeaderboard, fetchLesserPitchingLeaderboard } from "./db"
 import type { BattingLeaderboardRow, PitchingLeaderboardRow } from "./db"
 import { useParams } from "react-router"
 import Leaderboard from "./Leaderboard"
@@ -14,6 +14,8 @@ type LeagueInfo = {
 }
 
 const LEAGUES: LeagueInfo[] = [
+  { id: 'Lesser', Name: 'All Lesser Leagues',    Emoji: '',  Color: '5b9340', LeagueType: 'Lesser' },
+  { id: 'Greater', Name: 'Greater League',    Emoji: '☘️🍍',  Color: '5b9340', LeagueType: 'Greater' },
   { id: '6805db0cac48194de3cd3ff4', Name: 'Amphibian',    Emoji: '🐸',  Color: '5b9340', LeagueType: 'Lesser' },
   { id: '6805db0cac48194de3cd3fe7', Name: 'Baseball',     Emoji: '⚾️',  Color: '47678e', LeagueType: 'Lesser' },
   { id: '6805db0cac48194de3cd3fe8', Name: 'Precision',    Emoji: '🎯',  Color: '507d45', LeagueType: 'Lesser' },
@@ -33,7 +35,7 @@ const LEAGUES: LeagueInfo[] = [
 ]
 
 function StatsLeaderboards(){
-  // const { leagueID } = useParams()
+  // const { leagueID } = useParams() todo: change routing and use params so peopel can bookmark their league
   const [battingData, setBattingData] = useState<Record<string, BattingLeaderboardRow[]> | null>(null)
   const [pitchingData, setPitchingData] = useState<Record<string, PitchingLeaderboardRow[]> | null>(null)
   const [selectedLeague, setSelectedLeague] = useState<LeagueInfo>(LEAGUES[0])
@@ -42,14 +44,25 @@ function StatsLeaderboards(){
     setBattingData(null)
     setPitchingData(null)
     console.log("fetching leaderboards...")
-    fetchBattingLeaderboard(selectedLeague.id).then(data =>{ // we can pull the id from params once basic display is working
+
+    const battingFetch = selectedLeague.id === 'Greater'
+      ? fetchGreaterBattingLeaderboard()
+      : selectedLeague.id === 'Lesser'
+        ? fetchLesserBattingLeaderboard()
+        : fetchBattingLeaderboard(selectedLeague.id)
+
+    const pitchingFetch = selectedLeague.LeagueType === 'Greater'
+      ? fetchGreaterPitchingLeaderboard()
+      : selectedLeague.id === 'Lesser'
+        ? fetchLesserPitchingLeaderboard()
+        : fetchPitchingLeaderboard(selectedLeague.id)
+
+    battingFetch.then(data =>{
       const boards = groupByBoard(data)
-      console.log("leaderboards", boards)
       setBattingData(boards)
     })
-    fetchPitchingLeaderboard(selectedLeague.id).then(data =>{ // we can pull the id from params once basic display is working
+    pitchingFetch.then(data =>{
       const boards = groupByBoard(data)
-      console.log("leaderboards", boards)
       setPitchingData(boards)
     })
   }, [selectedLeague])
@@ -67,7 +80,7 @@ function StatsLeaderboards(){
   const pitchingLeaders = pitchingData ? Object.entries(pitchingData).map(([statKey, leaderboard]) => {
     return (
       <Leaderboard key={statKey} 
-      leaderboardType={'batting'}
+      leaderboardType={'pitching'}
       statKey={statKey} 
       leaderboard={leaderboard}  
       />
@@ -76,7 +89,7 @@ function StatsLeaderboards(){
 
  return (
     <div>
-      <div>
+      <div className="leaderboard-bar">
         <select
           className="league-selector"
           value={selectedLeague.id}

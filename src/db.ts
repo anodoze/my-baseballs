@@ -71,7 +71,7 @@ export async function fetchLeaguePitchingContext(leagueId: string) {
   return data as LeaguePitchingContext
 }
 
-export async function fetchGreaterLeaderboard() {
+export async function fetchGreaterBattingLeaderboard() {
   const { data, error } = await supabase
     .from('mv_batting_leaderboard')
     .select('*')
@@ -79,10 +79,10 @@ export async function fetchGreaterLeaderboard() {
     .order('stat_key')
     .order('rank_in_league')
   if (error) throw error
-  return groupByBoard(rerankBatting(data as BattingLeaderboardRow[]))
+  return rerankBatting(data as BattingLeaderboardRow[])
 }
 
-export async function fetchLesserLeaderboard() {
+export async function fetchLesserBattingLeaderboard() {
   const { data, error } = await supabase
     .from('mv_batting_leaderboard')
     .select('*')
@@ -90,7 +90,7 @@ export async function fetchLesserLeaderboard() {
     .order('stat_key')
     .order('rank_in_league')
   if (error) throw error
-  return groupByBoard(rerankBatting(data as BattingLeaderboardRow[]))
+  return rerankBatting(data as BattingLeaderboardRow[])
 }
 
 // stat_keys where lower is better — everything else is descending
@@ -118,7 +118,12 @@ export function groupByBoard<T extends LeaderboardRow>(rows: T[]): Record<string
   }, {} as Record<string, T[]>)
 }
 
-const PITCHING_ASCENDING_STATS = new Set(['era', 'fip', 'whip', 'bb9', 'h9', 'hr9'])
+const PITCHING_ASCENDING_STATS = new Set(
+  [
+    'ERA', 'fip', 'whip', 'bb9', 'h9', 'hr9'
+
+  ]
+)
 
 export function rerankPitching(rows: PitchingLeaderboardRow[]): PitchingLeaderboardRow[] {
   const boards = groupByBoard(rows)
