@@ -126,14 +126,6 @@ function BoonDisplay({boon}: BoonDisplayProps) {
 
   const effects = BOON_EFFECTS[boon.Name as keyof typeof BOON_EFFECTS];
 
-  if (!effects){
-    return(
-    <div className="boon-emoji">
-      <div style={{fontSize: "20px"}} className="boon-display">{boon.Emoji}</div>
-    </div>
-    )
-  }
-
   const parts = Object.entries(effects).map(([stat, val]) => {
     const sign = val > 0 ? '+' : '-';
     const abbr = stat.slice(0, 3).toUpperCase();
@@ -141,9 +133,7 @@ function BoonDisplay({boon}: BoonDisplayProps) {
   });
 
   return(
-    <div className="boon-emoji">
       <div className="boon-display">{boon.Emoji} {boon.Name} {parts.join(' ')}</div>
-    </div>
   )
 }
 

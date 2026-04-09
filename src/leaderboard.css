@@ -1,3 +1,7 @@
+.leaderboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
 .leaderboard-bar {
   display: flex;
   justify-content: center;
@@ -15,19 +19,32 @@
 
 .leaderboard {
   color: var(--bright);
-  max-width: 300px;
+  background-color: var(--base);
+  padding-left: -8px;
+  margin: 16px;
+  /* max-width: 300px; */
+  flex-grow: 1;
+  flex-basis: 30%;
+  align-content: flex-start;
 }
 .leaderboard-title{
   text-align: center;
+  background-color: var(--core);
+  padding: 8px;
 }
-.leaderboard-container{
-  display: flex;
-  flex-wrap: wrap;
+
+.leaderboard ol {
+  padding-left: 24px;
 }
+
 .leader-row {
   display: flex;
   align-items: center;
   gap: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 16px;
+  border-bottom: solid 1px var(--core)
 }
 .leader-name {
   white-space: nowrap;

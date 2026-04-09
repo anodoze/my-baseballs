@@ -16,15 +16,25 @@ a{
   z-index: 10;
 }
 .navbar-button{
-  background-color: var(--core-accent);
+  background-color: var(--core);
   color: var(--bright);
-  padding: 6px;
+  padding: 8px;
   border: none;
   font-size: 16px;
   font-weight: 500;
 }
-.navbar-button:hover {
-  background-color: var(--core);
+.site-navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 4px;
+
+}
+.navbar-button:hover{
+   background-color: var(--core-accent);
+}
+.navbar-button.active{
+  background-color: var(--core-accent);
 }
 
 .player-group {

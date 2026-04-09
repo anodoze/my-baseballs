@@ -33,9 +33,9 @@ function Leaderboard ({statKey, leaderboard, leaderboardType}: LeaderboardProps)
       <li key={leader.player_id}>
         <div className="leader-row">
 
-        <span className="leader-name">
+        <a target="_blank" href={`https://mmolb.com/player/${leader.player_id}`}><span className="leader-name">
           {leader.first_name} {leader.last_name} - {leader.suffix ? ` ${leader.suffix}` : ""}
-        </span>
+        </span></a>
         <span className="leader-team">
           {leader.team_emoji} {leader.team_location} {leader.team_name}
         </span>

@@ -44,7 +44,7 @@ function StatsLeaderboards(){
     setBattingData(null)
     setPitchingData(null)
     console.log("fetching leaderboards...")
-
+    document.title = `${selectedLeague.Emoji} ${selectedLeague.Name}`
     const battingFetch = selectedLeague.id === 'Greater'
       ? fetchGreaterBattingLeaderboard()
       : selectedLeague.id === 'Lesser'

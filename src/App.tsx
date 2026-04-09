@@ -1,16 +1,15 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route, NavLink } from 'react-router'
 import Problems from './Problems.tsx'
 import Home from './Home.tsx'
 import TeamLookup from './TeamLookup.tsx'
 import StatsLeaderboards from './StatsLeaderboards.tsx'
-
-import { Link } from 'react-router'
+import './Problems.css'
 
 function SiteNavbar() {
   return (
     <nav className="site-navbar">
-      <Link to="/team/">Team Dash</Link>
-      <Link to="/leaderboard/">Stats Leaderboards</Link>
+      <NavLink className="navbar-button" to="/team/">Team Dash</NavLink>
+      <NavLink className="navbar-button" to="/leaderboard/">Stats Leaderboards</NavLink>
     </nav>
   )
 }
