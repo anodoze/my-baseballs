@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { groupByBoard, fetchBattingLeaderboard } from "./db"
-import type { BattingLeaderboardRow } from "./db"
+import { groupByBoard, fetchBattingLeaderboard, fetchPitchingLeaderboard, fetchGreaterPitchingLeaderboard, fetchGreaterLeaderboard, fetchLesserLeaderboard, fetchLesserPitchingLeaderboard } from "./db"
+import type { BattingLeaderboardRow, PitchingLeaderboardRow } from "./db"
 import { useParams } from "react-router"
 import Leaderboard from "./Leaderboard"
+import './leaderboard.css'
 
 type LeagueInfo = {
-  _id: string
+  id: string
   Name: string
   Emoji: string
   Color: string
@@ -13,57 +14,89 @@ type LeagueInfo = {
 }
 
 const LEAGUES: LeagueInfo[] = [
-  { _id: "6805db0cac48194de3cd3ff4", Name: "Amphibian", Emoji: "🐸", Color: "5b9340", LeagueType: "Lesser" },
-  // add more leagues here later
+  { id: '6805db0cac48194de3cd3ff4', Name: 'Amphibian',    Emoji: '🐸',  Color: '5b9340', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fe7', Name: 'Baseball',     Emoji: '⚾️',  Color: '47678e', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fe8', Name: 'Precision',    Emoji: '🎯',  Color: '507d45', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fe9', Name: 'Isosceles',    Emoji: '🔺',  Color: '7c65a3', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fea', Name: 'Liberty',      Emoji: '🗽',  Color: '2e768d', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3feb', Name: 'Maple',        Emoji: '🍁',  Color: 'a13e33', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fec', Name: 'Cricket',      Emoji: '🦗',  Color: '4a8546', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fed', Name: 'Tornado',      Emoji: '🌪️',  Color: '5a5e6e', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fee', Name: 'Coleoptera',   Emoji: '🪲',  Color: '3f624d', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3fef', Name: 'Clean',        Emoji: '🧼',  Color: '88b9ba', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3ff0', Name: 'Shiny',        Emoji: '✨',  Color: 'e0d95a', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3ff1', Name: 'Psychic',      Emoji: '🔮',  Color: '734d92', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3ff2', Name: 'Unidentified', Emoji: '❓',  Color: '6c6c6c', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3ff3', Name: 'Ghastly',      Emoji: '👻',  Color: '5b4b62', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3ff5', Name: 'Deep',         Emoji: '🌊',  Color: '1a3a4f', LeagueType: 'Lesser' },
+  { id: '6805db0cac48194de3cd3ff6', Name: 'Harmony',      Emoji: '🎵',  Color: '659b87', LeagueType: 'Lesser' },
 ]
 
 function StatsLeaderboards(){
   // const { leagueID } = useParams()
   const [battingData, setBattingData] = useState<Record<string, BattingLeaderboardRow[]> | null>(null)
+  const [pitchingData, setPitchingData] = useState<Record<string, PitchingLeaderboardRow[]> | null>(null)
   const [selectedLeague, setSelectedLeague] = useState<LeagueInfo>(LEAGUES[0])
 
   useEffect(() => {
     setBattingData(null)
+    setPitchingData(null)
     console.log("fetching leaderboards...")
-    fetchBattingLeaderboard(selectedLeague._id).then(data =>{ // we can pull the id from params once basic display is working
+    fetchBattingLeaderboard(selectedLeague.id).then(data =>{ // we can pull the id from params once basic display is working
       const boards = groupByBoard(data)
       console.log("leaderboards", boards)
       setBattingData(boards)
     })
+    fetchPitchingLeaderboard(selectedLeague.id).then(data =>{ // we can pull the id from params once basic display is working
+      const boards = groupByBoard(data)
+      console.log("leaderboards", boards)
+      setPitchingData(boards)
+    })
   }, [selectedLeague])
 
-  if (!battingData) return <p>oop</p>
+  const battingLeaders = battingData ? Object.entries(battingData).map(([statKey, leaderboard]) => {
+    return (
+      <Leaderboard key={statKey} 
+      leaderboardType={'batting'}
+      statKey={statKey} 
+      leaderboard={leaderboard}  
+      />
+    )})
+    : <p>loading...</p>
+
+  const pitchingLeaders = pitchingData ? Object.entries(pitchingData).map(([statKey, leaderboard]) => {
+    return (
+      <Leaderboard key={statKey} 
+      leaderboardType={'batting'}
+      statKey={statKey} 
+      leaderboard={leaderboard}  
+      />
+    )})
+    : <p>loading...</p>
 
  return (
     <div>
-      <div style={{ borderLeft: `4px solid #${selectedLeague.Color}` }}>
-        <span>{selectedLeague.Emoji} {selectedLeague.Name}</span>
+      <div>
         <select
-          value={selectedLeague._id}
-          onChange={e => setSelectedLeague(LEAGUES.find(l => l._id === e.target.value)!)}
+          className="league-selector"
+          value={selectedLeague.id}
+          onChange={e => setSelectedLeague(LEAGUES.find(l => l.id === e.target.value)!)}
         >
           {LEAGUES.map(league => (
-            <option key={league._id} value={league._id}>
+            <option key={league.id} value={league.id}>
               {league.Emoji} {league.Name}
             </option>
           ))}
         </select>
       </div>
-
-      {battingData
-        ? Object.entries(battingData).map(([statKey, leaderboard]) => (
-            <Leaderboard key={statKey} 
-              leaderboardType={'batting'}
-              statKey={statKey} 
-              leaderboard={leaderboard}  
-            />
-          ))
-        : <p>Loading...</p>
-      }
+      <div className="leaderboard-container">
+        {battingLeaders}
+      </div>
+      <div className="leaderboard-container">
+        {pitchingLeaders}
+      </div>
     </div>
   )
 }
 
 export default StatsLeaderboards;
-
-//6805db0cac48194de3cd3ff4 amphibian league

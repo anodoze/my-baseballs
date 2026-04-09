@@ -19,11 +19,17 @@ function Leaderboard ({statKey, leaderboard, leaderboardType}: LeaderboardProps)
 
     const stat = formatStat(leader.stat_value)
   
-    return(
-      <li key={leader.player_id}>
-        <p>{leader.first_name} {leader.last_name} {leader?.suffix} {leader.team_emoji} {leader.team_location} {leader.team_name} {stat} </p>
+    return (
+      <li className="leader-row" key={leader.player_id}>
+        <span className="leader-name">
+          {leader.first_name} {leader.last_name} - {leader.suffix ? ` ${leader.suffix}` : ""}
+        </span>
+        <span className="leader-team">
+          {leader.team_emoji} {leader.team_location} {leader.team_name}
+        </span>
+        <span className="leader-stat">{stat}</span>
       </li>
-    )
+    );
   })
 
   return (
