@@ -13,6 +13,9 @@ type LeagueInfo = {
   LeagueType: string
 }
 
+const BATTING_STAT_ORDER = ['BA', 'BABIP', 'HR', ...]
+const PITCHING_STAT_ORDER = ['ERA', 'WHIP', ...]
+
 const LEAGUES: LeagueInfo[] = [
   { id: 'Lesser', Name: 'All Lesser Leagues',    Emoji: '',  Color: '5b9340', LeagueType: 'Lesser' },
   { id: 'Greater', Name: 'Greater League',    Emoji: '☘️🍍',  Color: '5b9340', LeagueType: 'Greater' },
@@ -59,6 +62,12 @@ function StatsLeaderboards(){
 
     battingFetch.then(data =>{
       const boards = groupByBoard(data)
+
+      // TODO: setting fixed order for leaderboards
+      // Object.entries(boards) 
+      //   .sort(([a], [b]) => BATTING_STAT_ORDER.indexOf(a) - BATTING_STAT_ORDER.indexOf(b))
+      //   .map(([statKey, leaderboard]) => ...)
+
       setBattingData(boards)
     })
     pitchingFetch.then(data =>{
