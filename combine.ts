@@ -9,7 +9,6 @@ const files = [
   "src/main.tsx",
   "src/Problems.tsx",
   "src/StatsLeaderboards.tsx",
-  "src/TeamNavbar.tsx"
 ];
 
 const workingDir = process.cwd();

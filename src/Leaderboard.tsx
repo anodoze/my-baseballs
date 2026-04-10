@@ -23,7 +23,7 @@ function formatStat(value: number, leaderboardType: string, isIP: boolean)  {
 
 function Leaderboard ({statKey, leaderboard, leaderboardType}: LeaderboardProps) {
 
-  const isIP = statKey == 'IP'
+  const isIP = statKey == 'Innings Pitched (IP)'
 
   const leaderList = leaderboard.map(leader => {
     if (!leader) return;

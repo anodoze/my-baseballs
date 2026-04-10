@@ -120,8 +120,12 @@ export function groupByBoard<T extends LeaderboardRow>(rows: T[]): Record<string
 
 const PITCHING_ASCENDING_STATS = new Set(
   [
-    'ERA', 'fip', 'whip', 'bb9', 'h9', 'hr9'
-
+    'Earned Run Average (ERA)', 
+    'Fielding Independent Pitching (FIP)', 
+    'Walks and Hits per Innings Pitched (WHIP)', 
+    'Walks per 9 Innings (BB/9)', 
+    'Hits per 9 Innings (H/9)', 
+    'Homeruns per 9 Innings (HR/9)' // space is also in db, fix later
   ]
 )
 

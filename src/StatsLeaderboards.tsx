@@ -17,8 +17,8 @@ const BATTING_STAT_ORDER = ['BA', 'BABIP', 'HR']
 const PITCHING_STAT_ORDER = ['ERA', 'WHIP']
 
 const LEAGUES: LeagueInfo[] = [
-  { id: 'Lesser', Name: 'All Lesser Leagues',    Emoji: '',  Color: '5b9340', LeagueType: 'Lesser' },
-  { id: 'Greater', Name: 'Greater League',    Emoji: '☘️🍍',  Color: '5b9340', LeagueType: 'Greater' },
+  { id: '__lesser__', Name: 'All Lesser Leagues',    Emoji: '',  Color: '5b9340', LeagueType: 'Lesser' },
+  { id: '__greater__', Name: 'Greater League',    Emoji: '☘️🍍',  Color: '5b9340', LeagueType: 'Greater' },
   { id: '6805db0cac48194de3cd3ff4', Name: 'Amphibian',    Emoji: '🐸',  Color: '5b9340', LeagueType: 'Lesser' },
   { id: '6805db0cac48194de3cd3fe7', Name: 'Baseball',     Emoji: '⚾️',  Color: '47678e', LeagueType: 'Lesser' },
   { id: '6805db0cac48194de3cd3fe8', Name: 'Precision',    Emoji: '🎯',  Color: '507d45', LeagueType: 'Lesser' },
@@ -43,22 +43,15 @@ function StatsLeaderboards(){
   const [pitchingData, setPitchingData] = useState<Record<string, PitchingLeaderboardRow[]> | null>(null)
   const [selectedLeague, setSelectedLeague] = useState<LeagueInfo>(LEAGUES[0])
 
-  useEffect(() => {
+    useEffect(() => {
     setBattingData(null)
     setPitchingData(null)
     console.log("fetching leaderboards...")
-    document.title = `${selectedLeague.Emoji} ${selectedLeague.Name}`
-    const battingFetch = selectedLeague.id === 'Greater'
-      ? fetchGreaterBattingLeaderboard()
-      : selectedLeague.id === 'Lesser'
-        ? fetchLesserBattingLeaderboard()
-        : fetchBattingLeaderboard(selectedLeague.id)
 
-    const pitchingFetch = selectedLeague.LeagueType === 'Greater'
-      ? fetchGreaterPitchingLeaderboard()
-      : selectedLeague.id === 'Lesser'
-        ? fetchLesserPitchingLeaderboard()
-        : fetchPitchingLeaderboard(selectedLeague.id)
+    document.title = `${selectedLeague.Emoji} ${selectedLeague.Name}`
+    
+    const battingFetch = fetchBattingLeaderboard(selectedLeague.id)
+    const pitchingFetch = fetchPitchingLeaderboard(selectedLeague.id)
 
     battingFetch.then(data =>{
       const boards = groupByBoard(data)
