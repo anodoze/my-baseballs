@@ -446,6 +446,13 @@ export type Database = {
             foreignKeyName: "players_team_id_fkey"
             columns: ["team_id"]
             isOneToOne: false
+            referencedRelation: "mv_attribute_leaderboard"
+            referencedColumns: ["team_id"]
+          },
+          {
+            foreignKeyName: "players_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
             referencedRelation: "teams"
             referencedColumns: ["id"]
           },
@@ -527,6 +534,31 @@ export type Database = {
       }
     }
     Views: {
+      mv_attribute_leaderboard: {
+        Row: {
+          attr_name: string | null
+          attr_value: number | null
+          first_name: string | null
+          last_name: string | null
+          player_id: string | null
+          position: string | null
+          rank_overall: number | null
+          suffix: string | null
+          team_emoji: string | null
+          team_id: string | null
+          team_location: string | null
+          team_name: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "player_attributes_player_id_fkey"
+            columns: ["player_id"]
+            isOneToOne: true
+            referencedRelation: "players"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       mv_batting_leaderboard: {
         Row: {
           first_name: string | null
@@ -541,7 +573,10 @@ export type Database = {
           rank_in_league: number | null
           stat_key: string | null
           stat_value: number | null
+          suffix: string | null
+          team_emoji: string | null
           team_id: string | null
+          team_location: string | null
           team_name: string | null
         }
         Relationships: []
@@ -613,14 +648,20 @@ export type Database = {
           rank_in_league: number | null
           stat_key: string | null
           stat_value: number | null
+          suffix: string | null
+          team_emoji: string | null
           team_id: string | null
+          team_location: string | null
           team_name: string | null
         }
         Relationships: []
       }
     }
     Functions: {
-      [_ in never]: never
+      refresh_materialized_view: {
+        Args: { view_name: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

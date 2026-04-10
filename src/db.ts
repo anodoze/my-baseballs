@@ -228,3 +228,28 @@ export type LeaguePitchingContext = {
   avg_hr9: number
   fip_constant: number
 }
+
+export type AttributeLeaderboardRow = {
+  player_id: string
+  first_name: string
+  last_name: string
+  suffix: string | null
+  position: string
+  team_name: string
+  team_location: string
+  team_emoji: string
+  team_id: string
+  attr_name: string
+  attr_value: number
+  rank_overall: number
+}
+
+export async function fetchAttributeLeaderboard() {
+  const { data, error } = await supabase
+    .from('mv_attribute_leaderboard')
+    .select('*')
+    .order('attr_name')
+    .order('rank_overall')
+  if (error) throw error
+  return data as AttributeLeaderboardRow[]
+}
