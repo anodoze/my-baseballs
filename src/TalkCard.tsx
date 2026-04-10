@@ -6,7 +6,7 @@ export const ATTRIBUTE_CATEGORIES = {
                 'Insight','Intimidation','Lift','Muscle','Selflessness','Vision','Wisdom'],
   Baserunning: ['Greed','Performance','Speed','Stealth'],
   Defense:     ['Acrobatics','Agility','Arm','Awareness','Composure',
-                'Dexterity','Patience','Reaction'],
+                'Dexterity','Patience','Reaction', 'Luck'],
   Pitching:    ['Accuracy','Control','Defiance','Deception','Guts',
                 'Intuition','Persuasion','Presence','Rotation','Stamina','Stuff','Velocity'],
 } as const;

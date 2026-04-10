@@ -15,15 +15,15 @@ type LeagueInfo = {
 
 const BATTING_STAT_ORDER = [
   'Batting Average (BA)', 'On Base Percentage (OBP)', 'Slugging Percentage (SLG)', 
-  'On Base Plus Slugging (OPS)', 'Batting Averag on Balls in Play (BABIP)',
+  'On Base Plus Slugging (OPS)', 'Batting Average on Balls in Play (BABIP)',
   'Hits', 'Singles', 'Doubles', 'Triples', 'Home Runs',
   'Walks', 'Hit By Pitch (HBP)', 'Stolen Bases',
   'Caught Stealing', 'Struck Out' 
 ]
 const PITCHING_STAT_ORDER = [
-  'Earned Run Average (ERA)', 'Fielding Independent Pitching (FIP)', 'Walks and Hits per Innings Pitched (WHIP)',
-  'Strikeouts per 9 innings', 'Hits per 9 innings (H/9)', 'Homeruns per 9 Innings', 'Walks per 9 Innings (BB/9)',
-  'Strikeouts (K)', 'Innings Pitched (IP)',
+  'Earned Run Average (ERA)', 'Fielding Independent Pitching (FIP)', 'Walks and Hits per Inning Pitched (WHIP)',
+  'Strikeouts per 9 Innings (K/9)', 'Hits per 9 Innings (H/9)', 'Homeruns per 9 Innings (HR/9)', 'Walks per 9 Innings (BB/9)',
+  'Strikeouts', 'Innings Pitched (IP)',
   'Hit Batters'
 ]
 
@@ -71,11 +71,11 @@ function StatsLeaderboards(){
 
     battingFetch.then(data =>{
       const boards = groupByBoard(data)
-      console.log(boards)
       setBattingData(boards)
     })
     pitchingFetch.then(data =>{
       const boards = groupByBoard(data)
+      console.log(boards)
       setPitchingData(boards)
     })
   }, [selectedLeague])
