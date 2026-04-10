@@ -1,13 +1,10 @@
-h1, h2, h3, h4, h5{
-  text-decoration: none;
-}
 a{
-  color: var(--bright)
+  color: var(--text)
 }
 .toggle-menu {
   position: sticky;
   top: 0;
-  background: var(--dark);
+  background: var(--content);
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -16,25 +13,31 @@ a{
   z-index: 10;
 }
 .navbar-button{
-  background-color: var(--core);
-  color: var(--bright);
+  background-color: var(--content);
+  color: var(--text);
   padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
   border: none;
   font-size: 16px;
   font-weight: 500;
+  margin-left: 24px;
+  margin-right: 24px;
+  border-radius: 26px;
 }
 .site-navbar{
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 4px;
+  justify-content: center;
+  padding: 8px;
+  background-color: var(--content);
 
 }
 .navbar-button:hover{
-   background-color: var(--core-accent);
+   background-color: var(--content-label);
 }
 .navbar-button.active{
-  background-color: var(--core-accent);
+  background-color: var(--content-label);
 }
 
 .team-picker {
@@ -64,8 +67,8 @@ a{
 
 .player-card{
   font-family:'Trebuchet MS', sans-serif;
-  background-color: var(--core);
-  color: var(--bright);
+  background-color: var(--content);
+  color: var(--text);
   max-width: 420px;
   margin: 2px;
   height: min-content;
@@ -75,9 +78,7 @@ a{
 .batting-card, .pitching-card{
   display: flex;
 }
-/* .isolated{
-  max-width: 380px;
-} */
+
 .batting-card.isolated .talk-card, .pitching-card.isolated .talk-card {
   width: 100%;
 }
@@ -91,7 +92,7 @@ a{
 .player-number {
   padding: 4px;
   background-color: var(--star-gold);
-  color: var(--dark);
+  color: var(--content);
   margin-right: 12px;
   font-size: 18px;
   font-weight: 800;
@@ -115,7 +116,7 @@ a{
 .boon-display {
   margin: 2px;
   padding: 4px;
-  background-color: var(--base);
+  background-color: var(--content-label);
   max-width: 200px;
   font-size: 11px;
 }
@@ -125,7 +126,7 @@ a{
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  background-color: var(--core);
+  background-color: var(--content-label);
   width: 100%;
   margin: 2px;
 }
@@ -138,7 +139,7 @@ a{
 .talk-card{
   width: 204px;
   margin: 0px 3px 3px 3px;
-  background-color: var(--dark);
+  background-color: var(--content);
   height: min-content;
   border: solid black 2px;
 }
@@ -150,7 +151,7 @@ a{
 }
 .talk-card * li {
   display: flex;
-  background: var(--core-accent); 
+  background: var(--content-label); 
   margin: 6px 0px;
 }
 .talk-card > ul {

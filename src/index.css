@@ -1,10 +1,18 @@
 :root {
-    --bright: white;
+    /* --bright: white;
     --dark: black;
     --base: #0d0d0d;
     --core: #252525;
-    --core-accent: #666666;
-    --trim: #a96bea;
+    --core-accent: #666666; */
+
+    --text: white;
+    --text-muted: #6e6e6e;
+
+    --mid: #555555;
+
+    --content: black;
+    --content-label: #232323;
+    --background: #1d1d1d;
 
     --star-gold: #ffb000;
     --star-light: #ffda8a;
@@ -16,8 +24,8 @@
   font-size: small;
   font-weight: 400;
 
-  background-color: var(--dark);
-  color: var(--bright);
+  background-color: var(--background);
+  color: var(--text);
 
 
   font-synthesis: none;
@@ -42,23 +50,23 @@ body {
   height: 100%;
   width: 100%;
 }
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 body.theme-main {
-  background-color: var(--dark);
+  background-color: var(--background);
 }
 
 button {
   font-size: 16px;
   font-weight: 600;
   color: var(--bright);
-  background-color: var(--base);
+  background-color: var(--content);
   border: none;
   padding: 8px;
   margin: 4px;
 }
 button:active, button:hover{
-  background-color: var(--core-accent);
+  background-color: var(--content-label);
 }

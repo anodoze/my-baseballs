@@ -21,8 +21,10 @@ const BATTING_STAT_ORDER = [
   'Caught Stealing', 'Struck Out' 
 ]
 const PITCHING_STAT_ORDER = [
-  'Earned Run Average (ERA)', 'Fielding Independent Pitching (FIP)', 'Walks and Hits per Inning Pitched (WHIP)',
-  'Strikeouts per 9 Innings (K/9)', 'Hits per 9 Innings (H/9)', 'Homeruns per 9 Innings (HR/9)', 'Walks per 9 Innings (BB/9)',
+  'Earned Run Average (ERA)', 'Fielding Independent Pitching (FIP)', 
+  'Walks and Hits per Inning Pitched (WHIP)',
+  'Strikeouts per 9 Innings (K/9)', 'Hits per 9 Innings (H/9)', 
+  'Homeruns per 9 Innings (HR/9)', 'Walks per 9 Innings (BB/9)',
   'Strikeouts', 'Innings Pitched (IP)',
   'Hit Batters'
 ]

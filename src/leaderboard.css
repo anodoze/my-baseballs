@@ -4,40 +4,47 @@
 .leaderboard-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding-left: 14px;
+  padding-right: 14px;
+  filter: drop-shadow(black 2px 2px 4px); 
 }
 .leaderboard-bar {
   display: flex;
   justify-content: center;
   align-items: center;
+  filter: drop-shadow(black 2px 2px 4px);
 }
 .league-selector{
   font-size: 20px;
-  color: var(--bright);
-  background-color: var(--core);
+  color: var(--text);
+  background-color: var(--content);
   border: none;
   margin: 4px;
   min-width: 300px;
   text-align: center;
+  padding: 8px;
+  border: solid 1px var(--content-label);
 }
 
 .leaderboard {
-  color: var(--bright);
-  background-color: var(--base);
-  padding-left: -8px;
+  color: var(--text);
+  background-color: var(--content);
+  padding-left: -4px;
   margin: 16px;
   /* max-width: 300px; */
   flex-grow: 1;
   flex-basis: 30%;
   align-content: flex-start;
+  border: solid 1px var(--content-label);
 }
 .leaderboard-title{
   text-align: center;
-  background-color: var(--core);
+  background-color: var(--content-label);
   padding: 8px;
 }
 
 .leaderboard ol {
-  padding-left: 24px;
+  padding-left: 32px;
 }
 
 .leader-row {
@@ -47,14 +54,14 @@
   padding-top: 4px;
   padding-bottom: 4px;
   padding-right: 16px;
-  border-bottom: solid 1px var(--core)
+  border-bottom: solid 1px var(--content-label)
 }
 .leader-name {
   white-space: nowrap;
   flex-shrink: 0;
 }
 .leader-team {
-  color: var(--core-accent);
+  color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
