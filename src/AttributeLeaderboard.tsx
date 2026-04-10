@@ -25,7 +25,7 @@ function AttributeLeaderboards(){
     })
   }, [])
 
-  const sickoLeaders = battingData ? Object.entries(battingData).map(([statKey, leaderboard]) => {
+  const sickoLeaders = sickoData ? Object.entries(sickoData).map(([statKey, leaderboard]) => {
     return (
       <Leaderboard key={statKey} 
       leaderboardType={'attribute'}
