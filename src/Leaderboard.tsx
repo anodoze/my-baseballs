@@ -1,10 +1,10 @@
-import type { BattingLeaderboardRow } from "./db";
-import type { PitchingLeaderboardRow } from "./db";
+import type { LeaderboardRow } from "./db";
 
-interface LeaderboardProps {
-  statKey: string,
-  leaderboard: BattingLeaderboardRow[] | PitchingLeaderboardRow[];
+interface LeaderboardProps<T extends LeaderboardRow> {
+  statKey: string
+  leaderboard: T[]
   leaderboardType: 'batting' | 'pitching' | 'attribute'
+  getValue?: (row: T) => number
 }
 
 function formatIP(value: number) {
@@ -21,13 +21,18 @@ function formatStat(value: number, leaderboardType: string, isIP: boolean)  {
     return Number.isInteger(n) ? String(n) : n.toFixed(fixedDigits);
 }
 
-function Leaderboard ({statKey, leaderboard, leaderboardType}: LeaderboardProps) {
+function Leaderboard<T extends LeaderboardRow>({
+  statKey,
+  leaderboard,
+  leaderboardType,
+  getValue = (row) => (row as any).stat_value ?? (row as any).attr_value,
+}: LeaderboardProps<T>) {
 
   const isIP = statKey == 'Innings Pitched (IP)'
 
   const leaderList = leaderboard.map(leader => {
     if (!leader) return;
-    const stat = formatStat(leader.stat_value, leaderboardType, isIP)
+    const stat = formatStat(getValue(leader), leaderboardType, isIP)
   
     return (
       <li key={leader.player_id}>

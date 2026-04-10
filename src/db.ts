@@ -71,96 +71,28 @@ export async function fetchLeaguePitchingContext(leagueId: string) {
   return data as LeaguePitchingContext
 }
 
-export async function fetchGreaterBattingLeaderboard() {
-  const { data, error } = await supabase
-    .from('mv_batting_leaderboard')
-    .select('*')
-    .eq('league_type', 'Greater')
-    .order('stat_key')
-    .order('rank_in_league')
-  if (error) throw error
-  return rerankBatting(data as BattingLeaderboardRow[])
-}
+export type LeaderboardRow = BattingLeaderboardRow | PitchingLeaderboardRow | AttributeLeaderboardRow
 
-export async function fetchLesserBattingLeaderboard() {
-  const { data, error } = await supabase
-    .from('mv_batting_leaderboard')
-    .select('*')
-    .eq('league_type', 'Lesser')
-    .order('stat_key')
-    .order('rank_in_league')
-  if (error) throw error
-  return rerankBatting(data as BattingLeaderboardRow[])
-}
-
-// stat_keys where lower is better — everything else is descending
-const ASCENDING_STATS = new Set(['cs', 'k'])
-
-function rerankBatting(rows: BattingLeaderboardRow[]): BattingLeaderboardRow[] {
-  const boards = groupByBoard(rows)
-  return Object.entries(boards).flatMap(([stat_key, players]) => {
-    const sorted = [...players].sort((a, b) =>
-      ASCENDING_STATS.has(stat_key)
-        ? a.stat_value - b.stat_value
-        : b.stat_value - a.stat_value
-    )
-    return sorted.slice(0, 10).map((p, i) => ({ ...p, rank_in_league: i + 1 }))
-  })
-}
-
-type LeaderboardRow = BattingLeaderboardRow | PitchingLeaderboardRow
-
-export function groupByBoard<T extends LeaderboardRow>(rows: T[]): Record<string, T[]> {
+export function groupByBoard<T extends LeaderboardRow>(
+  rows: T[],
+  getKey: (row: T) => string = (row) => (row as any).stat_key ?? (row as any).attr_name
+): Record<string, T[]> {
   return rows.reduce((acc, row) => {
-    if (!acc[row.stat_key]) acc[row.stat_key] = []
-    acc[row.stat_key].push(row)
+    const key = getKey(row)
+    if (!acc[key]) acc[key] = []
+    acc[key].push(row)
     return acc
   }, {} as Record<string, T[]>)
 }
 
-const PITCHING_ASCENDING_STATS = new Set(
-  [
-    'Earned Run Average (ERA)', 
-    'Fielding Independent Pitching (FIP)', 
-    'Walks and Hits per Innings Pitched (WHIP)', 
-    'Walks per 9 Innings (BB/9)', 
-    'Hits per 9 Innings (H/9)', 
-    'Homeruns per 9 Innings (HR/9)' // space is also in db, fix later
-  ]
-)
-
-export function rerankPitching(rows: PitchingLeaderboardRow[]): PitchingLeaderboardRow[] {
-  const boards = groupByBoard(rows)
-  return Object.entries(boards).flatMap(([stat_key, players]) => {
-    const sorted = [...players].sort((a, b) =>
-      PITCHING_ASCENDING_STATS.has(stat_key)
-        ? a.stat_value - b.stat_value
-        : b.stat_value - a.stat_value
-    )
-    return sorted.slice(0, 10).map((p, i) => ({ ...p, rank_in_league: i + 1 }))
-  })
-}
-
-export async function fetchGreaterPitchingLeaderboard() {
+export async function fetchAttributeLeaderboard() {
   const { data, error } = await supabase
-    .from('mv_pitching_leaderboard')
+    .from('mv_attribute_leaderboard')
     .select('*')
-    .eq('league_type', 'Greater')
-    .order('stat_key')
-    .order('rank_in_league')
+    .order('attr_name')
+    .order('rank_overall')
   if (error) throw error
-  return rerankPitching(data as PitchingLeaderboardRow[])
-}
-
-export async function fetchLesserPitchingLeaderboard() {
-  const { data, error } = await supabase
-    .from('mv_pitching_leaderboard')
-    .select('*')
-    .eq('league_type', 'Lesser')
-    .order('stat_key')
-    .order('rank_in_league')
-  if (error) throw error
-  return rerankPitching(data as PitchingLeaderboardRow[])
+  return data as AttributeLeaderboardRow[]
 }
 
 export type BattingLeaderboardRow = {
@@ -242,14 +174,4 @@ export type AttributeLeaderboardRow = {
   attr_name: string
   attr_value: number
   rank_overall: number
-}
-
-export async function fetchAttributeLeaderboard() {
-  const { data, error } = await supabase
-    .from('mv_attribute_leaderboard')
-    .select('*')
-    .order('attr_name')
-    .order('rank_overall')
-  if (error) throw error
-  return data as AttributeLeaderboardRow[]
 }

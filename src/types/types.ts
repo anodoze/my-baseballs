@@ -131,3 +131,11 @@ export interface PlayerDetails {
 }
 
 export type PlayerStats = Record<string, number | string | null>
+
+export interface RecentTeam {
+  id: string
+  name: string
+  location: string
+  emoji: string
+  color: string
+}

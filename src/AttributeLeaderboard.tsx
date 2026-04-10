@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react"
 import { groupByBoard, fetchAttributeLeaderboard } from "./db"
 import type { AttributeLeaderboardRow } from "./db"
-import { useParams } from "react-router"
+import { ATTRIBUTE_CATEGORIES } from "./TalkCard"
 import Leaderboard from "./Leaderboard"
 import './leaderboard.css'
 
-const ATTRIBUTE_ORDER = ['BA', 'BABIP', 'HR']
-
 function AttributeLeaderboards(){
-  // const { leagueID } = useParams() todo: change routing and use params so peopel can bookmark their league
   const [sickoData, setSickoData] = useState<Record<string, AttributeLeaderboardRow[]> | null>(null)
 
-    useEffect(() => {
+  useEffect(() => {
     setSickoData(null)
     console.log("fetching leaderboards...")
 
@@ -25,20 +22,40 @@ function AttributeLeaderboards(){
     })
   }, [])
 
-  const sickoLeaders = sickoData ? Object.entries(sickoData).map(([statKey, leaderboard]) => {
-    return (
-      <Leaderboard key={statKey} 
-      leaderboardType={'attribute'}
-      statKey={statKey} 
-      leaderboard={leaderboard}  
-      />
-    )})
-    : <p>loading...</p>
+const sickoLeaders = sickoData
+  ? Object.fromEntries(
+      Object.entries(ATTRIBUTE_CATEGORIES).map(([category, attrs]) => [
+        category.toLowerCase(),
+        attrs.filter(attr => sickoData[attr]).map(attr => (
+          <Leaderboard
+            key={attr}
+            leaderboardType="attribute"
+            statKey={attr}
+            leaderboard={sickoData[attr]}
+            getValue={(row) => Math.round(row.attr_value * 100)}
+          />
+        ))
+      ])
+    )
+  : null
 
  return (
-    <div>
+    <div className="leaderboard-box">
+        <h2>Batting</h2>
       <div className="leaderboard-container">
-        {sickoLeaders}
+        {sickoLeaders?.batting}
+      </div>
+        <h2>Pitching</h2>
+      <div className="leaderboard-container">
+        {sickoLeaders?.pitching}
+      </div>
+        <h2>Defense</h2>
+      <div className="leaderboard-container">
+        {sickoLeaders?.defense}
+      </div>
+        <h2>Baserunning</h2>
+      <div className="leaderboard-container">
+        {sickoLeaders?.baserunning}
       </div>
     </div>
   )

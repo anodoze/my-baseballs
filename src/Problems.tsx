@@ -2,7 +2,7 @@ import PlayerCard from "./PlayerCard";
 import TeamMenu from "./TeamMenu";
 import { useState, useEffect } from "react";
 import type { TeamData } from "./db";
-import type { Player, PlayerDetails } from "./types/types";
+import type { Player, PlayerDetails, RecentTeam } from "./types/types";
 import './Problems.css'
 import { useParams } from "react-router";
 import { fetchTeam } from "./db";
@@ -55,6 +55,14 @@ function Problems() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    if (!teamData) return;
+    const recent: RecentTeam[] = JSON.parse(localStorage.getItem('recentTeams') ?? '[]')
+    const entry = { id: teamData.id, name: teamData.name, location: teamData.location, emoji: teamData.emoji, color: teamData.color }
+    const updated = [entry, ...recent.filter(t => t.id !== teamData.id)].slice(0, 10)
+    localStorage.setItem('recentTeams', JSON.stringify(updated))
+  }, [teamData])
 
   useEffect(() => { // initialize visibility so that roster ordering works
     if (!teamData) return;  

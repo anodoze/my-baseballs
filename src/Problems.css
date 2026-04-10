@@ -37,6 +37,21 @@ a{
   background-color: var(--core-accent);
 }
 
+.team-picker {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  text-align: center;
+  justify-content: center;
+  max-width: 400px;
+  padding: 16px;
+  margin: auto;
+}
+.team-selector {
+  width: 400px;
+  margin: 16px;
+}
+
 .player-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, 141px);
@@ -183,20 +198,6 @@ a{
   }
   .navbar-button{
     padding: 2px;
-  }
-  .star, 
-  .left-half-star, 
-  .right-half-star{
-    width: 14px;
-    height: 14px;
-  }
-  #left-half-star{
-    clip-path: inset(0 7px 0 0);
-    margin-right: -7px
-  }
-  #right-half-star{
-    clip-path: inset(0 0 0 7px);
-    margin-left: -7px
   }
   .pitch-chart{
     width: 160px;
