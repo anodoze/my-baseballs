@@ -8,8 +8,8 @@ function LevelDisplay({ levelUps }: LevelUpDisplayProps) {
   if (!levelUps || levelUps.length === 0) return null;
 
   return (
-    <>
-      <h3>Pending Level-Ups</h3>
+    <div className="level-up-box">
+      <h3>Pending Level-Ups:</h3>
       <div className="boons">
         {levelUps.map(levelUp => (
           <div key={levelUp.id} className="level-up">
@@ -30,13 +30,13 @@ function LevelDisplay({ levelUps }: LevelUpDisplayProps) {
               </div>
             )}
 
-            <div className="level-display">
+            {/* <div className="level-display">
               Chosen: {new Date(levelUp.earned_at).toLocaleString()}
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

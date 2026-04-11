@@ -122,6 +122,10 @@ a{
   font-size: 11.5px;
 }
 
+.level-up-box h3{
+  margin-left: 10px;
+  text-align: center;
+}
 .level-up {
   display: flex;
   flex-wrap: wrap;
