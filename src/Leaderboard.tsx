@@ -39,7 +39,7 @@ function Leaderboard<T extends LeaderboardRow>({
         <div className="leader-row">
 
         <a target="_blank" href={`https://mmolb.com/player/${leader.player_id}`}><span className="leader-name">
-          {leader.first_name} {leader.last_name} - {leader.suffix ? ` ${leader.suffix}` : ""}
+          {leader.first_name} {leader.last_name} {leader.suffix ? ` ${leader.suffix}` : ""} -
         </span></a>
         <span className="leader-team">
           {leader.team_emoji} {leader.team_location} {leader.team_name}
