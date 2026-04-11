@@ -38,6 +38,7 @@ function TeamLookup() {
           className='team-selector'
           defaultValue={input} 
           onChange={e => setInput(e.target.value)}
+          onInput={e => setInput((e.target as HTMLInputElement).value)}
           onKeyDown={e => e.key === 'Enter' && handleSubmit()}
           placeholder="Team URL or teamID"
           />
