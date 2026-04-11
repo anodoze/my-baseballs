@@ -36,6 +36,7 @@ function TeamLookup() {
       <div className='team-picker-nest'>
         <input 
           type="text"
+          readOnly={false}
           className='team-selector'
           defaultValue={input} 
           onChange={e => setInput(e.target.value)}
