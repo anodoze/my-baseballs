@@ -1,6 +1,6 @@
 import type { Player } from "./types/types";
 import CaretForward from './assets/caret-forward.svg?react'
-import Statbox from "./Statbox";
+// import Statbox from "./Statbox";
 
 interface PlayerAbbreviatedProps {
   playerData: Player | null;
