@@ -15,6 +15,18 @@
       "destination": "/stats-leaders.html"
     },
     {
+      "source": "/sickos/",
+      "destination": "/sickos.html"
+    },
+    {
+      "source": "/team/",
+      "destination": "/team.html"
+    },
+    {
+      "source": "/stats-leaders/",
+      "destination": "/stats-leaders.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
