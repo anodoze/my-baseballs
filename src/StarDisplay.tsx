@@ -12,7 +12,7 @@ function pipCount(value: number) {
   return Math.round(value * 10)
 }
 
-function StarDisplay({ baseStars, augmentStars, equipStars, boonStars, total }: StarDisplayProps) {
+function StarDisplay({ baseStars, augmentStars, boonStars, total }: StarDisplayProps) {
   const boonIsNegative = boonStars < 0
 
   const withoutBoon = total - boonStars

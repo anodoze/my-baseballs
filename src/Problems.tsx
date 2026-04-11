@@ -85,13 +85,11 @@ function Problems() {
     fetchTeam(`${id}`).then(data =>{
       console.log(data)
       data.players.sort((a, b) => {
-        const ai = SLOT_ORDER.indexOf(a.slot);
-        const bi = SLOT_ORDER.indexOf(b.slot);
+        const ai = SLOT_ORDER.indexOf(a.slot ?? "");
+        const bi = SLOT_ORDER.indexOf(b.slot ?? "");
         return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
       })
-
       setTeamData(data);
-
       setPlayers(data.players.map(p => ({ // todo: find out if we can avoid this insane casting nonsesnse
       ...p,
       player_details: p.player_details 
