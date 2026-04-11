@@ -61,7 +61,7 @@ function TeamMenu({
           ☰
         </button>
         <button className="menu" onClick={() => setIsOpen(!isOpen)}>
-          Menu
+          Dashboard Menu
         </button>
         <div className='team-title'>
           {teamName}

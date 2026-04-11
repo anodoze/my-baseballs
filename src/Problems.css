@@ -77,6 +77,7 @@ a{
 }
 .batting-card, .pitching-card{
   display: flex;
+  justify-content: center;
 }
 
 .batting-card.isolated .talk-card, .pitching-card.isolated .talk-card {
@@ -100,7 +101,7 @@ a{
   position: relative; 
   top: -4px; 
   left: -4px;
-  filter: drop-shadow(black 2px 0px 4px)
+  filter: drop-shadow(var(--shadow) 2px 0px 4px)
 }
 .player-name{
   font-size: 16px;
@@ -159,7 +160,7 @@ a{
 }
 
 .attribute-display{
-  filter: drop-shadow(black 2px 0px 4px)
+  filter: drop-shadow(var(--shadow) 2px 0px 4px)
 }
 .attribute-title {
   padding: 2px;
@@ -188,8 +189,7 @@ a{
   font-weight: 600;
   padding: 5px;
   line-height: 24px;
-  margin: auto;
-  filter: drop-shadow(black 2px 2px 4px)
+  filter: drop-shadow(var(--shadow) 2px 2px 4px)
 }
 
 /* Mobile only */
@@ -199,15 +199,14 @@ a{
   }
   .navbar-button{
     padding: 2px;
+    margin: 2px;
   }
+
   .pitch-chart{
     width: 160px;
   }
   .talk-card{
     width: 160px;
-  }
-  .boon-display{
-    max-width: 100%;
   }
   .isolated{
     max-width: 360px;

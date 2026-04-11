@@ -96,10 +96,36 @@ function PitchChart({ pitchSelection, pitchTypes, }: PitchChartProps) {
                 size: 15,
               },
               padding: 6,
-              boxWidth: 24,  // default is 40
-              boxHeight: 12, // default is fontSize
+              boxWidth: 24,
+              boxHeight: 12,
               useBorderRadius: false,
-              // borderWidth: 0,
+              generateLabels: function(chart) {
+                const data = chart.data;
+                if (data.labels && data.datasets.length) {
+                  const bgColors = data.datasets[0].backgroundColor as string[];
+                  const labels = data.labels as string[];
+                  
+                  // Create array of indices sorted by value descending
+                  const sortedIndices = data.datasets[0].data
+                    .map((value, index) => ({ value: value as number, index }))
+                    .sort((a, b) => b.value - a.value)
+                    .map(item => item.index);
+                  
+                  return sortedIndices.map(i => {
+                    const label = labels[i];
+                    const value = data.datasets[0].data[i] as number;
+                    const percentage = (value * 100).toFixed(1);
+                    return {
+                      text: `${label} ${percentage}%`,
+                      fillStyle: bgColors[i],
+                      fontColor: '#fff',
+                      hidden: false,
+                      index: i
+                    };
+                  });
+                }
+                return [];
+              }
             }
           }
         }

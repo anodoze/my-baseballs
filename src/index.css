@@ -14,6 +14,8 @@
     --content-label: #232323;
     --background: #1d1d1d;
 
+    --shadow: rgba(0, 0, 0, 0.5);
+
     --star-gold: #ffb000;
     --star-light: #ffda8a;
     --star-blue: #648fff;
@@ -50,9 +52,6 @@ body {
   height: 100%;
   width: 100%;
 }
-/* * {
-  box-sizing: border-box;
-} */
 
 body.theme-main {
   background-color: var(--background);
