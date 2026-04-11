@@ -38,10 +38,14 @@ function TeamLookup() {
           type="text"
           readOnly={false}
           className='team-selector'
-          defaultValue={input} 
+          value={input} 
           onChange={e => setInput(e.target.value)}
           onInput={e => setInput((e.target as HTMLInputElement).value)}
           onKeyDown={e => e.key === 'Enter' && handleSubmit()}
+          onPaste={e => {
+            const text = e.clipboardData.getData('text');
+            setInput(text);
+          }}
           placeholder="Team URL or teamID"
           />
         <button onClick={handleSubmit}>Go</button>
