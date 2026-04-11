@@ -35,6 +35,7 @@ function TeamLookup() {
       To look up a team, paste the teamID or the URL from the team page.
       <div className='team-picker-nest'>
         <input 
+          type="text"
           className='team-selector'
           defaultValue={input} 
           onChange={e => setInput(e.target.value)}
