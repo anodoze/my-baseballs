@@ -12,7 +12,7 @@ function pipCount(value: number) {
   return Math.round(value * 10)
 }
 
-function StarDisplay({ baseStars, augmentStars, boonStars, total }: StarDisplayProps) {
+function StarDisplay({ baseStars, augmentStars, boonStars, equipStars, total }: StarDisplayProps) {
   const boonIsNegative = boonStars < 0
 
   const withoutBoon = total - boonStars
@@ -20,9 +20,9 @@ function StarDisplay({ baseStars, augmentStars, boonStars, total }: StarDisplayP
 
   const basePips    = pipCount(baseStars * (boonIsNegative ? scale : 1))
   const augmentPips = pipCount(augmentStars * (boonIsNegative ? scale : 1))
-  const totalPips   = pipCount(total)
-  const equipPips   = totalPips - basePips - augmentPips
+  const equipPips   = pipCount(equipStars * (boonIsNegative ? scale : 1))
   const boonPips    = pipCount(Math.abs(boonStars))
+  // const totalPips   = basePips + augmentPips + equipPips + (boonIsNegative ? 0 : boonPips)
 
   const pips = [
     ...Array(basePips).fill('base'),
