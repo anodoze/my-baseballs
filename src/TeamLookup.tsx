@@ -36,7 +36,7 @@ function TeamLookup() {
       <div className='team-picker-nest'>
         <input 
           className='team-selector'
-          value={input} 
+          defaultValue={input} 
           onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && handleSubmit()}
           placeholder="Team URL or teamID"
