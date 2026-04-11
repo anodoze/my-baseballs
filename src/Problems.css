@@ -53,6 +53,12 @@ a{
 .team-selector {
   width: 400px;
   margin: 16px;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+input {
+  width: 100% !important;
 }
 
 .player-group {
