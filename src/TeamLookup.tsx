@@ -16,7 +16,7 @@ function TeamLookup() {
     if (id) navigate(`/team/${id}`);
   };
 
-  const [recentTeams, setRecentTeams] = useState<RecentTeam[]>(() =>
+  const [recentTeams] = useState<RecentTeam[]>(() =>
     JSON.parse(localStorage.getItem('recentTeams') ?? '[]')
   )
 
