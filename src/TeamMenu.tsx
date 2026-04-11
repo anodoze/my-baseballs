@@ -57,10 +57,7 @@ function TeamMenu({
   return (
     <nav className="team-navbar">
       <div className='menu-bar-flex'>
-        <button className="hamburger" onClick={() => setIsOpen(!isOpen)}>
-          ☰
-        </button>
-        <button className="menu" onClick={() => setIsOpen(!isOpen)}>
+        <button className="menu-button" onClick={() => setIsOpen(!isOpen)}>
           Dashboard Menu
         </button>
         <div className='team-title'>
@@ -69,7 +66,6 @@ function TeamMenu({
       </div>
       
       <div className={`nav-buttons ${isOpen ? 'open' : ''}`}>
-        <div className='menu-flex'>
           <div className="menu-block">
             <div className='menu-block-title'>batter attribute visibility</div>
             {batterVisibility}
@@ -81,12 +77,14 @@ function TeamMenu({
             <button id='menu-block-button' onClick={() => toggleGroup(pitcherIDs, true)}>show all pitchers</button>
             <button id='menu-block-button' onClick={() => toggleGroup(pitcherIDs, false)}>hide pitchers</button>
           </div>
-            <button onClick={() => setShowScheduled(!showScheduled)}>{showScheduled ? 'Hide Pending Levels' : 'Show Pending Levels'}</button>
-            <button onClick={() => setPitcherDisplayMode(pitcherDisplayMode === 'all' ? 'pitching' : 'all')}>
+          <div className='menu-block'>
+            <div className='menu-block-title'>misc</div>
+            <button id="menu-block-button" onClick={() => setShowScheduled(!showScheduled)}>{showScheduled ? 'Hide Pending Levels' : 'Show Pending Levels'}</button>
+            <button id="menu-block-button" onClick={() => setPitcherDisplayMode(pitcherDisplayMode === 'all' ? 'pitching' : 'all')}>
               {pitcherDisplayMode === 'all' ? 'Hide Pitch Chart' : 'Show Pitch Chart'}
             </button>
-            <button onClick={() => setInvertAttributes(!invertAttributes)}>
-              {invertAttributes ? 'Show Primary Attributes' : 'Show Other Attributes'}
+            <button id="menu-block-button" onClick={() => setInvertAttributes(!invertAttributes)}>
+              Invert Pitching/Batting
             </button>
           </div>
         </div>
