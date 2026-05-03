@@ -107,8 +107,7 @@ function StatsLeaderboards(){
         { 
           '--league-color': `#${selectedLeague.Color}`,
          '--league-text-color': `#${selectedLeague.TextColor}`
-        }
-        }>
+        }as React.CSSProperties}>
       <div className="leaderboard-bar">
         <select
           className="league-selector"
