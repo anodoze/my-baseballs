@@ -27,7 +27,7 @@
 }
 
 .leaderboard {
-  color: var(--text);
+  color: var(--league-text-color);
   background-color: var(--content);
   padding-left: -4px;
   margin: 16px;
@@ -35,11 +35,11 @@
   flex-grow: 1;
   flex-basis: 30%;
   align-content: flex-start;
-  border: solid 1px var(--content-label);
+  border: solid 1px var(--league-color);
 }
 .leaderboard-title{
   text-align: center;
-  background-color: var(--content-label);
+  background-color: var(--league-color);
   padding: 8px;
 }
 

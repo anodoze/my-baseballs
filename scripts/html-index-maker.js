@@ -17,7 +17,7 @@ const pages = [
   {
     file: 'dist/sickos.html',
     title: 'Attribute Sickos',
-    description: 'Top attribute ratings across the league',
+    description: 'Yes... HA HA HA... YES!',
   },
 ];
 

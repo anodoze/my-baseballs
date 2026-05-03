@@ -453,6 +453,13 @@ export type Database = {
             foreignKeyName: "players_team_id_fkey"
             columns: ["team_id"]
             isOneToOne: false
+            referencedRelation: "mv_enriched_stats"
+            referencedColumns: ["team_id"]
+          },
+          {
+            foreignKeyName: "players_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
             referencedRelation: "teams"
             referencedColumns: ["id"]
           },
@@ -530,6 +537,13 @@ export type Database = {
             referencedRelation: "leagues"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "teams_league_id_fkey"
+            columns: ["league_id"]
+            isOneToOne: false
+            referencedRelation: "mv_enriched_stats"
+            referencedColumns: ["league_id"]
+          },
         ]
       }
     }
@@ -580,6 +594,68 @@ export type Database = {
           team_name: string | null
         }
         Relationships: []
+      }
+      mv_enriched_stats: {
+        Row: {
+          ba: number | null
+          babip: number | null
+          bb9: number | null
+          caught_stealing: number | null
+          doubles: number | null
+          era: number | null
+          fip_constant: number | null
+          first_name: string | null
+          games_played: number | null
+          h9: number | null
+          hit_batters: number | null
+          hit_by_pitch: number | null
+          hits: number | null
+          home_runs: number | null
+          home_runs_allowed: number | null
+          hr9: number | null
+          innings_pitched: number | null
+          ip_threshold: number | null
+          k9: number | null
+          last_name: string | null
+          league_id: string | null
+          league_name: string | null
+          league_type: string | null
+          obp: number | null
+          ops: number | null
+          pa_threshold: number | null
+          plate_appearances: number | null
+          player_id: string | null
+          position: string | null
+          position_type: string | null
+          quality_starts: number | null
+          runs: number | null
+          runs_batted_in: number | null
+          saves: number | null
+          singles: number | null
+          slg: number | null
+          stolen_bases: number | null
+          strikeouts: number | null
+          struck_out: number | null
+          suffix: string | null
+          team_emoji: string | null
+          team_id: string | null
+          team_location: string | null
+          team_name: string | null
+          triples: number | null
+          walked: number | null
+          walks: number | null
+          whip: number | null
+          wins: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "player_stats_player_id_fkey"
+            columns: ["player_id"]
+            isOneToOne: true
+            referencedRelation: "players"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       mv_games_played: {
         Row: {
