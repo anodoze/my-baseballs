@@ -35,7 +35,7 @@ function Leaderboard<T extends LeaderboardRow>({
     const stat = formatStat(getValue(leader), leaderboardType, isIP)
   
     return (
-      <li key={leader.player_id}>
+      <li key={leader.player_id} style={{'color': 'white'}}>
         <div className="leader-row">
 
         <a target="_blank" href={`https://mmolb.com/player/${leader.player_id}`}><span className="leader-name">
@@ -44,7 +44,7 @@ function Leaderboard<T extends LeaderboardRow>({
         <span className="leader-team">
           {leader.team_emoji} {leader.team_location} {leader.team_name}
         </span>
-        <span style={{'color': 'white'}}className="leader-stat">{stat}</span>
+        <span style={{'color': 'white'}} className="leader-stat">{stat}</span>
         </div>
       </li>
     );
