@@ -44,7 +44,7 @@ function Leaderboard<T extends LeaderboardRow>({
         <span className="leader-team">
           {leader.team_emoji} {leader.team_location} {leader.team_name}
         </span>
-        <span className="leader-stat">{stat}</span>
+        <span style={{'color': 'white'}}className="leader-stat">{stat}</span>
         </div>
       </li>
     );
