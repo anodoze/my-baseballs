@@ -19,8 +19,8 @@ const BATTING_STAT_ORDER = [
   'On Base Plus Slugging (OPS)', 'Batting Average on Balls in Play (BABIP)',
   'Hits', 'Singles', 'Doubles', 'Triples', 'Home Runs',
   'Runs', 'Runs Batted In (RBI)',
-  'Walks', 'Hit By Pitch (HBP)', 'Stolen Bases',
-  'Caught Stealing', 'Struck Out' 
+  'Walked', 'Hit By Pitch (HBP)', 'Stolen Bases',
+  'Caught Stealing', 'Struck Out'
 ]
 
 const PITCHING_STAT_ORDER = [
