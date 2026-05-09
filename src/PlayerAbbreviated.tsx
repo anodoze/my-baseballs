@@ -1,9 +1,9 @@
-import type { Player } from "./types/types";
+import type { PlayerDetails } from "./types/types";
 import CaretForward from './assets/caret-forward.svg?react'
 // import Statbox from "./Statbox";
 
 interface PlayerAbbreviatedProps {
-  playerData: Player | null;
+  playerData: PlayerDetails | null;
   displayPosition: string | null;
   onToggle: () => void; 
 }
@@ -15,10 +15,10 @@ function PlayerAbbreviated ({playerData, displayPosition, onToggle}: PlayerAbbre
     <div className="player-card">
       <div className="player-title">
         <div className="player-number"onClick={onToggle}>
-          #{playerData?.number}
+          #{playerData?.Number}
           <CaretForward className='icon' />
         </div>
-          <div className="player-name">{displayPosition || playerData?.position} {playerData?.first_name} {playerData?.last_name}</div>
+          <div className="player-name">{displayPosition || playerData?.Position} {playerData?.FirstName} {playerData?.LastName}</div>
       </div>
     </div>
   )

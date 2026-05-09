@@ -1,3 +1,42 @@
+export interface ApiTeamData {
+  _id: string
+  Name: string
+  Location: string
+  Emoji: string
+  Color: string
+  Manager: string
+  League: string
+  Record: Record<string, { Wins: number; Losses: number; RunDifferential?: number }>
+  Players: ApiTeamPlayer[]
+  Bench: {
+    Batters: ApiTeamPlayer[]
+    Pitchers: ApiTeamPlayer[]
+  }
+  Modifications: unknown[]
+  IsPlaying: boolean
+  SwapAvailable: boolean
+  LineupPriority: string
+}
+
+export interface ApiTeamPlayer {
+  PlayerID: string
+  Slot: string
+  SlotLabel: string
+  SlotType: string
+  Position: string
+  PositionType: string
+  FirstName: string
+  LastName: string
+  Suffix: string | null
+  Number: number
+  Level: number
+  LesserBoon: Boon[]
+  FoodBuffs: FoodBuff[]
+  Modifications: unknown[]
+  PendingLevelUps: { id: string; level: number; earned_at: string }[]
+  Stats: PlayerStats
+}
+
 export interface AttributeBreakdown {
   baseValue: number;  
   augmentBonus: number;
@@ -64,14 +103,6 @@ export interface LevelUp {
   choice: LevelUpChoice;
 }
 
-export interface AttributeBreakdown {
-  total: number
-  baseValue: number
-  boonBonus: number
-  equipBonus: number
-  augmentBonus: number
-}
-
 export interface Player {
   id: string
   first_name: string | null
@@ -87,48 +118,54 @@ export interface Player {
 }
 
 export interface PlayerDetails {
-  bats: string
-  throws: string
-  home: string
-  likes: string
-  dislikes: string
-  firstName: string
-  lastName: string
-  suffix: string | null
-  number: number
-  level: number
-  position: string
-  positionType: string
-  priority: number
-  pitchTypes?: string[]
-  pitchSelection?: number[]
-  equipment: Record<string, Equipment>
-  foodBuffs: {
+  _id: string
+  Bats: string
+  Throws: string
+  Home: string
+  Likes: string
+  Dislikes: string
+  FirstName: string
+  LastName: string
+  Suffix: string | null
+  Number: number
+  Level: number
+  Position: string
+  PositionType: string
+  Slot: string
+  Priority: number
+  PitchTypes?: string[]
+  PitchSelection?: number[]
+  Equipment: Record<string, Equipment>
+  FoodBuffs: {
     name: string
     emoji: string
     attribute: string
     applied_at: string
     instance_id: string
   }[]
-  lesserBoon: Boon[]
-  modifications: unknown[]
-  augmentHistory: {
+  LesserBoon: Boon[]
+  Modifications: unknown[]
+  AugmentHistory: {
     amount: number
     attribute: string
     timestamp: string
     augment_name: string
   }[]
-  appliedLevelUps: LevelUp[]
-  pendingLevelUps: LevelUp[]
-  scheduledLevelUps: LevelUp[]
-  baseAttributeBonuses: {
+  AppliedLevelUps: LevelUp[]
+  PendingLevelUps: LevelUp[]
+  ScheduledLevelUps: LevelUp[]
+  BaseAttributeBonuses: {
     amount: number
     attribute: string
     source: string
   }[]
-  attributeBreakdown: Record<string, AttributeBreakdown>
-  seasonStats: Record<string, Record<string, string>>
+  GreaterDurability: number
+  LesserDurability: number
+  Stats: ApiPlayerStats
+  SeasonStats: Record<string, Record<string, string>>
 }
+
+export type ApiPlayerStats = Record<string, Record<string, number>>
 
 export type PlayerStats = Record<string, number | string | null>
 

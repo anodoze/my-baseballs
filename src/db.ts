@@ -2,6 +2,7 @@
 import { createClient } from '@supabase/supabase-js'
 import type { QueryData } from '@supabase/supabase-js'
 import type { Database } from './types/supabase'
+import type { PlayerDetails } from './types/types'
 
 export type TeamData = QueryData<ReturnType<typeof teamQuery>>
 
@@ -10,10 +11,38 @@ const supabase = createClient<Database>(
   import.meta.env.VITE_SUPABASE_ANON_KEY
 )
 
-export async function fetchTeam(teamID: string){
-  const { data, error } = await teamQuery(teamID)
-  if (error) throw error
-  return data
+// export async function fetchTeam(teamID: string){ // old team fetch for use with supabase query
+//   const { data, error } = await teamQuery(teamID)
+//   if (error) throw error
+//   return data
+// }
+
+export async function fetchTeam(teamID: string) {
+  const teamRes = await fetch(`https://mmolb-proxy.vercel.app/api/team/${teamID}`);
+  if (!teamRes.ok) throw new Error(`Failed to fetch team ${teamID}`);
+  const teamData = await teamRes.json();
+
+  const allPlayers = [
+    ...(teamData.Players ?? []),
+    ...(teamData.Bench?.Batters ?? []),
+    ...(teamData.Bench?.Pitchers ?? []),
+  ];
+
+  
+  const ids = allPlayers.map(p => p.PlayerID).filter(id => id && id !== '#');
+  const playerRes = await fetch(`https://mmolb-proxy.vercel.app/api/players?ids=${ids.join(',')}`);
+  if (!playerRes.ok) throw new Error(`Failed to fetch players`);
+  const playerData = await playerRes.json();
+  
+  const teamPlayerMap = new Map(allPlayers.map(p => [p.PlayerID, p]));
+
+  const players = playerData.players.map((p: PlayerDetails) => ({
+    ...p,
+    Slot: teamPlayerMap.get(p._id)?.Slot ?? null,
+    Stats: teamPlayerMap.get(p._id)?.Stats ?? {},
+  }));
+
+  return { teamData, players: players };
 }
 
 const teamQuery = (teamID: string) => supabase

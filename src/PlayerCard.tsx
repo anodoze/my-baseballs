@@ -1,4 +1,5 @@
-import type { Player } from "./types/types";
+import type { PlayerDetails } from "./types/types";
+import { computeAttributes } from "./attributes";
 import TalkCard from "./TalkCard";
 import LevelDisplay from "./LevelDisplay";
 import BoonDisplay from "./BoonIcon";
@@ -9,7 +10,7 @@ import clsx from 'clsx';
 
 interface PlayerCardProps {
   playerID: string;
-  playerData: Player | null;
+  playerData: PlayerDetails | null;
   showPlayer: boolean;
   displayMode: 'all' | 'batting' | 'defense' | 'baserunning' | 'pitching';
   showScheduled: boolean;
@@ -25,32 +26,32 @@ function PlayerCard({ playerData, showPlayer, displayMode, showScheduled, onTogg
     return (
       <PlayerAbbreviated
         playerData={playerData}
-        displayPosition={playerData.slot}
+        displayPosition={playerData.Slot}
         onToggle={onToggle}
       />
     );
   }
 
-  // const attributes = playerData ? computeAttributes(playerData, showScheduled) : null;
-  const attributes = playerData.player_details?.details.attributeBreakdown
+  const attributes = playerData ? computeAttributes(playerData) : null;
+  // const attributes = playerData.player_details?.details.attributeBreakdown
 
   const displayType = playerData
     ? (invertAttributes
-      ? (playerData.position_type === 'Batter' ? 'Pitcher' : 'Batter')
-      : playerData.position_type)
+      ? (playerData.PositionType === 'Batter' ? 'Pitcher' : 'Batter')
+      : playerData.PositionType)
     : null;
 
   return (
     <div className="player-card">
       <div className="player-title">
         <div className="player-number" onClick={onToggle}>
-          #{playerData?.number}
+          #{playerData?.Number}
           <CaretDown className='icon' />
         </div>
-          <div className="player-name">{playerData?.slot} {playerData?.first_name} {playerData?.last_name}</div>
+          <div className="player-name">{playerData?.Slot} {playerData?.FirstName} {playerData?.LastName}</div>
       </div>
         <div className="boons">
-          {playerData?.player_details?.details.lesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
+          {playerData?.LesserBoon?.map(boon => <BoonDisplay key={boon.Name} boon={boon} />)}
         </div>
 
       {displayType === 'Batter' && attributes && (
@@ -80,14 +81,14 @@ function PlayerCard({ playerData, showPlayer, displayMode, showScheduled, onTogg
           )}
           {displayMode === 'all' && playerData && (
             <PitchChart
-              pitchSelection={playerData.player_details?.details.pitchSelection ?? null}
-              pitchTypes={playerData.player_details?.details.pitchTypes ?? null}
+              pitchSelection={playerData?.PitchSelection ?? null}
+              pitchTypes={playerData?.PitchTypes ?? null}
             />
           )}
         </div>
       )}
       {showScheduled &&
-        <LevelDisplay levelUps={playerData?.player_details?.details.scheduledLevelUps} />
+        <LevelDisplay levelUps={playerData?.ScheduledLevelUps} />
       }
     </div>
   );
